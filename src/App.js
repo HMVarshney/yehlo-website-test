@@ -4,7 +4,6 @@ import './App.css';
 import { Button, ButtonGroup } from 'reactstrap';
 import Navbar from './components/navbar';
 import Header from './components/header';
-import Header2 from './components/header2'
 
 function App() {
 
