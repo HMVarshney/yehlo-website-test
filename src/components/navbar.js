@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Navbar, NavbarToggler, Collapse, NavItem, NavbarBrand, Nav, NavLink, Modal, ModalHeader, ModalBody, Card, CardBody, CardText, CardTitle, CardSubtitle, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
-import {Button, ButtonGroup, TextField, Tabs, Tab, Box, FormControl, NativeSelect, Grid, Typography, Slider} from '@material-ui/core';
+import {Button, TextField, Tabs, Tab, Box, FormControl, NativeSelect, Grid, Typography, Slider} from '@material-ui/core';
 import img1 from '../assets/images/g_3.jpg';
 
 
@@ -202,13 +202,9 @@ const SearchModal = (props) => {
 const SearchBar = (props) => {
 
     return(
-        <div className='d-none d-lg-block container animate__animated animate__zoomIn animate__faster'>
-        <div className='col-md-auto offset-md-3'>
-            <ButtonGroup variant='outlined' color='secondary'>
-                <Button className='m-1' onClick={props.modalOpen}>College</Button>
-                <Button className='m-1' onClick={props.modalOpen}>Location</Button>
-                <Button className='m-1' onClick={props.modalOpen}>Budget</Button>
-            </ButtonGroup>
+        <div className='container d-none d-lg-block animate__animated animate__fadeInUp animate__faster'>
+        <div className='offset-md-3'>
+            <button className='search_button' onClick={props.modalOpen}><span className='search_text'>What are you looking for?</span></button>
         </div>
         </div>
     );

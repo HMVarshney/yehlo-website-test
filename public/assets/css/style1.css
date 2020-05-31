@@ -1,12 +1,18 @@
-@media only screen and (min-width: 992px){
-.mobile_display{
-	display: none;
-}
-}
-
-@media only screen and (max-width: 990px){
-.desktop_display{
-	display: none;
-}
+.search_button{
+	border-radius: 20px;
+	background: transparent;
+	border: solid black;
+	border-radius: 12px;
+	padding: 4px;
+	color: white;
 }
 
+.search_button:hover{
+	background: rgba(211,211,211,0.1);
+}
+
+.search_text{
+	padding: 4px;
+	font-family: 'Satisfy';
+	font-size: 20px;
+}
