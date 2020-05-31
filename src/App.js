@@ -1,26 +1,23 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Button, ButtonGroup } from 'reactstrap';
+import Navbar from './components/navbar';
+import Header from './components/header';
+import Header2 from './components/header2'
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{backgroundColor:'#D3D3D3'}}>
+      <div>
+        <Navbar />
+      </div>
+      <img src={logo} />
+      <img src={logo} />
+      <img src={logo} />
     </div>
-  );
+  )
 }
 
 export default App;
