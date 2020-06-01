@@ -45,32 +45,27 @@ const Navigationbar = () => {
 
     return ( 
         <>
-        <Navbar dark expand='md' fixed='top' color='dark'>
+        <Navbar className='headerbar' light expand='md' fixed='top' color='dark'>
                 <div style={{fontSize:'17px'}} className='container animate__animated animate__fadeInDown animate__faster'> 
-                        <NavbarBrand>YEHLO</NavbarBrand>
+                        <NavbarBrand><a href='/'>YEHLO</a></NavbarBrand>
                         <NavbarToggler onClick={()=>setNavOpen(!navOpen)} />
                         <Collapse isOpen={navOpen} navbar>
-                        <div className={searchVisible ? 'd-block d-lg-none' : 'col-10'}>
+                        <div className={searchVisible ? 'd-block d-lg-none d-xl-none d-md-none col-10' : 'col-10'}>
                             <Nav navbar>
-                                <NavItem className='d-lg-none d-xl-none'>
+                                <NavItem className='d-lg-none d-xl-none d-md-none d-sm-block'>
                                     <CollegeDropdown data={collegeList} open={collegeDropdownOpen} handleOpen={setDropdown}/>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink onMouseOver={()=>console.log('hovered')}> 
-                                    <span className='fa fa-lg fa-home'></span> Home
-                                    </NavLink>
+                                    <NavLink href='/'>  Home </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink onMouseOver={()=>console.log('hovered')}> 
-                                    <span className='fa fa-lg fa-list'></span> Listings </NavLink>
+                                    <NavLink href='/listings'>  Listings </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink onMouseOver={()=>console.log('hovered')}> 
-                                    <span className='fa fa-lg fa-info'></span> About </NavLink>
+                                    <NavLink>  About </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink onMouseOver={()=>console.log('hovered')}> 
-                                    <span className='fa fa-lg fa-address-card'></span> Contact </NavLink>
+                                    <NavLink> Contact </NavLink>
                                 </NavItem>
                             </Nav>
                         </div>
@@ -202,7 +197,7 @@ const SearchModal = (props) => {
 const SearchBar = (props) => {
 
     return(
-        <div className='container d-none d-lg-block animate__animated animate__fadeInUp animate__faster'>
+        <div className='d-lg-block d-xl-block d-md-block d-none container animate__animated animate__fadeInUp animate__faster'>
         <div className='offset-md-3'>
             <button className='search_button' onClick={props.modalOpen}><span className='search_text'>What are you looking for?</span></button>
         </div>

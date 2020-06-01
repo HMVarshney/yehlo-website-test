@@ -2,14 +2,17 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/navbar';
+import Listing from './components/listings';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 function App() {
 
   return (
     <div style={{backgroundColor:'#D3D3D3'}}>
-      <div>
-        <Navbar />
-      </div>
+      <Navbar />
+      <BrowserRouter>
+      <Route exact path='/listings' component={Listing} />
+      </BrowserRouter>
       <img src={logo} />
       <img src={logo} />
       <img src={logo} />

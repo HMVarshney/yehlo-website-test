@@ -3,7 +3,6 @@
 	background: transparent;
 	border: solid black;
 	border-radius: 12px;
-	padding: 4px;
 	color: white;
 }
 
@@ -12,7 +11,34 @@
 }
 
 .search_text{
-	padding: 4px;
+	padding: 50px;
 	font-family: 'Satisfy';
 	font-size: 20px;
+}
+
+
+.headerbar{
+	background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+
+.listings-jumbotron{
+	padding: 40px
+}
+
+.listings-jumbotron-text{
+	text-align: center;
+	font-family: Oswald;
+	font-size: 50px;
+}
+
+.filter-box{
+	box-shadow: 5px 0px 15px #D3D3D3;
+	border-radius: 20px;
+}
+
+.filter-container{
+	background-color: white;
+	padding: 20px;
+	box-shadow: 5px 0px 15px black;
+	border-radius: 20px;
 }
