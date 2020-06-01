@@ -45,7 +45,7 @@ const Navigationbar = () => {
 
     return ( 
         <>
-        <Navbar className='headerbar' light expand='md' fixed='top' color='dark'>
+        <Navbar className='headerbar' light expand='md' fixed='top'>
                 <div style={{fontSize:'17px'}} className='container animate__animated animate__fadeInDown animate__faster'> 
                         <NavbarBrand><a href='/'>YEHLO</a></NavbarBrand>
                         <NavbarToggler onClick={()=>setNavOpen(!navOpen)} />

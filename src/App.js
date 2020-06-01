@@ -8,7 +8,7 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 function App() {
 
   return (
-    <div style={{backgroundColor:'#D3D3D3'}}>
+    <div>
       <Navbar />
       <BrowserRouter>
       <Route exact path='/listings' component={Listing} />

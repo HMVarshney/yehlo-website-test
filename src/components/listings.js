@@ -7,8 +7,8 @@ const Listings = (props) => {
     const [filterDropdown, showFilter] = useState(false);
 
     return(
-        <>
-            <Jumbotron>
+        <div>
+            <Jumbotron className='listings-container'>
                 <div className='listings-jumbotron container mt-5'>
                     <div className='row justify-content-center'>
                         <div className='col-12 col-sm-6'>
@@ -120,12 +120,14 @@ const Listings = (props) => {
                                 <RenderListings />
                                 <RenderListings />
                                 <RenderListings />
+                                <RenderListings />
+                                <RenderListings />
                             </div>
                         </div>
                 </div>
             </section>
             </div>
-        </>
+        </div>
     );
 }
  
