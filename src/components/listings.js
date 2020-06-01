@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Grid, Card, CardMedia, CardContent, Typography, CardActions, Button, Paper, Box } from '@material-ui/core';
-import { Jumbotron } from 'reactstrap';
+import { Jumbotron, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 const Listings = (props) => {
     const [filterDropdown, showFilter] = useState(false);
@@ -13,6 +14,10 @@ const Listings = (props) => {
                         <div className='col-12 col-sm-6'>
                             <h3 className='listings-jumbotron-text'>Listings</h3>
                             <hr />
+                            <Breadcrumb style={{justifyContent:'center'}}>
+                                <BreadcrumbItem><Link to='/'>Home</Link> </BreadcrumbItem>
+                                <BreadcrumbItem>Listings </BreadcrumbItem>
+                            </Breadcrumb>
                         </div>
                     </div>
                 </div>
@@ -24,8 +29,8 @@ const Listings = (props) => {
             {filterDropdown &&
                 <Box className='filter-container animate__animated animate__fadeIn animate__fast'>
                     <Grid container>
-                        <Grid item xs>
-                        <Box p={2} className='filter-box'>
+                        <Grid item xs={12} lg>
+                        <Box p={2} className='filter-box mt-2 mt-lg-0'>
                         <div class="widget_box">
                             <div class="wb_title">
                                 <h5>Categories</h5>
@@ -41,8 +46,8 @@ const Listings = (props) => {
                         </div>
                         </Box>
                         </Grid>
-                        <Grid item xs>
-                        <Box p={2} className='filter-box'>
+                        <Grid item xs={12} lg>
+                        <Box p={2} className='filter-box mt-2 mt-lg-0'>
                         <div class="widget_box">
 								<div class="wb_title">
 									<h5>Sort By Features</h5>
@@ -71,8 +76,8 @@ const Listings = (props) => {
 								</div>
 							</div></Box>
                         </Grid>
-                        <Grid item xs>
-                            <Box p={2} className='filter-box'>
+                        <Grid item xs={12} lg>
+                            <Box p={2} className='filter-box mt-2 mt-lg-0'>
                         <div class="widget_box rateing_box">
 								<div class="wb_title">
 									<h5>Sort By Rating</h5>
