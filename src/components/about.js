@@ -67,18 +67,18 @@ const About = () => {
 				</div>
 				<div class="counter_box_wrapper p-5">
 					<div class="row">
-						<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="col-lg-3 col-md-6 col-6">
 							<div class="counter_box wow fadeInUp">
 								<div class="listghor_icon">
 									<i class="fas fa-smile"></i>
 								</div>
 								<div class="listghor_info">
 									<h4><span class="counter">200</span>+</h4>
-									<p>happy customers</p>
+									<p>Happy customers</p>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="col-lg-3 col-md-6 col-6">
 							<div class="counter_box wow fadeInUp" >
 								<div class="listghor_icon">
 									<i class="fas fa-street-view"></i>
@@ -89,7 +89,7 @@ const About = () => {
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="col-lg-3 col-md-6 col-6">
 							<div class="counter_box wow fadeInUp">
 								<div class="listghor_icon">
 									<i class="fas fa-address-card"></i>
@@ -100,7 +100,7 @@ const About = () => {
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="col-lg-3 col-md-6 col-6">
 							<div class="counter_box wow fadeInUp">
 								<div class="listghor_icon">
 									<i class="fas fa-leaf"></i>
@@ -127,7 +127,7 @@ const About = () => {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="col-lg-3 col-md-6 col-6">
 						<div class="team_box wow fadeInUp">
 							<div class="team_info">
 								<div class="listghor_img team_img">
@@ -148,7 +148,7 @@ const About = () => {
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="col-lg-3 col-md-6 col-6">
 						<div class="team_box wow fadeInUp">
 							<div class="team_info">
 								<div class="listghor_img team_img">
@@ -169,7 +169,7 @@ const About = () => {
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="col-lg-3 col-md-6 col-6">
 						<div class="team_box wow fadeInUp">
 							<div class="team_info">
 								<div class="listghor_img team_img">
@@ -190,7 +190,7 @@ const About = () => {
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="col-lg-3 col-md-6 col-6">
 						<div class="team_box wow fadeInUp">
 							<div class="team_info">
 								<div class="listghor_img team_img">
