@@ -23,14 +23,14 @@ const About = () => {
 
            <section className='container'>
                <h2 className='text-center'> Learn About Us </h2> <hr />
-               <div className='row col-lg-12 col-12 justify-content-center mt-4 mb-5 ml-1'>
+               <div className='row col-12 justify-content-center mt-4 mb-5 ml-1'>
                <iframe id="ytplayer" type="text/html" width="1024" height="600"
                     src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
                     frameborder="0"></iframe>
                </div>
            </section>
 
-            <section class="listghor_about about_v3 universal_margin">
+            {/* <section class="listghor_about about_v3 universal_margin">
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-lg-6">
@@ -53,19 +53,19 @@ const About = () => {
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> */}
 
         <section class="client-satisfaction lisology_project_v1 universal_margin">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-lg-6">
 						<div class="listghor_title text-center mt-4">
-							<h2>WHY ARE WE SO GREAT?</h2>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the</p>
+							<h2>WHY SHOULD YOU JOIN <br /> YEHLO?</h2>
+							<p>Well, the stats answer it all....</p>
 						</div>
 					</div>
 				</div>
-				<div class="counter_box_wrapper p-5">
+				<div class="counter_box_wrapper p-4">
 					<div class="row">
 						<div class="col-lg-3 col-md-6 col-6">
 							<div class="counter_box wow fadeInUp">
@@ -122,7 +122,7 @@ const About = () => {
 					<div class="col-lg-6">
 						<div class="listghor_title text-center">
 							<h2>TEAM MEMBERS</h2>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the</p>
+							<p>Follow us, we are good people!</p>
 						</div>
 					</div>
 				</div>

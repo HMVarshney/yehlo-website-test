@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Navbar, NavbarToggler, Collapse, NavItem, NavbarBrand, Nav, NavLink, Modal, ModalHeader, ModalBody, Card, CardBody, CardText, CardTitle, CardSubtitle, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import {Button, TextField, Tabs, Tab, Box, FormControl, NativeSelect, Grid, Typography, Slider} from '@material-ui/core';
 import img1 from '../assets/images/g_3.jpg';
+import logo from '../logo.svg';
 
 
 const collegeList = [ 'Acharya Narendra Dev College',
@@ -52,7 +53,7 @@ const Navigationbar = () => {
                         <Collapse isOpen={navOpen} navbar>
                         <div className={searchVisible ? 'd-block d-lg-none d-xl-none d-md-none col-10' : 'col-10'}>
                             <Nav navbar>
-                                <NavItem className='d-lg-none d-xl-none d-md-none d-sm-block'>
+                                <NavItem className='d-lg-none d-xl-none d-md-none d-sm-block mt-3 mt-lg-0'>
                                     <CollegeDropdown data={collegeList} open={collegeDropdownOpen} handleOpen={setDropdown}/>
                                 </NavItem>
                                 <NavItem>
@@ -65,7 +66,7 @@ const Navigationbar = () => {
                                     <NavLink href='/about'>  About </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink> Contact </NavLink>
+                                    <NavLink href='/contact'> Contact </NavLink>
                                 </NavItem>
                             </Nav>
                         </div>
@@ -86,10 +87,10 @@ const Navigationbar = () => {
 const CollegeDropdown = (props) => {
     return(
         <Dropdown inNavbar isOpen={props.open} toggle={() => props.handleOpen(!props.open)} >
-            <DropdownToggle color='dark' caret> Choose your College </DropdownToggle>
-            <DropdownMenu>
+            <DropdownToggle color='dark' caret><span style={{padding:'105px'}}>Choose your College</span></DropdownToggle>
+            <DropdownMenu className='college_list_dropdown_menu'>
                 {props.data.map((college)=>(
-                    <DropdownItem tag='span'>{college}</DropdownItem>
+                    <DropdownItem className='college_list_dropdown_item' tag='span'>{college}</DropdownItem>
                 ))}
             </DropdownMenu>
         </Dropdown>

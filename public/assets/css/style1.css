@@ -63,3 +63,19 @@
 .universal_padding{
 	padding: 30px;
 }
+
+
+.college_list_dropdown_item{
+	overflow: auto;
+}
+
+.college_list_dropdown_menu{
+	height: 300px;
+	overflow: auto;
+}
+
+.footer{
+  background-color: #D1C4E9;
+  margin:30px auto;
+  padding: 20px 0px 20px 0px;
+}
