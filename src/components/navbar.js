@@ -37,7 +37,7 @@ const Navigationbar = () => {
 
     useEffect(() => {
         const onScroll = () => {
-            setSearchVisible(window.scrollY > 100);
+            setSearchVisible(window.scrollY > 150);
             // setScroll(window.scrollY)
         }
         window.addEventListener("scroll", onScroll);;    
@@ -62,7 +62,7 @@ const Navigationbar = () => {
                                     <NavLink href='/listings'>  Listings </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink>  About </NavLink>
+                                    <NavLink href='/about'>  About </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink> Contact </NavLink>

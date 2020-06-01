@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/navbar';
 import Listing from './components/listings';
+import About from './components/about';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
 function App() {
@@ -11,7 +12,11 @@ function App() {
     <div>
       <Navbar />
       <BrowserRouter>
-      <Route exact path='/listings' component={Listing} />
+      <Switch>
+        <Route exact path='/listings' component={Listing} />
+        <Route exact path='/about' component={About} />
+      <Redirect to='/' />
+      </Switch>
       </BrowserRouter>
       <img src={logo} />
       <img src={logo} />
