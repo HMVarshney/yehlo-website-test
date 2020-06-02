@@ -12,7 +12,7 @@ const About = () => {
                             <div className='col-12 col-sm-6'>
                                 <h3 className='listings-jumbotron-text'>About Us</h3>
                                 <hr />
-                                <Breadcrumb style={{justifyContent:'center'}}>
+                                <Breadcrumb className='row justify-content-center'>
                                     <BreadcrumbItem><Link to='/'> Home </Link></BreadcrumbItem>
                                     <BreadcrumbItem> About </BreadcrumbItem>
                                 </Breadcrumb>

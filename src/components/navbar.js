@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Navbar, NavbarToggler, Collapse, NavItem, NavbarBrand, Nav, NavLink, Modal, ModalHeader, ModalBody, Card, CardBody, CardText, CardTitle, CardSubtitle, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
-import {Button, TextField, Tabs, Tab, Box, FormControl, NativeSelect, Grid, Typography, Slider} from '@material-ui/core';
+import {Button, Tabs, Tab, Box, FormControl, NativeSelect, Grid, Typography, Slider} from '@material-ui/core';
+import {Link} from 'react-router-dom';
 import img1 from '../assets/images/g_3.jpg';
-import logo from '../logo.svg';
 
 
 const collegeList = [ 'Acharya Narendra Dev College',
@@ -71,8 +71,8 @@ const Navigationbar = () => {
                             </Nav>
                         </div>
                             <Nav navbar>
-                                <NavItem className='d-none d-lg-block' style={{width:'150px'}}> 
-                                    <Button variant='contained'><span className='fa fa-plus mr-1'></span> Add Listing </Button>
+                                <NavItem className='d-none d-md-block d-xl-block d-lg-block' style={{width:'150px'}}> 
+                                    <Button variant='contained' component={Link} to='/addlistings'><span className='fa fa-plus mr-1'></span> Add Listing </Button>
                                 </NavItem>
                             </Nav>
                         </Collapse>
@@ -87,10 +87,10 @@ const Navigationbar = () => {
 const CollegeDropdown = (props) => {
     return(
         <Dropdown inNavbar isOpen={props.open} toggle={() => props.handleOpen(!props.open)} >
-            <DropdownToggle color='dark' caret><span style={{padding:'105px'}}>Choose your College</span></DropdownToggle>
+            <DropdownToggle color='dark' caret><span style={{padding:'0px 105px'}}>Choose your College</span></DropdownToggle>
             <DropdownMenu className='college_list_dropdown_menu'>
-                {props.data.map((college)=>(
-                    <DropdownItem className='college_list_dropdown_item' tag='span'>{college}</DropdownItem>
+                {props.data.map((college,i)=>(
+                    <DropdownItem key={i} className='college_list_dropdown_item' tag='span'><a href='/listings'>{college}</a></DropdownItem>
                 ))}
             </DropdownMenu>
         </Dropdown>
@@ -128,18 +128,18 @@ const SearchModal = (props) => {
         const {value, index} = props;
         const [citySelected, changeCity] = useState(null);
         const [sliderValue, setSliderValue] = useState([0,100]);
-        const [collegeSelected, setCollege] = useState('');
+        const [collegeDropdownOpen, setDropdownOpen] = useState(false);
 
-        const CollegeBox = (props) => {
-           if(props.show){
-               return(
-                   <Box>
-                       Relavant college list rendered here
-                   </Box>
-               );
-           }
-           return null;
-        }
+        // const CollegeBox = (props) => {
+        //    if(props.show){
+        //        return(
+        //            <Box>
+        //                Relavant college list rendered here
+        //            </Box>
+        //        );
+        //    }
+        //    return null;
+        // }
         
         return(
             value === index && <Box component='div' p={3}>
@@ -156,9 +156,7 @@ const SearchModal = (props) => {
                 </>}
                 {index === 0 && 
                     <>
-                    <TextField value={collegeSelected} onChange={(e)=>setCollege(e.target.value)} 
-                        className='m-1' placeholder='What are you looking for?' color='secondary' />
-                        {collegeSelected ? <CollegeBox show={true} /> : null} 
+                    <CollegeDropdown data={collegeList} open={collegeDropdownOpen} handleOpen={()=>setDropdownOpen(!collegeDropdownOpen)} />
                     </>
                 }
                 {index === 2 && 

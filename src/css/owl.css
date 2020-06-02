@@ -1,0 +1,43 @@
+.title {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+/* Add media queries for height property to adjust the height of carousel */
+.owl-carousel .owl-item {
+  height: 300px;
+  margin: 8px 0;
+}
+
+.home .owl-carousel .owl-item {
+  height: auto;
+  margin: 8px 0;
+}
+
+.owl-prev {
+  position: absolute;
+  opacity: 0.4;
+  left: 0;
+  transition: all 0.4s;
+}
+
+.owl-next {
+  position: absolute;
+  opacity: 0.4;
+  right: 0;
+  transition: all 0.4s;
+}
+
+.owl-theme .owl-nav [class*="owl-"]:focus {
+  outline: none;
+}
+
+.owl-theme .owl-nav [class*="owl-"]:hover {
+  background-color: initial;
+  opacity: 1;
+}
+
+@media screen and (max-height: 992px){
+.owl-nav{
+  margin-bottom: 48px;
+}}

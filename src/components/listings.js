@@ -14,7 +14,7 @@ const Listings = (props) => {
                         <div className='col-12 col-sm-6'>
                             <h3 className='listings-jumbotron-text'>Listings</h3>
                             <hr />
-                            <Breadcrumb style={{justifyContent:'center'}}>
+                            <Breadcrumb className='row justify-content-center'>
                                 <BreadcrumbItem><Link to='/'>Home</Link> </BreadcrumbItem>
                                 <BreadcrumbItem>Listings </BreadcrumbItem>
                             </Breadcrumb>
