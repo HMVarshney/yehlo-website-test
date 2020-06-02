@@ -87,7 +87,7 @@ const Navigationbar = () => {
 const CollegeDropdown = (props) => {
     return(
         <Dropdown inNavbar isOpen={props.open} toggle={() => props.handleOpen(!props.open)} >
-            <DropdownToggle color='dark' caret><span style={{padding:'0px 105px'}}>Choose your College</span></DropdownToggle>
+            <DropdownToggle className='offset-md-0 offset-1 width' color='dark' caret style={{width:'100%'}}> Choose your College </DropdownToggle>
             <DropdownMenu className='college_list_dropdown_menu'>
                 {props.data.map((college,i)=>(
                     <DropdownItem key={i} className='college_list_dropdown_item' tag='span'><a href='/listings'>{college}</a></DropdownItem>
@@ -162,7 +162,7 @@ const SearchModal = (props) => {
                 {index === 2 && 
                     <>
                         <Typography>Price Range: </Typography>
-                        <div style={{width:'500px'}}>
+                        <div style={{width:'50%'}}>
                             <Slider value={sliderValue} onChange={(e,newValue)=>setSliderValue(newValue)}
                             aria-labelledby="range-slider" valueLabelDisplay='auto' /> 
                             <Button><span className='fa fa-lg fa-search'></span> Search</Button>
@@ -175,9 +175,6 @@ const SearchModal = (props) => {
 
     return(
         <Modal size='lg' isOpen={props.modalOpen} toggle={()=>props.setModalOpen(!props.modalOpen)}>
-            <ModalHeader toggle={()=>props.setModalOpen(!props.modalOpen)}>
-                Search Your need
-            </ModalHeader>
             <ModalBody>
                 <Tabs value={tabActive} onChange={handleTabChange}>
                     <Tab label='College' />
