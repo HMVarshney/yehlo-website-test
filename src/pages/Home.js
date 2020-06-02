@@ -65,7 +65,7 @@ class Home extends Component {
                   zIndex: 5,
                   position: "absolute",
                   backgroundImage:
-                    "linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.3) 100%)",
+                    "linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.7) 100%)",
                 }}
               ></div>
               <Row
@@ -157,7 +157,7 @@ class Home extends Component {
                   zIndex: 5,
                   position: "absolute",
                   backgroundImage:
-                    "linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.3) 100%)",
+                    "linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.7) 100%)",
                 }}
               ></div>
               <Row
