@@ -32,18 +32,18 @@
         Scroll top js
     ------------------------*/
      $(window).on('scroll', function() {
-      if ($(this).scrollTop() > 100) {
+      if ($(this).scrollTop() > 400) {
           $('#scroll_top').fadeIn();
       } else {
           $('#scroll_top').fadeOut();
       }
     });
-    $('#scroll_top').on('click', function() {
+    /*$('#scroll_top').on('click', function() {
         $("html, body").animate({
             scrollTop: 0
         }, 600);
         return false;
-    });
+    });*/
     /*---------------------- 
         Scroll top js
     ------------------------*/

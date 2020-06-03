@@ -1506,8 +1506,8 @@ body{
     bottom: 20px;
     display: none;
     right: 20px;
-    width: 40px;
-    height: 40px;
+    width: 110px;
+    height: 85px;
     line-height: 40px;
     background: #fe3d6c;
     text-align: center;
@@ -1519,12 +1519,15 @@ body{
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
+    font-size: 23px;
+    font-family: Oswald;
+    text-decoration: none;
 }
 #scroll_top:after {
     display: block;
     content: '';
-    width: 50px;
-    height: 50px;
+    width: 110px;
+    height: 80px;
     line-height: 50px;
     border-radius: 50%;
     background: rgb(254, 61, 108);
@@ -1541,8 +1544,8 @@ body{
 #scroll_top:before {
     display: block;
     content: '';
-    width:60px;
-    height:60px;
+    width:120px;
+    height:85px;
     line-height:60px;
     border-radius: 50%;
     background: rgb(254, 61, 108);

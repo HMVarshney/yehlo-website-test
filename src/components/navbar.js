@@ -72,7 +72,7 @@ const Navigationbar = () => {
                         </div>
                             <Nav navbar>
                                 <NavItem className='d-none d-md-block d-xl-block d-lg-block' style={{width:'150px'}}> 
-                                    <Button variant='contained' component={Link} to='/addlistings'><span className='fa fa-plus mr-1'></span> Add Listing </Button>
+                                    <Button variant='contained' component={Link} to='/getApp'><span className='fa fa-plus mr-1'></span> Add Listing </Button>
                                 </NavItem>
                             </Nav>
                         </Collapse>

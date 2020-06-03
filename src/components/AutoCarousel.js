@@ -15,7 +15,7 @@ export class AutoCarousel extends Component {
     return (
       <div>
         <div class="container-fluid">
-          <OwlCarousel
+          <OwlCarousel id='autoCarousel'
             items={3}
             margin={16}
             className="owl-theme"
