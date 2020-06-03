@@ -1501,6 +1501,7 @@ body{
 /*
 	5. Scrollup css
 */
+
 #scroll_top {
     position: fixed;
     bottom: 20px;
