@@ -5,7 +5,7 @@ import Listing from './components/listings';
 import About from './components/about';
 import Footer from './components/footer';
 import PGDetails from './components/pgDetails';
-import Home from './pages/Home';
+import Home from './pages/Template.js';
 import GetApp from './components/getApp';
 import AppBadge from './components/footerBadge';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
