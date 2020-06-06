@@ -1,0 +1,39 @@
+.bnb-card {
+  width: 100%;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5em;
+}
+
+.bnb-card-desc {
+  height: auto;
+}
+
+.bnb-card-image {
+  border-radius: 8px;
+  height: 100%;
+  object-fit: contain;
+}
+
+.bnb-card-title {
+  text-align: start;
+  font-size: 0.9em;
+}
+
+.bnb-card-sub {
+  text-align: start;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.bnb-card-rating {
+  text-align: start;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.7);
+  display: flex;
+}
+
+.bnb-card-star-icon {
+  margin-top: 0.15rem;
+}

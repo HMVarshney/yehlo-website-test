@@ -2,40 +2,25 @@ import React, { Component } from "react";
 import OwlCarousel from "react-owl-carousel";
 
 //components
-import Card from "./Card";
+import ProductCardA from "./ProductCardA";
 
 //styles
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import "../css/owl.css"
+import "../css/owl.css";
 
-
-export class Carousel extends Component {
+export class AutoCarousel extends Component {
   render() {
-
-    let items = () =>{
-      let width = window.innerWidth
-      if(width < 768){
-        return 2;
-      }
-      else if(width < 992){
-        return 3;
-      }
-      else{
-        return 4;
-      }
-    }
-
     return (
       <div>
-        <div class="container-fluid home">
-          <OwlCarousel
-            items={items()}
+        <div class="container-fluid">
+          <OwlCarousel id='autoCarousel'
+            items={3}
+            margin={16}
             className="owl-theme"
             loop
-            responsive={false}
-            margin={12}
+            autoplay={true}
             nav
             dots={false}
             navText={[
@@ -48,14 +33,15 @@ export class Carousel extends Component {
   <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8z"/>
 </svg>`,
             ]}
+            autoplayHoverPause={true}
+            responsive={false}
+            autoplaySpeed={2500}
+            autoplayTimeout={7000}
           >
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+            <ProductCardA />
+            <ProductCardA />
+            <ProductCardA />
+            <ProductCardA />
           </OwlCarousel>
         </div>
       </div>
@@ -63,4 +49,4 @@ export class Carousel extends Component {
   }
 }
 
-export default Carousel;
+export default AutoCarousel;

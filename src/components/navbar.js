@@ -49,15 +49,16 @@ const Navigationbar = () => {
         <Navbar className='headerbar' light expand='md' fixed='top'>
                 <div style={{fontSize:'17px'}} className='container animate__animated animate__fadeInDown animate__faster'> 
                         <NavbarBrand><a href='/'>YEHLO</a></NavbarBrand>
+                        {searchVisible && <SearchBar modalOpen={()=>setModalOpen(!modalOpen)} />}
                         <NavbarToggler onClick={()=>setNavOpen(!navOpen)} />
                         <Collapse isOpen={navOpen} navbar>
-                        <div className={searchVisible ? 'd-block d-lg-none d-xl-none d-md-none col-10' : 'col-10'}>
+                        <div className={searchVisible ? 'd-block d-md-none col-8' : 'col-8'}>
                             <Nav navbar>
-                                <NavItem className='d-lg-none d-xl-none d-md-none d-sm-block mt-3 mt-lg-0'>
+                                {/* <NavItem className='d-lg-none d-xl-none d-md-none d-sm-block mt-3 mt-lg-0'>
                                     <CollegeDropdown data={collegeList} open={collegeDropdownOpen} handleOpen={setDropdown}/>
-                                </NavItem>
+                                </NavItem> */}
                                 <NavItem>
-                                    <NavLink href='/'>  Home </NavLink>
+                                    <NavLink href='/'> Home </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink href='/listings'>  Listings </NavLink>
@@ -70,13 +71,12 @@ const Navigationbar = () => {
                                 </NavItem>
                             </Nav>
                         </div>
-                            <Nav navbar>
-                                <NavItem className='d-none d-md-block d-xl-block d-lg-block' style={{width:'150px'}}> 
-                                    <Button variant='contained' component={Link} to='/getApp'><span className='fa fa-plus mr-1'></span> Add Listing </Button>
-                                </NavItem>
-                            </Nav>
                         </Collapse>
-                        {searchVisible ? <SearchBar modalOpen={()=>setModalOpen(!modalOpen)} /> : null}
+                        {/* <Nav navbar>
+                            <NavItem className='d-none d-md-block' style={{width:'150px'}}> 
+                                <Button variant='contained' component={Link} to='/getApp'><span className='fa fa-plus mr-1'></span> Add Listing </Button>
+                            </NavItem>
+                        </Nav>  */}
                     </div>
             </Navbar>
             <SearchModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
@@ -193,9 +193,12 @@ const SearchModal = (props) => {
 const SearchBar = (props) => {
 
     return(
-        <div className='d-lg-block d-xl-block d-md-block d-none container animate__animated animate__fadeInUp animate__faster'>
-        <div className='offset-md-3'>
-            <button className='search_button' onClick={props.modalOpen}><span className='search_text'>What are you looking for?</span></button>
+        <div className='col-md-7 col-6 animate__animated animate__fadeInUp animate__faster'>
+        <div className='row justify-content-center offset-md-5'>
+            <button className='search_button' onClick={props.modalOpen}>
+                <span className='d-none d-md-block search_text'>What are you looking for?</span>
+                <span className='d-sm-block d-md-none search_text_mobile'><i className='fa fa-search' /> Search</span>
+                </button>
         </div>
         </div>
     );

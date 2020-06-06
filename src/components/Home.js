@@ -14,17 +14,11 @@ class Home extends Component {
   render() {
     return (
       <>
-        <Jumbotron className='listings-container'>
-          <div className='listings-jumbotron container mt-5'>
-                  <div className='row justify-content-center'>
-                      <div className='col-12 col-sm-6'>
-                          <h3 className='listings-jumbotron-text'>YEHLO</h3>
-                          <hr />
-                      </div>
-                  </div>
-              </div>
-          </Jumbotron>
+        <header>{/* Insert Navbar */}</header>
         <Container className={styles.contain} style={{ paddingTop: "40px" }}>
+          <Jumbotron className={styles.alignment}>
+            <h1 className="display-4">Yehlo</h1>
+          </Jumbotron>
           <div
             className={styles.alignment}
             style={{ justifyContent: "space-between" }}
@@ -37,7 +31,7 @@ class Home extends Component {
         <Container
           fluid={true}
           style={{
-            backgroundColor:'black',
+            backgroundColor: "rgba(0,0,0)",
             marginTop: "8px",
             color: "white",
           }}
@@ -48,7 +42,9 @@ class Home extends Component {
                 className={styles.alignment}
                 style={{ justifyContent: "space-between" }}
               >
-                <h1 className="display-4">Yehlo Pgs</h1>
+                <h1 className="display-4" style={{ color: "white" }}>
+                  Yehlo Pgs
+                </h1>
               </div>
               <p className={styles.textBlock}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
@@ -65,35 +61,31 @@ class Home extends Component {
                   zIndex: 5,
                   position: "absolute",
                   backgroundImage:
-                    "linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.7) 100%)",
+                    "linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 100%)",
                 }}
               ></div>
-              <Row
-                lg={4}
-                md={3}
-                sm={2}
-                xs={2}
-                style={{ color: "black", marginTop: "24px" }}
-              >
+              <Row style={{ color: "black", marginTop: "24px" }}>
                 <Col className="mt-4">
                   <ProductCardB />
                 </Col>
                 <Col className="mt-4">
-                  <ProductCardB />
-                </Col>
-                <Col className="mt-4">
-                  <ProductCardB />
-                </Col>
-                <Col className="mt-4">
-                  <ProductCardB />
-                </Col>
-                <Col className="hideSm mt-4">
                   <ProductCardB />
                 </Col>
                 <Col className="hideSm mt-4">
                   <ProductCardB />
                 </Col>
                 <Col className="hideMd mt-4">
+                  <ProductCardB />
+                </Col>
+              </Row>
+              <Row style={{color:"black"}}>
+                <Col className="mt-4">
+                  <ProductCardB />
+                </Col>
+                <Col className="mt-4">
+                  <ProductCardB />
+                </Col>
+                <Col className="hideSm mt-4">
                   <ProductCardB />
                 </Col>
                 <Col className="hideMd mt-4">
@@ -128,7 +120,7 @@ class Home extends Component {
         <Container
           fluid={true}
           style={{
-            backgroundColor: 'black',
+            backgroundColor: "rgba(0,0,0)",
             marginTop: "8px",
             minHeight: "100vh",
             color: "white",
@@ -140,7 +132,9 @@ class Home extends Component {
                 className={styles.alignment}
                 style={{ justifyContent: "space-between" }}
               >
-                <h1 className="display-4">Yehlo Buy</h1>
+                <h1 className="display-4" style={{ color: "white" }}>
+                  Yehlo Buy
+                </h1>
               </div>
               <p className={styles.textBlock}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
@@ -157,35 +151,31 @@ class Home extends Component {
                   zIndex: 5,
                   position: "absolute",
                   backgroundImage:
-                    "linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.7) 100%)",
+                    "linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 100%)",
                 }}
               ></div>
-              <Row
-                lg={4}
-                md={3}
-                sm={2}
-                xs={2}
-                style={{ color: "black", marginTop: "24px" }}
-              >
+              <Row style={{ color: "black", marginTop: "24px" }}>
                 <Col className="mt-4">
                   <ProductCardB />
                 </Col>
                 <Col className="mt-4">
-                  <ProductCardB />
-                </Col>
-                <Col className="mt-4">
-                  <ProductCardB />
-                </Col>
-                <Col className="mt-4">
-                  <ProductCardB />
-                </Col>
-                <Col className="hideSm mt-4">
                   <ProductCardB />
                 </Col>
                 <Col className="hideSm mt-4">
                   <ProductCardB />
                 </Col>
                 <Col className="hideMd mt-4">
+                  <ProductCardB />
+                </Col>
+              </Row>
+              <Row style={{color:"black"}}>
+                <Col className="mt-4">
+                  <ProductCardB />
+                </Col>
+                <Col className="mt-4">
+                  <ProductCardB />
+                </Col>
+                <Col className="hideSm mt-4">
                   <ProductCardB />
                 </Col>
                 <Col className="hideMd mt-4">
@@ -198,6 +188,9 @@ class Home extends Component {
               <Button>Explore</Button>
             </div>
           </Container>
+        </Container>
+        <Container>
+          <footer>{/* Insert footer content*/}</footer>
         </Container>
       </>
     );

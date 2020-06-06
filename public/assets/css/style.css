@@ -3441,6 +3441,8 @@ input[type="file"] {
 }
 .gallery_big{
 	margin-bottom: 20px;
+	max-height: 305px;
+	overflow: hidden;
 }
 .gallery_small .single_img {
     padding-right: 7.5px;

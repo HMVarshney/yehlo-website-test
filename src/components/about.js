@@ -1,7 +1,6 @@
 import React from 'react';
 import { Jumbotron, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Typography, Grid, Card, CardContent } from '@material-ui/core';
 
 const About = () => {
     return ( 
@@ -24,7 +23,7 @@ const About = () => {
            <section className='container'>
                <h2 className='text-center'> Learn About Us </h2> <hr />
                <div className='row col-12 justify-content-center mt-4 mb-5 ml-1'>
-               <iframe id="ytplayer" type="text/html" width="1024" height="600"
+               <iframe title='introVideo' id="ytplayer" type="text/html" width="1024" height="600"
                     src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
                     frameborder="0"></iframe>
                </div>
@@ -140,10 +139,10 @@ const About = () => {
 							</div>
 							<div class="team_social">
 								<ul>
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-									<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+									<li><a href="#top"><i class="fab fa-facebook-f"></i></a></li>
+									<li><a href="#top"><i class="fab fa-twitter"></i></a></li>
+									<li><a href="#top"><i class="fab fa-linkedin-in"></i></a></li>
+									<li><a href="#top"><i class="fab fa-instagram"></i></a></li>
 								</ul>
 							</div>
 						</div>
@@ -161,10 +160,10 @@ const About = () => {
 							</div>
 							<div class="team_social">
 								<ul>
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-									<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+									<li><a href="#top"><i class="fab fa-facebook-f"></i></a></li>
+									<li><a href="#top"><i class="fab fa-twitter"></i></a></li>
+									<li><a href="#top"><i class="fab fa-linkedin-in"></i></a></li>
+									<li><a href="#top"><i class="fab fa-instagram"></i></a></li>
 								</ul>
 							</div>
 						</div>
@@ -182,10 +181,10 @@ const About = () => {
 							</div>
 							<div class="team_social">
 								<ul>
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-									<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+									<li><a href="#top"><i class="fab fa-facebook-f"></i></a></li>
+									<li><a href="#top"><i class="fab fa-twitter"></i></a></li>
+									<li><a href="#top"><i class="fab fa-linkedin-in"></i></a></li>
+									<li><a href="#top"><i class="fab fa-instagram"></i></a></li>
 								</ul>
 							</div>
 						</div>
@@ -203,10 +202,10 @@ const About = () => {
 							</div>
 							<div class="team_social">
 								<ul>
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-									<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+									<li><a href="#top"><i class="fab fa-facebook-f"></i></a></li>
+									<li><a href="#top"><i class="fab fa-twitter"></i></a></li>
+									<li><a href="#top"><i class="fab fa-linkedin-in"></i></a></li>
+									<li><a href="#top"><i class="fab fa-instagram"></i></a></li>
 								</ul>
 							</div>
 						</div>

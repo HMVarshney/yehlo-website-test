@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Carousel from "../components/Carousel";
 
 export class Template extends Component {
   render() {
@@ -12,9 +13,6 @@ export class Template extends Component {
             </div>
           </div>
           {/* End preloader  */}
-          {/* Start header_area */}
-          
-          {/* End header_area */}
           {/* Start header_bg section */}
           <section className="hero_bg hero_v2 light_bg">
             <svg id="head_shape" width="1013px" height="1013px">
@@ -497,7 +495,7 @@ export class Template extends Component {
                   </div>
                 </div>
               </div>
-              <div className="place_slider">
+              {/* <div className="place_slider">
                 <div className="listing_item_box">
                   <div className="listghor_img">
                     <img src="assets/images/place_13.jpg" alt="" />
@@ -739,7 +737,8 @@ export class Template extends Component {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
+              <Carousel />
             </div>
           </section>
           {/* End explore_city section */}
@@ -1523,9 +1522,173 @@ export class Template extends Component {
           </section>
           {/* End listghor_contact section */}
           {/* Start listghor_foooter */}
-          
+          {/* <footer
+            className="listghor_foooter foooter_v2 bg_image"
+            style={{ backgroundImage: "url(assets/images/footer_bg_1.jpg)" }}
+          >
+            <div className="listghor_overlay" />
+            <div className="container">
+              <div className="footer_widget_wrapper">
+                <div className="row">
+                  <div className="col-lg-3 col-md-6 col-sm-12">
+                    <div className="widget_box about_widget wow fadeInUp">
+                      <div className="widget_title">
+                        <img
+                          src="assets/images/logo.png"
+                          className="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div className="widget_content">
+                        <p>
+                          Lorem Ipsum is simply duammy text of the printing
+                          aadnd type an setting industry.{" "}
+                        </p>
+                        <ul className="social_link">
+                          <li>
+                            <a href="#">
+                              <i className="fab fa-facebook-f" />
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i className="fab fa-twitter" />
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i className="fab fa-linkedin-in" />
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i className="fab fa-google-plus-g" />
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-3 offset-lg-1 col-md-6 col-sm-12">
+                    <div className="widget_box widget_link wow fadeInUp">
+                      <div className="widget_title">
+                        <h4>Useful Links</h4>
+                      </div>
+                      <ul className="widget_list">
+                        <li>
+                          <a href="#">Categories</a>
+                        </li>
+                        <li>
+                          <a href="#">Listing</a>
+                        </li>
+                        <li>
+                          <a href="#">Testmonial</a>
+                        </li>
+                        <li>
+                          <a href="#">Appointment</a>
+                        </li>
+                        <li>
+                          <a href="#">Blog Post</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="col-lg-2 col-md-6 col-sm-12">
+                    <div className="widget_box widget_link wow fadeInUp">
+                      <div className="widget_title">
+                        <h4>About us</h4>
+                      </div>
+                      <ul className="widget_list">
+                        <li>
+                          <a href="#">Contact Us</a>
+                        </li>
+                        <li>
+                          <a href="#">Expert Team</a>
+                        </li>
+                        <li>
+                          <a href="#">Review</a>
+                        </li>
+                        <li>
+                          <a href="#">Faq Question</a>
+                        </li>
+                        <li>
+                          <a href="#">Blog Post</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="col-lg-3 col-md-6 col-sm-12">
+                    <div className="widget_box contact_widget wow fadeInUp">
+                      <div className="widget_title">
+                        <h4>Contact Us</h4>
+                      </div>
+                      <div className="contact_list">
+                        <div className="list_icon">
+                          <i className="fas fa-map-marker-alt" />
+                        </div>
+                        <div className="list_info">
+                          <p>
+                            {" "}
+                            360 Harvest ST,North subtract <br />
+                            LondonUnited States of America
+                          </p>
+                        </div>
+                      </div>
+                      <div className="contact_list">
+                        <div className="list_icon">
+                          <i className="far fa-envelope" />
+                        </div>
+                        <div className="list_info">
+                          <p>
+                            <a href="mailto:listghortemplete@gmail.com">
+                              listghortemplete@gmail.com
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                      <div className="contact_list">
+                        <div className="list_icon">
+                          <i className="fas fa-phone" />
+                        </div>
+                        <div className="list_info">
+                          <p>
+                            <a href="tel:3837389227717">3837 3892 27717</a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="footer_copyright">
+                <div className="row">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
+                    <div className="copyright_text">
+                      <p>Copyright ©2019 Designed by listghor</p>
+                    </div>
+                  </div>
+                  <div className="col-lg-6 col-md-6 col-sm-12">
+                    <div className="copyright_link">
+                      <ul>
+                        <li>
+                          <a href="#">Privace &amp; Policy</a>
+                        </li>
+                        <li>
+                          <a href="#">Faq</a>
+                        </li>
+                        <li>
+                          <a href="#">Terms</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer> */}
           {/* End listghor_foooter */}
           {/* scroll_top */}
+          
           {/* jquery  */}
           {/*modernizr js*/}
           {/* bootstrap js */}

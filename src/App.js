@@ -4,10 +4,11 @@ import Navbar from './components/navbar';
 import Listing from './components/listings';
 import About from './components/about';
 import Footer from './components/footer';
-import PGDetails from './components/pgDetails';
-import Home from './pages/Template.js';
+import PGDetails from './components/pgDetails.js';
+import Home from './components/Template.js';
 import GetApp from './components/getApp';
 import AppBadge from './components/footerBadge';
+import Test from './components/addListing';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
 function App() {
@@ -22,10 +23,10 @@ function App() {
           <Route exact path='/about' component={About} />
           <Route exact path='/details' component={PGDetails} />
           <Route exact path='/getApp' component={GetApp} />
+          <Route exact path='/test' component={Test} />
           <Redirect to='/' />
         </Switch>
         <AppBadge />
-        <Footer />
         </BrowserRouter>
     </div>
   )

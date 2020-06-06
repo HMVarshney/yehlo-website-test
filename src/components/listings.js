@@ -30,7 +30,7 @@ const Listings = (props) => {
                 <Box className='filter-container animate__animated animate__fadeIn animate__fast'>
                     <Grid container>
                         <Grid item xs={12} lg>
-                        <Box p={2} className='filter-box mt-2 mt-lg-0'>
+                        <Box p={2} className='filter-box mt-2 mt-lg-0 mr-md-2'>
                         <div class="widget_box">
                             <div class="wb_title">
                                 <h5>Categories</h5>
@@ -47,7 +47,7 @@ const Listings = (props) => {
                         </Box>
                         </Grid>
                         <Grid item xs={12} lg>
-                        <Box p={2} className='filter-box mt-2 mt-lg-0'>
+                        <Box p={2} className='filter-box mt-2 mt-lg-0 mr-md-2'>
                         <div class="widget_box">
 								<div class="wb_title">
 									<h5>Sort By Features</h5>
@@ -77,8 +77,8 @@ const Listings = (props) => {
 							</div></Box>
                         </Grid>
                         <Grid item xs={12} lg>
-                            <Box p={2} className='filter-box mt-2 mt-lg-0'>
-                        <div class="widget_box rateing_box">
+                            <Box p={2} className='filter-box mt-2 mt-lg-0 mr-md-2'>
+                        <div style={{paddingBottom: '20px'}} class="widget_box">
 								<div class="wb_title">
 									<h5>Sort By Rating</h5>
 								</div>
@@ -124,11 +124,13 @@ const Listings = (props) => {
                                 <RenderListings />
                             </div>
                         </div>
-                </div>
+                    </div>
             </section>
             </div>
         </div>
     );
+
+    
 }
  
 export default Listings;
@@ -136,10 +138,10 @@ export default Listings;
 const RenderListings = () => {
     return(
             <div class="col-lg-4 col-md-4 col-12">
-                <div class="listing_item_box wow fadeInUp">
+                <a href='./details'><div class="listing_item_box wow fadeInUp">
                     <div class="listghor_img">
                         <img src="assets/images/list_7.jpg" alt="" />
-                        <a href="listing_details.html"><div class="overlay_img"></div></a>
+                        <div class="overlay_img"></div>
                         <div class="overlay_content">
                             <ul>
                                 <li class="icon"><a href="#"><i class="fas fa-cocktail"></i></a></li>
@@ -163,7 +165,7 @@ const RenderListings = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div></a>
             </div>        
     );
 }
