@@ -11,7 +11,7 @@ const PGDetails = () => {
     return ( 
         <div className='container contentIn'>
             <div className='row justify-content-center'>
-                <div className='col-md-8 col-12'>
+                <div className='col-12 col-md-10'>
                     <section class="listghor_list_details listghor_list_details_1 wow fadeInUp">
                         <div class="container">
                             <div class="row">
@@ -55,75 +55,13 @@ const PGDetails = () => {
                             </div></div></div></div></div>
                     </section>
                 </div>
-                <div className='col-md-4 col-12 mt-md-0 mt-3'>
-                    <div className='cost-details'>
-                        <Paper elevation={4} className='p-3'>
-                            <h4>Cost</h4>
-                            <div className='cost_item'>
-                                <div><h5 className='cost_icon fa fa-rupee-sign'><span className='cost_text'> 20000/Month </span></h5></div>
-                                <div><h5 className='cost_icon fa fa-location-arrow'><span className='cost_text'> Dwarka </span></h5></div>
-                            </div>
-                        </Paper>
-                    </div>
-                    
-                    <div class="rateing_box mt-3">
-                        <Paper elevation={4} className='p-3'>
-                        <h4 class="box_title">Ratings</h4>
-                        <div class="row align-items-center">
-                            <div class="col-lg-8">
-                                <div class="single_bar">
-                                    <h6>Quality <span>80%</span></h6>
-                                    <div class="progress">
-                                        <div class="progress-bar slideInLeft wow" style={{width: "80%"}}>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single_bar">
-                                    <h6>Space<span>67%</span></h6>
-                                    <div class="progress">
-                                        <div class="progress-bar slideInLeft wow" style={{width: "67%"}}></div>
-                                    </div>
-                                </div>
-                                <div class="single_bar">
-                                    <h6>price<span>49%</span></h6>
-                                    <div class="progress">
-                                        <div class="progress-bar slideInLeft wow" style={{width: "49%"}}></div>
-                                    </div>
-                                </div>
-                                <div class="single_bar">
-                                    <h6>service<span>84%</span></h6>
-                                    <div class="progress">
-                                        <div class="progress-bar slideInLeft wow" style={{width: "84%"}}></div>
-                                    </div>
-                                </div>
-                                <div class="single_bar">
-                                    <h6>location <span>37%</span></h6>
-                                    <div class="progress">
-                                        <div class="progress-bar slideInLeft wow" style={{width: "37%"}}></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="riview_bg_box">
-                                    <div class="listghor_overlay"></div>
-                                    <div class="rateing_content">
-                                        <h2>4.5</h2>
-                                        <h5>Avarage Rating</h5>
-                                        <img src="assets/images/rateing_6.png" class="img-fluid" alt="" />
-                                        <a href="#customer_reviews"><h5>135 Reviews</h5></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </Paper>
-                    </div>
-                </div>    
+                  
             </div>
 
             <div className='row justify-content-center mt-md-4 mt-5'>
-                <div className='col-12'>
+                <div className='col-12 col-md-8'>
                     <div class="listing_details_box discription_box">
-                        <h4 class="box_title">Discription</h4>
+                        <h4 class="box_title">Description</h4>
                         <div class="top_information">
                             <h3>Metropol Apartment near Elagin</h3>
                             <h4>$50</h4>
@@ -164,6 +102,58 @@ const PGDetails = () => {
                         </div>
                     </div>
                 </div>
+                <div className='col-md-4 col-12 mt-md-0 mt-3'>
+                    <div class="rateing_box">
+                        <Paper elevation={4} className='p-3'>
+                        <h4 class="box_title">Ratings</h4>
+                        <div class="row align-items-center">
+                            <div class="col-lg-12">
+                                <div class="single_bar">
+                                    <h6>Quality <span>80%</span></h6>
+                                    <div class="progress">
+                                        <div class="progress-bar slideInLeft wow" style={{width: "80%"}}>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single_bar">
+                                    <h6>Space<span>67%</span></h6>
+                                    <div class="progress">
+                                        <div class="progress-bar slideInLeft wow" style={{width: "67%"}}></div>
+                                    </div>
+                                </div>
+                                <div class="single_bar">
+                                    <h6>price<span>49%</span></h6>
+                                    <div class="progress">
+                                        <div class="progress-bar slideInLeft wow" style={{width: "49%"}}></div>
+                                    </div>
+                                </div>
+                                <div class="single_bar">
+                                    <h6>service<span>84%</span></h6>
+                                    <div class="progress">
+                                        <div class="progress-bar slideInLeft wow" style={{width: "84%"}}></div>
+                                    </div>
+                                </div>
+                                <div class="single_bar">
+                                    <h6>location <span>37%</span></h6>
+                                    <div class="progress">
+                                        <div class="progress-bar slideInLeft wow" style={{width: "37%"}}></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="riview_bg_box">
+                                    <div class="listghor_overlay"></div>
+                                    <div class="rateing_content">
+                                        <h3>4.5</h3>(<a href="#customer_reviews">135 Reviews</a>)
+                                        <h5>Avarage Rating</h5>
+                                        <img src="assets/images/rateing_6.png" class="img-fluid" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </Paper>
+                    </div>
+                </div>  
             </div>
 
             <div className='row justify-content-center mt-3'>

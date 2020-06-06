@@ -3441,9 +3441,9 @@ input[type="file"] {
 }
 .gallery_big{
 	margin-bottom: 20px;
-	max-height: 305px;
 	overflow: hidden;
 }
+
 .gallery_small .single_img {
     padding-right: 7.5px;
     padding-left: 7.5px;
@@ -3536,17 +3536,14 @@ input[type="file"] {
     background-size: 100% 100%;
     text-align: center;
     position: relative;
+    max-height: 140px;
 }
 .rateing_content{
-	padding: 20px 0;
-}
-.rateing_content{
-    padding: 20px 0;
+    padding: 10px 0;
     position: relative;
 }
-.rateing_content h2{
+.rateing_content h3{
 	color: #fff;
-	margin-bottom: 7px;
 }
 .rateing_content img{
 	margin-bottom: 20px;
