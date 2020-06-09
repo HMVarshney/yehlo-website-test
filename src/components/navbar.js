@@ -111,7 +111,7 @@ const SearchModal = (props) => {
             <Card className='mt-2'>
                 <CardBody>
                     <Grid container spacing={0}>
-                        <Grid item xs={6}><img width='40%' src={img1} /></Grid>
+                        <Grid item xs={6}><img width='40%' src='assets/images/g_3.jpg' /></Grid>
                         <Grid item xs={6}>
                             <CardTitle><h6>The Green Apartments</h6></CardTitle>
                             <CardSubtitle>{city}</CardSubtitle>
