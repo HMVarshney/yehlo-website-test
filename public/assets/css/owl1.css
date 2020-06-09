@@ -9,7 +9,7 @@
   margin: 8px 0;
 }
 
-.home .owl-carousel .owl-item {
+.owl-carousel .owl-item {
   height: auto;
   margin: 8px 0;
 }
@@ -17,15 +17,23 @@
 .owl-prev {
   position: absolute;
   opacity: 0.4;
-  left: 0;
+  bottom:50%;
+  left: -24px;
   transition: all 0.4s;
 }
 
 .owl-next {
   position: absolute;
   opacity: 0.4;
-  right: 0;
+  bottom:50%;
+  right: -24px;
   transition: all 0.4s;
+}
+
+.owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-next{
+  background-color: white;
+  border-radius: 100%;
+  box-shadow: 0 0 5px 0 black;
 }
 
 .owl-theme .owl-nav [class*="owl-"]:focus {
@@ -33,7 +41,7 @@
 }
 
 .owl-theme .owl-nav [class*="owl-"]:hover {
-  background-color: initial;
+  background-color: rgba(255,255,255,0.7);
   opacity: 1;
 }
 

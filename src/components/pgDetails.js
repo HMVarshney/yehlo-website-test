@@ -11,7 +11,7 @@ const PGDetails = () => {
     return ( 
         <div className='container contentIn'>
             <div className='row justify-content-center'>
-                <div className='col-12 col-md-10'>
+                <div className='col-12 col-md-9'>
                     <section class="listghor_list_details listghor_list_details_1 wow fadeInUp">
                         <div class="container">
                             <div class="row">

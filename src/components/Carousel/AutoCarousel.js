@@ -2,21 +2,31 @@ import React, { Component } from "react";
 import OwlCarousel from "react-owl-carousel";
 
 //components
-import ProductCardA from "./ProductCardA";
+import Card from "../Card";
 
 //styles
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "../css/owl.css";
 
+
 export class AutoCarousel extends Component {
   render() {
+    let items = () =>{
+      let width = window.innerWidth
+      if(width < 768){
+        return 2;
+      }
+      else{
+        return 3;
+      }
+    }
     return (
       <div>
         <div class="container-fluid">
-          <OwlCarousel id='autoCarousel'
-            items={3}
+          <OwlCarousel
+            items={items()}
             margin={16}
             className="owl-theme"
             loop
@@ -36,12 +46,11 @@ export class AutoCarousel extends Component {
             autoplayHoverPause={true}
             responsive={false}
             autoplaySpeed={2500}
-            autoplayTimeout={7000}
+            autoplayTimeout={10000}
           >
-            <ProductCardA />
-            <ProductCardA />
-            <ProductCardA />
-            <ProductCardA />
+            <Card />
+            <Card />
+            <Card />
           </OwlCarousel>
         </div>
       </div>

@@ -2,21 +2,34 @@ import React, { Component } from "react";
 import OwlCarousel from "react-owl-carousel";
 
 //components
-import ProductCardB from "./ProductCardB";
+import Card from "../Card";
 
 //styles
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import "../css/owl.css";
 
 export class Carousel extends Component {
   render() {
+
+    let items = () =>{
+      let width = window.innerWidth
+      if(width < 768){
+        return 2;
+      }
+      else if(width < 992){
+        return 3;
+      }
+      else{
+        return 4;
+      }
+    }
+
     return (
       <div>
         <div class="container-fluid home">
           <OwlCarousel
-            items={3}
+            items={items()}
             className="owl-theme"
             loop
             responsive={false}
@@ -34,12 +47,13 @@ export class Carousel extends Component {
 </svg>`,
             ]}
           >
-            <ProductCardB />
-            <ProductCardB />
-            <ProductCardB />
-            <ProductCardB />
-            <ProductCardB />
-            <ProductCardB />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
           </OwlCarousel>
         </div>
       </div>
