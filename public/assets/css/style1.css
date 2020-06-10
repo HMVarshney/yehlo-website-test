@@ -1,3 +1,7 @@
+*{
+	font-family: 'Titillium Web';
+}
+
 .search_button{
 	border-radius: 20px;
 	background: transparent;
@@ -120,3 +124,4 @@
 .popup-div{
 	padding: 6px;
 }
+

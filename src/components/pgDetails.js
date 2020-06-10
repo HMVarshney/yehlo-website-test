@@ -1,13 +1,15 @@
 import React from 'react';
 // import Carousel, { Dots } from '@brainhubeu/react-carousel';
-import {Dots} from '@brainhubeu/react-carousel';
+// import {Dots} from '@brainhubeu/react-carousel';
 // import '@brainhubeu/react-carousel/lib/style.css';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+// import { Carousel } from 'react-responsive-carousel';
 import { Box, Grid, Paper } from '@material-ui/core';
+import { BuyProducts } from '../context/contexts/buyContext';
 
 
-const PGDetails = () => {
+const PGDetails = (props) => {
+    console.log(props);
     return ( 
         <div className='container contentIn'>
             <div className='row justify-content-center'>
@@ -20,36 +22,36 @@ const PGDetails = () => {
                                         <div class="listing_details_box gallery_box">
                                             <div class="gallery_big">
                                                 <div class="single_img">
-                                                    <img src="assets/images/gallery_1.jpg" class="img-fluid" alt="" />
+                                                    <img src="/assets/images/gallery_1.jpg" class="img-fluid" alt="" />
                                                 </div>
                                                 <div class="single_img">
-                                                    <img src="assets/images/gallery_2.jpg" class="img-fluid" alt="" />
+                                                    <img src="/assets/images/gallery_2.jpg" class="img-fluid" alt="" />
                                                 </div>
                                                 <div class="single_img">
-                                                    <img src="assets/images/gallery_3.jpg" class="img-fluid" alt="" />
+                                                    <img src="/assets/images/gallery_3.jpg" class="img-fluid" alt="" />
                                                 </div>
                                                 <div class="single_img">
-                                                    <img src="assets/images/gallery_4.jpg" class="img-fluid" alt="" />
+                                                    <img src="/assets/images/gallery_4.jpg" class="img-fluid" alt="" />
                                                 </div>
                                                 <div class="single_img">
-                                                    <img src="assets/images/gallery_5.jpg" class="img-fluid" alt="" />
+                                                    <img src="/assets/images/gallery_5.jpg" class="img-fluid" alt="" />
                                                 </div>
                                             </div>
                                             <div class="gallery_small">
                                                 <div class="single_img">
-                                                    <img src="assets/images/g_1.jpg" alt="" />
+                                                    <img src="/assets/images/g_1.jpg" alt="" />
                                                 </div>
                                                 <div class="single_img">
-                                                    <img src="assets/images/g_2.jpg" alt="" />
+                                                    <img src="/assets/images/g_2.jpg" alt="" />
                                                 </div>
                                                 <div class="single_img">
-                                                    <img src="assets/images/g_3.jpg" alt="" />
+                                                    <img src="/assets/images/g_3.jpg" alt="" />
                                                 </div>
                                                 <div class="single_img">
-                                                    <img src="assets/images/g_4.jpg" alt="" />
+                                                    <img src="/assets/images/g_4.jpg" alt="" />
                                                 </div>
                                                 <div class="single_img">
-                                                    <img src="assets/images/g_5.jpg" alt="" />
+                                                    <img src="/assets/images/g_5.jpg" alt="" />
                                                 </div>
                                             </div>
                             </div></div></div></div></div>
@@ -173,7 +175,7 @@ const PGDetails = () => {
                             <h5>Contact Owner</h5>
                         </div>
                         <div class="admin_info text-center">
-                            <img src="assets/images/admin_2.jpg" class="img-fluid" alt="" />
+                            <img src="/assets/images/admin_2.jpg" class="img-fluid" alt="" />
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, pariatur.</p>
                             <div className='row justify-content-center mt-2 social_link'>
                                 <a href='#top'><span className='social_icons fa fa-lg fa-mail-bulk m-2'></span></a>
@@ -188,7 +190,7 @@ const PGDetails = () => {
                                 <h4 class="box_title">Reviews</h4>
                                 <div class="single_comment">
                                     <div class="comment_thumb">
-                                        <img src="assets/images/comment_1.jpg" alt="" />
+                                        <img src="/assets/images/comment_1.jpg" alt="" />
                                     </div>
                                     <div class="comment_info">
                                         <h5><a href="#">JHON DOE</a></h5>
@@ -200,7 +202,7 @@ const PGDetails = () => {
                                 </div>
                                 <div class="single_comment">
                                     <div class="comment_thumb">
-                                        <img src="assets/images/comment_2.jpg" alt="" />
+                                        <img src="/assets/images/comment_2.jpg" alt="" />
                                     </div>
                                     <div class="comment_info">
                                         <h5><a href="#">JHON DOE</a></h5>
@@ -212,7 +214,7 @@ const PGDetails = () => {
                                 </div>
                                 <div class="single_comment">
                                     <div class="comment_thumb">
-                                        <img src="assets/images/comment_3.jpg" alt="" />
+                                        <img src="/assets/images/comment_3.jpg" alt="" />
                                     </div>
                                     <div class="comment_info">
                                         <h5><a href="#">JHON DOE</a></h5>
@@ -224,7 +226,7 @@ const PGDetails = () => {
                                 </div>
                                 <div class="single_comment">
                                     <div class="comment_thumb">
-                                        <img src="assets/images/comment_4.jpg" alt="" />
+                                        <img src="/assets/images/comment_4.jpg" alt="" />
                                     </div>
                                     <div class="comment_info">
                                         <h5><a href="#">JHON DOE</a></h5>

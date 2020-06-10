@@ -18,7 +18,7 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route exact path='/listings' component={Listing} />
           <Route exact path='/about' component={About} />
-          <Route exact path='/details' component={PGDetails} />
+          <Route exact path='/details/:name' component={PGDetails} />
           <Route exact path='/getApp' component={GetApp} />
           <Redirect to='/' />
         </Switch>
