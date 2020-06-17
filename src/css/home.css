@@ -1,0 +1,23 @@
+@media screen and (max-width: 575px) {
+  h2 {
+    font-size: 30px;
+  }
+}
+
+.home .btn-outline-secondary.focus,
+.home .btn-outline-secondary:focus {
+  box-shadow: 0 0 0;
+}
+
+.home .btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
+.home .btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
+.home .show > .btn-outline-secondary.dropdown-toggle:focus {
+  box-shadow: 0 0 0;
+}
+
+.home .btn-outline-secondary:not(:disabled):not(.disabled).active,
+.home .btn-outline-secondary:not(:disabled):not(.disabled):active,
+.home .show > .btn-outline-secondary.dropdown-toggle {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+}

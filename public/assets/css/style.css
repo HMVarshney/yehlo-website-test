@@ -3442,6 +3442,7 @@ input[type="file"] {
 .gallery_big{
 	margin-bottom: 20px;
 	overflow: hidden;
+	max-height: 400px;
 }
 
 .gallery_small .single_img {
@@ -3455,7 +3456,6 @@ input[type="file"] {
 }
 .discription_box .top_information h4{
 	margin: 8px 0;
-	color: #fe3d6c;
 }
 .discription_box .top_information span{
 	display: inline-block;
@@ -3484,7 +3484,7 @@ input[type="file"] {
 	font-family: 'Font Awesome 5 Free';
 	margin-right: 10px;
 	font-weight: 900;
-	color: #fe3d6c;
+	color: #2e242c	;
 	font-size: 16px;
 }
 .map_box .contact_info{
@@ -3536,7 +3536,6 @@ input[type="file"] {
     background-size: 100% 100%;
     text-align: center;
     position: relative;
-    max-height: 140px;
 }
 .rateing_content{
     padding: 10px 0;
@@ -3566,12 +3565,11 @@ input[type="file"] {
 	float: right;
 }
 .rateing_box .single_bar .progress{
-	background: #e5e9f7;
 	height: 5px;
 	position: relative;
 }
 .rateing_box .single_bar .progress .progress-bar{
-	background-color: #fe3d6c;
+	background-color: #211a23;
 	position: relative;
 }
 .rateing_box .single_bar .progress .progress-bar:after{
@@ -3579,7 +3577,7 @@ input[type="file"] {
     content: '';
     width: 20px;
     height: 20px;
-    background: #fe3d6c;
+    background: #211a23;
     right: 0;
     top: -8px;
     z-index: 1;
@@ -3602,7 +3600,7 @@ input[type="file"] {
 }
 .comment_area.rateing_box .comment_info a{
 	display: inline-block;
-	color: #fe3d6c;
+	color: #2f3f9f;
 	text-transform: capitalize;
 	margin-right: 30px;
 }
@@ -3765,13 +3763,7 @@ input[type="file"] {
 
 /*listghor_sidebar*/
 .listghor_sidebar .widget_box{
-	overflow: hidden;
-	background: rgb(255, 255, 255);
-  	-webkit-box-shadow: 0px 0px 30px 0px rgba(13, 13, 13, 0.15);
-  	        box-shadow: 0px 0px 30px 0px rgba(13, 13, 13, 0.15);
-  	border-top-right-radius: 15px;
-  	border-bottom-left-radius: 15px;
-  	margin-bottom: 40px;
+	
 }
 .listghor_sidebar .widget_box:last-child{
 	margin-bottom: 0;
@@ -4224,7 +4216,7 @@ ul.social_link_2 li a:focus,
 }
 .comment_area .single_comment .comment_info a.reply{
 	font-size: 14px;
-	color: #fe3d6c;
+	color: #2f3f9f;
 	text-transform: capitalize;
 }
 .comment_area .single_comment .comment_info a.reply:before{

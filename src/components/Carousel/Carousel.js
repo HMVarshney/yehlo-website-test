@@ -5,34 +5,33 @@ import OwlCarousel from "react-owl-carousel";
 import Card from "./Card";
 
 //styles
-
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
+import "../../css/owl.css";
+
 export class Carousel extends Component {
   render() {
-
-    let items = () =>{
-      let width = window.innerWidth
-      if(width < 768){
-        return 2;
-      }
-      else if(width < 992){
-        return 3;
-      }
-      else{
-        return 4;
-      }
-    }
+    // var carouselCards = this.props.items.map((item, index) => {
+    //   return <Card details={item} key={index} />;
 
     return (
       <div>
-        <div class="container-fluid home">
+        <div className="container-fluid home">
           <OwlCarousel
-            items={items()}
             className="owl-theme"
             loop
-            responsive={false}
+            responsive={{
+              1200: {
+                items: 4,
+              },
+              768:{
+                items: 3
+              },
+              0: {
+                items: 2,
+              },
+            }}
             margin={12}
             nav
             dots={false}
@@ -45,14 +44,17 @@ export class Carousel extends Component {
   <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.793 8l-2.647-2.646a.5.5 0 0 1 0-.708z"/>
   <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8z"/>
 </svg>`,
-            ]}>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+            ]}
+          >
+            {/* {carouselCards} */}
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
           </OwlCarousel>
         </div>
       </div>

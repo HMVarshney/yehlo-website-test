@@ -9,28 +9,29 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "../../css/owl.css";
 
-
-export class AutoCarousel extends Component {
+export class Carousel extends Component {
   render() {
     return (
       <div>
-        <div className="container-fluid">
+        <div className="container-fluid home">
           <OwlCarousel
-            margin={16}
-            className="owl-theme premium"
+            className="owl-theme category"
             loop
             responsive={{
               1200: {
-                items: 3,
+                items: 5,
               },
-              768: {
-                items: 2,
+              992:{
+                items:4,
+              },
+              768:{
+                items: 3
               },
               0: {
-                items: 1,
+                items: 2,
               },
             }}
-            autoplay={true}
+            margin={12}
             nav
             dots={false}
             navText={[
@@ -43,10 +44,9 @@ export class AutoCarousel extends Component {
   <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8z"/>
 </svg>`,
             ]}
-            autoplayHoverPause={true}
-            autoplaySpeed={2500}
-            autoplayTimeout={10000}
           >
+            <PremiumCard />
+            <PremiumCard />
             <PremiumCard />
             <PremiumCard />
             <PremiumCard />
@@ -60,4 +60,4 @@ export class AutoCarousel extends Component {
   }
 }
 
-export default AutoCarousel;
+export default Carousel;

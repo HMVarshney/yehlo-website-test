@@ -1,6 +1,13 @@
-export const BuyProductInitDataRequest = (ProductData) => {
+export const BuyProductInitDataRequest = (data) => {
     return {
         type:'INIT_DATA_REQUEST',
-        payload: ProductData
+        payload: data
+    }
+}
+
+export const Error = (data) => {
+    return {
+        type: 'ERROR',
+        payload: data.error
     }
 }

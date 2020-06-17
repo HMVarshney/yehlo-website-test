@@ -1,27 +1,27 @@
 import React, { Component } from "react";
-
+import "../../css/card.css";
 class Card extends Component {
   render() {
     let title = "Farm to Table from the Mediterranean";
-    if(title.length>30){
-      title = title.slice(0,30)+"...";  
-    } 
     return (
       <div className="bnb-card">
         <div style={{ height: "70%" }}>
           <img
-            // src="https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"
-            src="https://ii1.pepperfry.com/media/catalog/product/b/e/494x544/beige-fabric-table-lamp-by-brightdaisy-beige-fabric-table-lamp-by-brightdaisy-icxl1s.jpg"
+            src="https://www.ajactraining.org/wp-content/uploads/2019/09/image-placeholder.jpg"
             alt=""
-            className="bnb-card-image mb-3"
+            className="bnb-card-image"
           />
         </div>
         <div className="pl-1 pr-2 mt-2 bnb-card-desc">
-          <div className="bnb-card-title">
-            {title}
+          <div
+            className="bnb-card-sub mb-1"
+            style={{ color: "rgba(0,0,0,0.8)" }}
+          >
+            Dwarka, New Delhi
           </div>
-          <div className="bnb-card-sub">From ₹1,153/person · 1.5 hours</div>
-          <div className="bnb-card-rating">
+          <div className="bnb-card-title">{title}</div>
+          <div className="bnb-card-sub"> ₹1,153/month</div>
+          <div className="bnb-card-sub" style={{display:"flex"}}>
             <svg
               className="bi bi-star-fill mr-1 bnb-card-star-icon"
               width="1em"

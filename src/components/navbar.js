@@ -1,31 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {Navbar, NavbarToggler, Collapse, NavItem, NavbarBrand, Nav, NavLink, Modal, ModalBody, Card, CardBody, CardText, CardTitle, CardSubtitle, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
-import {Button, Tabs, Tab, Box, FormControl, NativeSelect, Grid, Typography, Slider} from '@material-ui/core';
+import {Navbar, NavbarToggler, Collapse, NavItem, NavbarBrand, Nav, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-
-const collegeList = [ 'Acharya Narendra Dev College',
-                        'Aditi Mahavidyalaya',
-                        'Ahilya Bai College of Nursing',
-                        'Amar Jyoti Institute of Physiotherapy',
-                        'Aryabhatta College',
-                        'Atma Ram Sanatan Dharma College',
-                        'Ayurvedic & Unani Tibia College',
-                        'Bhagini Nivedita College',
-                        'Bharati College',
-                        'Bhaskaracharya College of Applied Sciences',
-                        'Bhim Rao Ambedkar College',
-                        'Chacha Nehru Bal Chikitsalaya',
-                        'College of Art',
-                        'College of Nursing at Army Hospital',
-                        'College of Vocational Studies',
-                        'Daulat Ram College',
-                        'Deen Dayal Upadhyaya College',
-                        'Delhi College of Arts & Commerce',
-                        'Delhi Institute of Pharmaceutical Sciences and Research'
-                    ];
-
-const cities = ['Dwarka', 'Karol Bagh', 'North Campus', 'South Campus'];
+import SearchModal from './searchModal';
 
 
 const Navigationbar = () => {
@@ -37,46 +14,51 @@ const Navigationbar = () => {
 
     useEffect(() => {
         const onScroll = () => {
-            setSearchVisible(window.scrollY > 150);
+            setSearchVisible(window.scrollY > 800);
+            window.scrollY>800 ? document.getElementById('navbar').style.background = 'rgb(255,255,255)' : document.getElementById('navbar').style.background = 'transparent';
             // setScroll(window.scrollY)
         }
         window.addEventListener("scroll", onScroll);;    
-      });
+    });
 
     return ( 
         <>
-        <Navbar className='headerbar' light expand='md' fixed='top'>
-                <div style={{fontSize:'17px'}} className='container animate__animated animate__fadeInDown animate__faster'> 
-                        <NavbarBrand><a href='/'>YEHLO</a></NavbarBrand>
-                        {searchVisible && <SearchBar modalOpen={()=>setModalOpen(!modalOpen)} />}
-                        <NavbarToggler onClick={()=>setNavOpen(!navOpen)} />
+        <Navbar id='navbar' className='headerbar' light expand='md' fixed='top'>
+            <div id='navbar-div' style={{fontSize:'17px'}} className='container animate__animated animate__fadeInDown animate__faster'> 
+                    <NavbarBrand className='navbar_brand'><a href='/' id='navbar_logo'>YEHLO</a></NavbarBrand>
+
+                    <span className='d-none d-md-block'>Get. Set. Sell.</span>
+
+                    {searchVisible && <SearchBar modalOpen={()=>setModalOpen(!modalOpen)} />}
+
+                    <NavbarToggler onClick={()=>setNavOpen(!navOpen)} />
                         <Collapse isOpen={navOpen} navbar>
-                        <div className={searchVisible ? 'd-block d-md-none col-8' : 'col-8'}>
-                            <Nav navbar>
-                                {/* <NavItem className='d-lg-none d-xl-none d-md-none d-sm-block mt-3 mt-lg-0'>
-                                    <CollegeDropdown data={collegeList} open={collegeDropdownOpen} handleOpen={setDropdown}/>
-                                </NavItem> */}
-                                <NavItem>
-                                    <NavLink href='/'> Home </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink href='/listings'>  Listings </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink href='/about'>  About </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink href='/contact'> Contact </NavLink>
-                                </NavItem>
-                            </Nav>
-                        </div>
+                            <div className={searchVisible ? 'd-block d-md-none col-12' : 'col-12'}>
+                                <Nav navbar className='float-md-right'>
+                                    {/* <NavItem className='d-lg-none d-xl-none d-md-none d-sm-block mt-3 mt-lg-0'>
+                                        <CollegeDropdown data={collegeList} open={collegeDropdownOpen} handleOpen={setDropdown}/>
+                                    </NavItem> */}
+                                    <NavItem>
+                                        <NavLink href='/'> Home </NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink href='/listings'>  Listings </NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink href='/about'>  About </NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink href='/contact'> Contact </NavLink>
+                                    </NavItem>
+                                </Nav>
+                            </div>
                         </Collapse>
-                        {/* <Nav navbar>
-                            <NavItem className='d-none d-md-block' style={{width:'150px'}}> 
-                                <Button variant='contained' component={Link} to='/getApp'><span className='fa fa-plus mr-1'></span> Add Listing </Button>
-                            </NavItem>
-                        </Nav>  */}
-                    </div>
+                    {/* <Nav navbar>
+                        <NavItem className='d-none d-md-block' style={{width:'150px'}}> 
+                            <Button variant='contained' component={Link} to='/getApp'><span className='fa fa-plus mr-1'></span> Add Listing </Button>
+                        </NavItem>
+                    </Nav>  */}
+                </div>
             </Navbar>
             <SearchModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
         </>
@@ -96,108 +78,20 @@ const CollegeDropdown = (props) => {
     );
 }
 
-const SearchModal = (props) => {
-
-    const [tabActive, setTabActive] = useState(0);
-
-    const handleTabChange = (e,newValue) => {
-        setTabActive(newValue)
-    }
-
-    const SearchUI = (props) => {
-        return(
-            props.data.map((city) => (
-            <Card className='mt-2'>
-                <CardBody>
-                    <Grid container spacing={0}>
-                        <Grid item xs={6}><img width='40%' src='assets/images/g_3.jpg' /></Grid>
-                        <Grid item xs={6}>
-                            <CardTitle><h6>The Green Apartments</h6></CardTitle>
-                            <CardSubtitle>{city}</CardSubtitle>
-                            <CardText>Perfect for College Students</CardText>
-                        </Grid>
-                    </Grid>
-                </CardBody>
-            </Card>
-        ))
-        );
-    }
-
-    const TabPanel = (props) => {
-        const {value, index} = props;
-        const [citySelected, changeCity] = useState(null);
-        const [sliderValue, setSliderValue] = useState([0,100]);
-        const [collegeDropdownOpen, setDropdownOpen] = useState(false);
-
-        // const CollegeBox = (props) => {
-        //    if(props.show){
-        //        return(
-        //            <Box>
-        //                Relavant college list rendered here
-        //            </Box>
-        //        );
-        //    }
-        //    return null;
-        // }
-        
-        return(
-            value === index && <Box component='div' p={3}>
-                {index === 1 &&
-                <>
-                <FormControl>
-                    <NativeSelect onChange={(e)=>changeCity(e.target.value)}>
-                        <option value=''>Select</option>
-                        {cities.map((city, i) => <option key={i} value={city}>{city}</option>)}
-                    </NativeSelect>
-                </FormControl>
-                {citySelected ? 
-                <SearchUI data={cities} /> : null}
-                </>}
-                {index === 0 && 
-                    <>
-                    <CollegeDropdown data={collegeList} open={collegeDropdownOpen} handleOpen={()=>setDropdownOpen(!collegeDropdownOpen)} />
-                    </>
-                }
-                {index === 2 && 
-                    <>
-                        <Typography>Price Range: </Typography>
-                        <div style={{width:'50%'}}>
-                            <Slider value={sliderValue} onChange={(e,newValue)=>setSliderValue(newValue)}
-                            aria-labelledby="range-slider" valueLabelDisplay='auto' /> 
-                            <Button><span className='fa fa-lg fa-search'></span> Search</Button>
-                        </div>
-                    </>
-                }
-            </Box>
-        );
-    }
-
-    return(
-        <Modal size='lg' isOpen={props.modalOpen} toggle={()=>props.setModalOpen(!props.modalOpen)}>
-            <ModalBody>
-                <Tabs value={tabActive} onChange={handleTabChange}>
-                    <Tab label='College' />
-                    <Tab label='Location'/>
-                    <Tab label='Budget'/>
-                </Tabs>
-                <TabPanel value={tabActive} index={0} />
-                <TabPanel value={tabActive} index={1} />
-                <TabPanel value={tabActive} index={2} />
-            </ModalBody>
-        </Modal>
-    );
-}
-
  
 const SearchBar = (props) => {
 
     return(
         <div className='col-md-7 col-6 animate__animated animate__fadeInUp animate__faster'>
-        <div className='row justify-content-center offset-md-5'>
+        <div className='row justify-content-center offset-md-3'>
+            {/* <button className='search_button'>
+                <i className='fa fa-search nav_search_icon' />
+                <input className='nav_search_box' type='text' placeholder='Search..' />
+            </button> */}
             <button className='search_button' onClick={props.modalOpen}>
-                <span className='d-none d-md-block search_text'>What are you looking for?</span>
-                <span className='d-sm-block d-md-none search_text_mobile'><i className='fa fa-search' /> Search</span>
-                </button>
+                {/* <span className='d-none d-md-block search_text'>What are you looking for?</span> */}
+                <span className='search_text_span p-lg-5 p-1'><i className='fa fa-search' /><span className='search_text'>Search</span></span>
+            </button>
         </div>
         </div>
     );

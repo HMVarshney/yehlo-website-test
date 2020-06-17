@@ -4,6 +4,7 @@ export const BuyProductsReducer = (state, action) => {
             return[...state, ...action.payload];
         case 'ERROR':
             console.log('Error: ', action.payload);
+            break;
         default:
             return state;
     }

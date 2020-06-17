@@ -1,47 +1,46 @@
-*{
-	font-family: 'Titillium Web';
-}
-
 .search_button{
-	border-radius: 20px;
+	border-radius: 12px;
 	background: transparent;
 	border: solid black;
-	border-radius: 12px;
 	color: 382C2A;
+	padding: 0.27rem;
+	display: inline-block;
 }
 
 .search_button:hover{
-	background: rgba(211,211,211,0.1);
+	background: rgba(211,211,211,0.3);
+	cursor: pointer;
 }
 
-.search_text{
-	padding: 0px 50px;
-	font-family: 'Satisfy';
+.search_text_span{
 	font-size: 21px;
 }
 
-.search_text_mobile{
-	padding: 0px 20px;
-	font-family: 'Satisfy';
+.search_text{
+	padding: 0px 15px;
 }
 
-
 .headerbar{
-	background-image: linear-gradient(to right, #e6e9f0 0%, #eef1f5 100%);
+	/* background-image: linear-gradient(to right, #e6e9f0 0%, #eef1f5 100%); */
+	background-blend-mode: transparent;
 }
 
 .listings-jumbotron{
 	padding: 30px;
+	height: 350px;
 }
 
 .listings-jumbotron-text{
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	height: 230px;
 	font-family: Oswald;
 	font-size: 50px;
 }
 
 .filter-box{
-	box-shadow: 5px 0px 15px #D3D3D3;
+	box-shadow: 0px 0px 15px rgba(211, 211, 211, 0.8);
 	border-radius: 20px;
 }
 
@@ -53,7 +52,8 @@
 }
 
 .listings-container{
-	background-image: linear-gradient(0deg, #f5f7fa 0%, rgba(195,207,226,0.9) 100%);
+	background: url('/assets/images/animated/search_1.jpg') center no-repeat;
+	background-size: 1000px 100%;
 	border-radius: 10px;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .contentIn{
-	padding: 80px 0px;
+	padding: 80px 12px;
 }
 
 .social_icons{
@@ -104,7 +104,7 @@
 }
 
 .customer_reviews{
-	max-height: 260px;
+	max-height: 500px;
 	overflow: auto;
 }
 
@@ -125,3 +125,75 @@
 	padding: 6px;
 }
 
+.bottom_nav{
+	padding: 1em 0em;
+	background-color: rgba(237,237,237,0.7);
+	border-radius: 12px;
+}
+
+.bottom_nav_button{
+	margin: 0em 1em;
+}
+
+.navbar_brand {
+	border-right: solid black thin;
+}
+
+#navbar_logo{
+	margin-right: 8px;
+}
+
+.modal_checkbox{
+	border-radius: 3;
+	width: 16;
+	height: 16;
+	box-shadow: inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1);
+	background-color: #f5f8fa;
+	background-image: linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0));
+}
+
+.search-modal{
+	padding: 8px;
+}
+
+
+.details_title{
+	color: #565656;
+}
+
+.details_price{
+	color: #010203;
+}
+
+.details_icon{
+	color: 	#211a23;
+}
+
+.details_description_text{
+	font-size: 1rem;
+}
+
+.search_bar{
+	background: white;
+	padding: 1.24rem;
+}
+
+.search_bar_dropdowns{
+	position: absolute;
+	padding-top: 0.4rem;
+	padding: 1.2rem;
+	background-color: rgba(0, 0, 0, 0.89);
+	z-index: 1;
+	border-radius: 12px;
+	color: white;
+}
+
+.price_select{
+	background: transparent;
+	margin-top: 0.5rem;
+	border-radius: 4px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin: 0rem 1rem ;
+	color: white;
+}

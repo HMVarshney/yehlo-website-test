@@ -1,1711 +1,237 @@
 import React, { Component } from "react";
-import Carousel from "./Carousel/Carousel";
+import { Container, Button } from "reactstrap";
 
-export class Template extends Component {
+//components
+import AutoCarousel from "./Carousel/AutoCarousel";
+import Carousel from "./Carousel/Carousel";
+import CategoryCarousel from "./Carousel/CategoryCarousel";
+import TrendingCarousel from "./Carousel/TrendingCarousel";
+import AppIcon from "./AppIcon";
+
+//styles
+import styles from "../css/home.module.css";
+import "../css/home.css";
+import SearchBar from "./searchBar";
+
+class Home extends Component {
   render() {
     return (
-        <div>
-          {/* Start preloader  */}
-          <div className="preloader_area">
-            <div className="spinner">
-              <div className="double-bounce1" />
-              <div className="double-bounce2" />
+      <div className="home">
+        <div className={styles.billBoard}>
+          <Container
+            style={{
+              position: "relative",
+              height: "inherit",
+              overflow: "hidden",
+            }}
+          >
+            <div className={styles.centerBlock}>
+              <SearchBar />
+              <div className={styles.centerBrand}>YEH!O</div>
+            </div>
+          </Container>
+        </div> 
+        <Container className={styles.contain}>
+          <div style={{ marginBottom: "14px" }} className="mt-4">
+            <div
+              className={styles.alignment}
+              style={{ justifyContent: "start", padding: "0 15px" }}
+            >
+              <h2>What can we help you find ?</h2>
             </div>
           </div>
-          {/* End preloader  */}
-          {/* Start header_bg section */}
-          <section className="hero_bg hero_v2 light_bg">
-            <svg id="head_shape" width="1013px" height="1013px">
-              <path
-                fillRule="evenodd"
-                fill="rgb(254, 61, 108)"
-                d="M1.000,-0.000 C1.000,-0.000 -18.082,170.553 187.000,205.999 C561.196,270.675 193.939,1012.999 1013.000,1012.999 C1013.000,170.999 1013.000,-0.000 1013.000,-0.000 L1.000,-0.000 Z"
-              />
-            </svg>
-            <img src="assets/images/shape_6.png" alt="" className="shape_1" />
-            <img src="assets/images/shape_7.png" alt="" className="shape_2" />
-            <img src="assets/images/shape_8.png" alt="" className="shape_3" />
-            <img src="assets/images/shape_9.png" alt="" className="shape_4" />
-            <img src="assets/images/shape_10.png" alt="" className="shape_5" />
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col-lg-6 col-md-8">
-                  <div
-                    className="welcome_text wow fadeInLeft"
-                    data-wow-delay=".2s"
-                  >
-                    <h1>
-                      Find Out Great Place In
-                      <br />
-                      Your City
-                    </h1>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and type
-                      setting out industry. Lorem Ipsum has been
-                    </p>
-                    <a href="#" className="listghor_btn welcome_btn">
-                      Read more
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div
-                    className="welcome_img listghor_img wow fadeInRight"
-                    data-wow-delay=".3s"
-                  >
-                    <img src="assets/images/illustration_1.png" alt=""/>
-                  </div>
-                </div>
-              </div>
-              <div className="row justify-content-center">
-                <div className="col-lg-10">
-                  <div className="hero_search hero_search_v2 text-center">
-                    <form>
-                      <div className="row">
-                        <div className="col-lg-4">
-                          <div className="form_group">
-                            <input
-                              type="text"
-                              className="form_control fi_width_1"
-                              placeholder="What are you looking?"
-                              required
-                            />
-                            <i className="fas fa-city" />
-                          </div>
-                        </div>
-                        <div className="col-lg-3">
-                          <div className="form_group">
-                            <select className="search_select">
-                              <option data-display="location">
-                                Bnagladesh
-                              </option>
-                              <option value={1}>India</option>
-                              <option value={2}>Chaina</option>
-                              <option value={3}>America</option>
-                              <option value={4}>Russia</option>
-                            </select>
-                            <i className="fas fa-location-arrow" />
-                          </div>
-                        </div>
-                        <div className="col-lg-3">
-                          <div className="form_group">
-                            <select className="search_select">
-                              <option data-display="Categories">
-                                Real Estate
-                              </option>
-                              <option value={1}>travel</option>
-                              <option value={2}>Beauty &amp; Spa</option>
-                              <option value={3}>Night Club</option>
-                              <option value={4}>Shopping</option>
-                              <option value={4}>Resturaunt</option>
-                            </select>
-                            <i className="fas fa-list" />
-                          </div>
-                        </div>
-                        <div className="col-lg-2">
-                          <div className="filter_button">
-                            <button className="search_btn">Search</button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
+          <CategoryCarousel />
+        </Container>
+        <Container className={styles.contain}>
+          <div style={{ marginBottom: "14px" }}>
+            <div
+              className={styles.alignment}
+              style={{ justifyContent: "start", padding: "0 15px" }}
+            >
+              <h2>Yehlo Partners</h2>
+            </div>
+          </div>
+          <AutoCarousel style={{ margin: "0" }} />
+          <div className={styles.alignment}>
+            <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
+              <Button outline color="secondary" className={styles.seeMore}>
+                See More
+              </Button>
+            </div>
+          </div>
+        </Container>
+        <Container className={styles.contain}>
+          <div style={{ marginBottom: "14px" }}>
+            <div
+              className={styles.alignment}
+              style={{ justifyContent: "start", padding: "0 15px" }}
+            >
+              <h2>Yehlo Sponsored</h2>
+            </div>
+          </div>
+          <AutoCarousel style={{ margin: "0" }} />
+          <div className={styles.alignment}>
+            <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
+              <Button outline color="secondary" className={styles.seeMore}>
+                See More
+              </Button>
+            </div>
+          </div>
+        </Container>
+        <Container className={styles.contain}>
+          <div style={{ marginBottom: "14px" }}>
+            <div
+              className={styles.alignment}
+              style={{ justifyContent: "start", padding: "0 15px" }}
+            >
+              <h2>Yehlo Premium</h2>
+            </div>
+          </div>
+          <TrendingCarousel style={{ margin: "0" }} />
+          <div className={styles.alignment}>
+            <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
+              <Button outline color="secondary" className={styles.seeMore}>
+                See More
+              </Button>
+            </div>
+          </div>
+        </Container>
+        <Container className={styles.contain}>
+          <div style={{ marginBottom: "14px" }}>
+            <div
+              className={styles.alignment}
+              style={{ justifyContent: "start", padding: "0 15px" }}
+            >
+              <h2>Yehlo Buy</h2>
+            </div>
+          </div>
+          <Carousel />
+          <div className={styles.alignment}>
+            <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
+              <Button outline color="secondary" className={styles.seeMore}>
+                See More
+              </Button>
+            </div>
+          </div>
+        </Container>
+        <Container className={styles.contain}>
+          <div style={{ marginBottom: "14px" }}>
+            <div
+              className={styles.alignment}
+              style={{ justifyContent: "start", padding: "0 15px" }}
+            >
+              <h2>Yehlo Pgs</h2>
+            </div>
+          </div>
+          <Carousel />
+          <div className={styles.alignment}>
+            <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
+              <Button outline color="secondary" className={styles.seeMore}>
+                See More
+              </Button>
+            </div>
+          </div>
+        </Container>
+        <Container className={styles.contain}>
+          <div style={{ marginBottom: "14px" }}>
+            <div
+              className={styles.alignment}
+              style={{ justifyContent: "start", padding: "0 15px" }}
+            >
+              <h2>Yehlo Gyms</h2>
+            </div>
+          </div>
+          <Carousel />
+          <div className={styles.alignment}>
+            <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
+              <Button outline color="secondary" className={styles.seeMore}>
+                See More
+              </Button>
+            </div>
+          </div>
+        </Container>
+        <footer className={styles.footer}>
+          <Container className="pt-4 pb-4">
+            <div className={styles.footerContent}>
+              <div className="mb-3">About us</div>
+              <div className={styles.alignment} style={{ width: "250px" }}>
+                {/* Facebook */}
+                <svg
+                  height="24px"
+                  style={{
+                    fillRule: "evenodd",
+                    clipRule: "evenodd",
+                    strokeLinejoin: "round",
+                    strokeMiterlimit: "2",
+                  }}
+                  version="1.1"
+                  viewBox="0 0 512 512"
+                  width="auto"
+                  fill="white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M374.244,285.825l14.105,-91.961l-88.233,0l0,-59.677c0,-25.159 12.325,-49.682 51.845,-49.682l40.116,0l0,-78.291c0,0 -36.407,-6.214 -71.213,-6.214c-72.67,0 -120.165,44.042 -120.165,123.775l0,70.089l-80.777,0l0,91.961l80.777,0l0,222.31c16.197,2.541 32.798,3.865 49.709,3.865c16.911,0 33.511,-1.324 49.708,-3.865l0,-222.31l74.128,0Z"
+                    style={{ fillRule: "nonzero" }}
+                  />
+                </svg>
+                {/* Twitter */}
+                <svg
+                  height="24px"
+                  fill="white"
+                  style={{
+                    fillRule: "evenodd",
+                    clipRule: "evenodd",
+                    strokeLinejoin: "round",
+                    strokeMiterlimit: "2",
+                  }}
+                  version="1.1"
+                  viewBox="0 0 512 512"
+                  width="auto"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M161.014,464.013c193.208,0 298.885,-160.071 298.885,-298.885c0,-4.546 0,-9.072 -0.307,-13.578c20.558,-14.871 38.305,-33.282 52.408,-54.374c-19.171,8.495 -39.51,14.065 -60.334,16.527c21.924,-13.124 38.343,-33.782 46.182,-58.102c-20.619,12.235 -43.18,20.859 -66.703,25.498c-19.862,-21.121 -47.602,-33.112 -76.593,-33.112c-57.682,0 -105.145,47.464 -105.145,105.144c0,8.002 0.914,15.979 2.722,23.773c-84.418,-4.231 -163.18,-44.161 -216.494,-109.752c-27.724,47.726 -13.379,109.576 32.522,140.226c-16.715,-0.495 -33.071,-5.005 -47.677,-13.148l0,1.331c0.014,49.814 35.447,93.111 84.275,102.974c-15.464,4.217 -31.693,4.833 -47.431,1.802c13.727,42.685 53.311,72.108 98.14,72.95c-37.19,29.227 -83.157,45.103 -130.458,45.056c-8.358,-0.016 -16.708,-0.522 -25.006,-1.516c48.034,30.825 103.94,47.18 161.014,47.104"
+                    style={{ fillRule: "nonzero" }}
+                  />
+                </svg>
+                {/* Instagram */}
+                <svg
+                  height="24px"
+                  style={{
+                    fillRule: "evenodd",
+                    clipRule: "evenodd",
+                    strokeLinejoin: "round",
+                    strokeMiterlimit: "2",
+                  }}
+                  version="1.1"
+                  viewBox="0 0 600 600"
+                  width="auto"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g transform="matrix(1.01619,0,0,1.01619,44,43.8384)">
+                    <path
+                      d="M251.921,0.159C183.503,0.159 174.924,0.449 148.054,1.675C121.24,2.899 102.927,7.157 86.902,13.385C70.336,19.823 56.287,28.437 42.282,42.442C28.277,56.447 19.663,70.496 13.225,87.062C6.997,103.086 2.739,121.399 1.515,148.213C0.289,175.083 0,183.662 0,252.08C0,320.497 0.289,329.076 1.515,355.946C2.739,382.76 6.997,401.073 13.225,417.097C19.663,433.663 28.277,447.712 42.282,461.718C56.287,475.723 70.336,484.337 86.902,490.775C102.927,497.002 121.24,501.261 148.054,502.484C174.924,503.71 183.503,504 251.921,504C320.338,504 328.917,503.71 355.787,502.484C382.601,501.261 400.914,497.002 416.938,490.775C433.504,484.337 447.553,475.723 461.559,461.718C475.564,447.712 484.178,433.663 490.616,417.097C496.843,401.073 501.102,382.76 502.325,355.946C503.551,329.076 503.841,320.497 503.841,252.08C503.841,183.662 503.551,175.083 502.325,148.213C501.102,121.399 496.843,103.086 490.616,87.062C484.178,70.496 475.564,56.447 461.559,42.442C447.553,28.437 433.504,19.823 416.938,13.385C400.914,7.157 382.601,2.899 355.787,1.675C328.917,0.449 320.338,0.159 251.921,0.159ZM251.921,45.551C319.186,45.551 327.154,45.807 353.718,47.019C378.28,48.14 391.619,52.244 400.496,55.693C412.255,60.263 420.647,65.723 429.462,74.538C438.278,83.353 443.737,91.746 448.307,103.504C451.757,112.381 455.861,125.72 456.981,150.282C458.193,176.846 458.45,184.814 458.45,252.08C458.45,319.345 458.193,327.313 456.981,353.877C455.861,378.439 451.757,391.778 448.307,400.655C443.737,412.414 438.278,420.806 429.462,429.621C420.647,438.437 412.255,443.896 400.496,448.466C391.619,451.916 378.28,456.02 353.718,457.14C327.158,458.352 319.191,458.609 251.921,458.609C184.65,458.609 176.684,458.352 150.123,457.14C125.561,456.02 112.222,451.916 103.345,448.466C91.586,443.896 83.194,438.437 74.378,429.621C65.563,420.806 60.103,412.414 55.534,400.655C52.084,391.778 47.98,378.439 46.859,353.877C45.647,327.313 45.391,319.345 45.391,252.08C45.391,184.814 45.647,176.846 46.859,150.282C47.98,125.72 52.084,112.381 55.534,103.504C60.103,91.746 65.563,83.353 74.378,74.538C83.194,65.723 91.586,60.263 103.345,55.693C112.222,52.244 125.561,48.14 150.123,47.019C176.687,45.807 184.655,45.551 251.921,45.551Z"
+                      style={{ fill: "white", fillRule: "nonzero" }}
+                    />
+                    <path
+                      d="M251.921,336.053C205.543,336.053 167.947,298.457 167.947,252.08C167.947,205.702 205.543,168.106 251.921,168.106C298.298,168.106 335.894,205.702 335.894,252.08C335.894,298.457 298.298,336.053 251.921,336.053ZM251.921,122.715C180.474,122.715 122.556,180.633 122.556,252.08C122.556,323.526 180.474,381.444 251.921,381.444C323.367,381.444 381.285,323.526 381.285,252.08C381.285,180.633 323.367,122.715 251.921,122.715Z"
+                      style={{ fill: "white", fillRule: "nonzero" }}
+                    />
+                    <path
+                      d="M416.627,117.604C416.627,134.3 403.092,147.834 386.396,147.834C369.701,147.834 356.166,134.3 356.166,117.604C356.166,100.908 369.701,87.374 386.396,87.374C403.092,87.374 416.627,100.908 416.627,117.604Z"
+                      style={{ fill: "white", fillRule: "nonzero" }}
+                    />
+                  </g>
+                </svg>
               </div>
             </div>
-          </section>
-          {/* Start header_bg section */}
-          {/* Start listghor_about section */}
-          <section className="listghor_about about_v1 about_v2 section_padding">
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col-lg-6">
-                  <div
-                    className="listghor_img_box about_img_box wow fadeInLeft"
-                    data-wow-delay=".1s"
-                  >
-                    <div className="listghor_img about_img">
-                      <img src="assets/images/about_3.png" class="img-fluid" alt="" />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div
-                    className="listghor_content_box about_content_box wow fadeInRight"
-                    data-wow-delay=".15s"
-                  >
-                    <div className="about_content">
-                      <span>About Us</span>
-                      <h2>
-                        WE HELP TO GROW
-                        <br />
-                        BUSINESS
-                      </h2>
-                      <p>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text Lorem Ipsum is simply
-                        dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy
-                        textLorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.{" "}
-                      </p>
-                    </div>
-                    <div className="listghor_button">
-                      <a href="#" className="listghor_btn about_btn">
-                        Read more
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* End listghor_about section */}
-          {/* Start listghor_top_category section */}
-          <section className="category_v2 light_bg section_padding">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-6 col-md-8 col-sm-12">
-                  <div className="listghor_title text-center">
-                    <h2>OUR CATEGORIES</h2>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-          <div class="col-lg-2 col-md-4 col-sm-12">
-              <div class="category_box">
-                  <a href="listing_grid.html">
-                      <div class="category_icon">
-                          <i class="far fa-building"></i>
-                      </div>
-                      <div class="category_info">
-                          <h5>REAL ESTATE</h5>
-                      </div>
-                  </a>
-              </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-12">
-              <div class="category_box">
-                  <a href="listing_grid.html">
-                      <div class="category_icon">
-                          <i class="fas fa-luggage-cart"></i>
-                      </div>
-                      <div class="category_info">
-                          <h5>TRAVEL</h5>
-                      </div>
-                  </a>
-              </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-12">
-              <div class="category_box">
-                  <a href="listing_grid.html">
-                      <div class="category_icon">
-                          <i class="fas fa-spa"></i>
-                      </div>
-                      <div class="category_info">
-                          <h5>BEAUTY & SPA</h5>
-                      </div>
-                  </a>
-              </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-12">
-              <div class="category_box">
-                  <a href="listing_grid.html">
-                      <div class="category_icon">
-                          <i class="fas fa-glass-cheers"></i>
-                      </div>
-                      <div class="category_info">
-                          <h5>NIGHT CLUB</h5>
-                      </div>
-                  </a>
-              </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-12">
-              <div class="category_box">
-                  <a href="listing_grid.html">
-                      <div class="category_icon">
-                          <i class="fas fa-shopping-bag"></i>
-                      </div>
-                      <div class="category_info">
-                          <h5>SHOPPING</h5>
-                      </div>
-                  </a>
-              </div>
-          </div>
-          <div class="col-lg-2 col-md-4 col-sm-12">
-              <div class="category_box">
-                  <a href="listing_grid.html">
-                      <div class="category_icon">
-                          <i class="fas fa-cocktail"></i>
-                      </div>
-                      <div class="category_info">
-                          <h5>FOOD & DRINKS</h5>
-                      </div>
-                  </a>
-              </div>
-          </div>
+          </Container>
+        </footer>
+        <AppIcon />
       </div>
-            </div>
-          </section>
-          {/* End listghor_top_category section */}
-          {/* Start popular_catagory section */}
-          <section
-            className="popular_catagory_v1 section_padding"
-            id="popular_catagory"
-          >
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-6 col-md-8 col-sm-12">
-                  <div className="listghor_title text-center">
-                    <h2>Explore Dream Places</h2>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="listghor_filter text-center">
-                    <button className="filter_btn btn_active" data-filter="*">
-                      All
-                    </button>
-                    <button className="filter_btn" data-filter=".cat_1">
-                      Trending
-                    </button>
-                    <button className="filter_btn" data-filter=".cat_2">
-                      Popular
-                    </button>
-                    <button className="filter_btn" data-filter=".cat_3">
-                      Most Visited
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="category_grid row">
-                <div className="col-lg-4 col-md-6 col-sm-12 grid_item cat_1">
-                  <div className="popular_category_box wow fadeInUp">
-                    <a href="#" className="listghor_img">
-                      <img src="assets/images/place_1.jpg" alt="" />
-                      <div className="overlay_img" />
-                      <div className="overlay_content">
-                        <h4>FOOD &amp; DRINKS</h4>
-                        <p>128 Listing</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 grid_item cat_2">
-                  <div className="popular_category_box wow fadeInUp">
-                    <a href="#" className="listghor_img">
-                      <img src="assets/images/place_2.jpg" alt="" />
-                      <div className="overlay_img" />
-                      <div className="overlay_content">
-                        <h4>FOOD &amp; DRINKS</h4>
-                        <p>128 Listing</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 grid_item cat_3">
-                  <div className="popular_category_box wow fadeInUp">
-                    <a href="#" className="listghor_img">
-                      <img src="assets/images/place_3.jpg" alt="" />
-                      <div className="overlay_img" />
-                      <div className="overlay_content">
-                        <h4>FOOD &amp; DRINKS</h4>
-                        <p>128 Listing</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 grid_item cat_2">
-                  <div className="popular_category_box wow fadeInUp">
-                    <a href="#" className="listghor_img">
-                      <img src="assets/images/place_4.jpg" alt="" />
-                      <div className="overlay_img" />
-                      <div className="overlay_content">
-                        <h4>FOOD &amp; DRINKS</h4>
-                        <p>128 Listing</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 grid_item cat_1">
-                  <div className="popular_category_box wow fadeInUp">
-                    <a href="#" className="listghor_img">
-                      <img src="assets/images/place_5.jpg" alt="" />
-                      <div className="overlay_img" />
-                      <div className="overlay_content">
-                        <h4>FOOD &amp; DRINKS</h4>
-                        <p>128 Listing</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 grid_item cat_3">
-                  <div className="popular_category_box wow fadeInUp">
-                    <a href="#" className="listghor_img">
-                      <img src="assets/images/place_6.jpg" alt="" />
-                      <div className="overlay_img" />
-                      <div className="overlay_content">
-                        <h4>FOOD &amp; DRINKS</h4>
-                        <p>128 Listing</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* End popular_catagory section */}
-          {/* Start how_it_work section */}
-          <section className="working_process_v2 light_bg section_padding">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-6 col-md-8 col-sm-12">
-                  <div className="listghor_title text-center">
-                    <h2>SEE HOW IT WORKS?</h2>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-lg-4 col-md-6 col-sm-12">
-                  <div className="work_box iconshape_5">
-                    <div className="listghor_icon">
-                      <svg id="icon_shape_1" width="190px" height="155px">
-                        {" "}
-                        <path
-                          fillRule="evenodd"
-                          fill="rgb(254, 61, 108)"
-                          d="M1.408,30.506 C2.937,19.614 14.059,-2.593 38.972,0.312 C63.886,3.217 81.159,26.025 117.240,22.345 C153.322,18.666 174.283,29.027 184.698,49.575 C195.113,70.122 187.182,93.311 173.757,106.790 C160.332,120.270 140.621,119.716 125.667,121.237 C110.712,122.756 101.703,129.768 87.347,142.693 C72.990,155.617 57.211,158.484 45.141,148.670 C33.071,138.856 36.060,105.062 33.155,95.346 C30.250,85.630 15.400,75.334 9.290,64.627 C3.180,53.919 -0.712,45.614 1.408,30.506 Z"
-                        />
-                      </svg>
-                      <svg id="icon_shape_2" width="181px" height="178px">
-                        <path
-                          fillRule="evenodd"
-                          opacity="0.102"
-                          fill="rgb(254, 61, 108)"
-                          d="M40.000,130.999 C70.202,126.504 77.354,139.303 106.000,161.000 C134.645,182.696 166.883,182.421 179.000,160.000 C184.397,150.012 174.531,136.702 168.000,108.999 C161.469,81.297 177.483,52.529 169.000,26.999 C163.521,10.511 125.435,-10.014 94.000,5.999 C52.582,27.098 75.895,41.827 19.000,77.999 C-16.971,100.869 5.305,136.163 40.000,130.999 Z"
-                        />
-                      </svg>
-                      <i className="fas fa-users" />
-                    </div>
-                    <div className="listghor_info">
-                      <h4>Choose what to do</h4>
-                      <p>
-                        Lorem Ipsum is simply dummy text of the printing ad and
-                        type setting industry. Lorem Ipsum has been the
-                        industry's standa dummy{" "}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12">
-                  <div className="work_box iconshape_5">
-                    <div className="listghor_icon">
-                      <svg id="icon_shape_3" width="190px" height="155px">
-                        {" "}
-                        <path
-                          fillRule="evenodd"
-                          fill="rgb(254, 61, 108)"
-                          d="M1.408,30.506 C2.937,19.614 14.059,-2.593 38.972,0.312 C63.886,3.217 81.159,26.025 117.240,22.345 C153.322,18.666 174.283,29.027 184.698,49.575 C195.113,70.122 187.182,93.311 173.757,106.790 C160.332,120.270 140.621,119.716 125.667,121.237 C110.712,122.756 101.703,129.768 87.347,142.693 C72.990,155.617 57.211,158.484 45.141,148.670 C33.071,138.856 36.060,105.062 33.155,95.346 C30.250,85.630 15.400,75.334 9.290,64.627 C3.180,53.919 -0.712,45.614 1.408,30.506 Z"
-                        />
-                      </svg>
-                      <svg id="icon_shape_4" width="181px" height="178px">
-                        <path
-                          fillRule="evenodd"
-                          opacity="0.102"
-                          fill="rgb(254, 61, 108)"
-                          d="M40.000,130.999 C70.202,126.504 77.354,139.303 106.000,161.000 C134.645,182.696 166.883,182.421 179.000,160.000 C184.397,150.012 174.531,136.702 168.000,108.999 C161.469,81.297 177.483,52.529 169.000,26.999 C163.521,10.511 125.435,-10.014 94.000,5.999 C52.582,27.098 75.895,41.827 19.000,77.999 C-16.971,100.869 5.305,136.163 40.000,130.999 Z"
-                        />
-                      </svg>
-                      <i className="fas fa-map-marked-alt" />
-                    </div>
-                    <div className="listghor_info">
-                      <h4>Find what you want</h4>
-                      <p>
-                        Lorem Ipsum is simply dummy text of the printing ad and
-                        type setting industry. Lorem Ipsum has been the
-                        industry's standa dummy{" "}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12">
-                  <div className="work_box">
-                    <div className="listghor_icon">
-                      <svg id="icon_shape_5" width="190px" height="155px">
-                        {" "}
-                        <path
-                          fillRule="evenodd"
-                          fill="rgb(254, 61, 108)"
-                          d="M1.408,30.506 C2.937,19.614 14.059,-2.593 38.972,0.312 C63.886,3.217 81.159,26.025 117.240,22.345 C153.322,18.666 174.283,29.027 184.698,49.575 C195.113,70.122 187.182,93.311 173.757,106.790 C160.332,120.270 140.621,119.716 125.667,121.237 C110.712,122.756 101.703,129.768 87.347,142.693 C72.990,155.617 57.211,158.484 45.141,148.670 C33.071,138.856 36.060,105.062 33.155,95.346 C30.250,85.630 15.400,75.334 9.290,64.627 C3.180,53.919 -0.712,45.614 1.408,30.506 Z"
-                        />
-                      </svg>
-                      <svg id="icon_shape_6" width="181px" height="178px">
-                        <path
-                          fillRule="evenodd"
-                          opacity="0.102"
-                          fill="rgb(254, 61, 108)"
-                          d="M40.000,130.999 C70.202,126.504 77.354,139.303 106.000,161.000 C134.645,182.696 166.883,182.421 179.000,160.000 C184.397,150.012 174.531,136.702 168.000,108.999 C161.469,81.297 177.483,52.529 169.000,26.999 C163.521,10.511 125.435,-10.014 94.000,5.999 C52.582,27.098 75.895,41.827 19.000,77.999 C-16.971,100.869 5.305,136.163 40.000,130.999 Z"
-                        />
-                      </svg>
-                      <i className="fas fa-compass" />
-                    </div>
-                    <div className="listghor_info">
-                      <h4>Explore amazing place</h4>
-                      <p>
-                        Lorem Ipsum is simply dummy text of the printing ad and
-                        type setting industry. Lorem Ipsum has been the
-                        industry's standa dummy{" "}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* End how_it_work section */}
-          {/* Start explore_city section */}
-          <section className="explore_place listing_style_v2 section_padding">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-6 col-md-8 col-sm-12">
-                  <div className="listghor_title text-center">
-                    <h2>EXPLORE YOUR CITY</h2>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* <div className="place_slider">
-                <div className="listing_item_box">
-                  <div className="listghor_img">
-                    <img src="assets/images/place_13.jpg" alt="" />
-                    <a href="listing_details.html" className="overlay_img" />
-                    <div className="overlay_content">
-                      <ul>
-                        <li className="icon">
-                          <a href="#">
-                            <i className="far fa-building" />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="overlay_btn">
-                            173 Listing
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="listing_info">
-                    <div className="post_info">
-                      <h3>
-                        <a href="listing_details.html">Caravela Beach Resort</a>
-                      </h3>
-                      <h4 className="price">10.00</h4>
-                      <p className="location">Al Mankhool Road, Dubai</p>
-                      <p className="phone">
-                        <a href="tel:+123456789">+123 456 789</a>0
-                      </p>
-                    </div>
-                    <div className="post_meta">
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <i className="fas fa-home" />
-                            Real Estate
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="open_btn">
-                            open now
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="listing_item_box">
-                  <div className="listghor_img">
-                    <img src="assets/images/place_14.jpg" alt="" />
-                    <a href="listing_details.html" className="overlay_img" />
-                    <div className="overlay_content">
-                      <ul>
-                        <li className="icon">
-                          <a href="#">
-                            <i className="fas fa-luggage-cart" />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="overlay_btn">
-                            173 Listing
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="listing_info">
-                    <div className="post_info">
-                      <h3>
-                        <a href="listing_details.html">
-                          Quality Inn Ocean Palms
-                        </a>
-                      </h3>
-                      <h4 className="price">20.00</h4>
-                      <p className="location">Al Mankhool Road, Dubai</p>
-                      <p className="phone">
-                        <a href="tel:+123456789">+123 456 789</a>
-                      </p>
-                    </div>
-                    <div className="post_meta">
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <i className="fas fa-home" />
-                            Real Estate
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="close_btn">
-                            Close now
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="listing_item_box">
-                  <div className="listghor_img">
-                    <img src="assets/images/place_15.jpg" alt="" />
-                    <a href="listing_details.html" className="overlay_img" />
-                    <div className="overlay_content">
-                      <ul>
-                        <li className="icon">
-                          <a href="#">
-                            <i className="fas fa-spa" />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="overlay_btn">
-                            173 Listing
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="listing_info">
-                    <div className="post_info">
-                      <h3>
-                        <a href="listing_details.html">
-                          Royal Orchid Beach Resort
-                        </a>
-                      </h3>
-                      <h4 className="price">30.00</h4>
-                      <p className="location">Al Mankhool Road, Dubai</p>
-                      <p className="phone">
-                        <a href="tel:+123456789">+123 456 789</a>
-                      </p>
-                    </div>
-                    <div className="post_meta">
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <i className="fas fa-home" />
-                            Real Estate
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="open_btn">
-                            open now
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="listing_item_box">
-                  <div className="listghor_img">
-                    <img src="assets/images/place_14.jpg" alt="" />
-                    <a href="listing_details.html" className="overlay_img" />
-                    <div className="overlay_content">
-                      <ul>
-                        <li className="icon">
-                          <a href="#">
-                            <i className="fas fa-glass-cheers" />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="overlay_btn">
-                            173 Listing
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="listing_info">
-                    <div className="post_info">
-                      <h3>
-                        <a href="listing_details.html">
-                          WelcomHeritage Panjim Pousada
-                        </a>
-                      </h3>
-                      <h4 className="price">40.00</h4>
-                      <p className="location">Al Mankhool Road, Dubai</p>
-                      <p className="phone">
-                        <a href="tel:+123456789">+123 456 789</a>
-                      </p>
-                    </div>
-                    <div className="post_meta">
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <i className="fas fa-home" />
-                            Real Estate
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="open_btn">
-                            open now
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="listing_item_box">
-                  <div className="listghor_img">
-                    <img src="assets/images/place_13.jpg" alt="" />
-                    <a href="listing_details.html" className="overlay_img" />
-                    <div className="overlay_content">
-                      <ul>
-                        <li className="icon">
-                          <a href="#">
-                            <i className="fas fa-shopping-bag" />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="overlay_btn">
-                            173 Listing
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="listing_info">
-                    <div className="post_info">
-                      <h3>
-                        <a href="listing_details.html">Bogmallo Beach Resor</a>
-                      </h3>
-                      <h4 className="price">50.00</h4>
-                      <p className="location">Al Mankhool Road, Dubai</p>
-                      <p className="phone">
-                        <a href="tel:+123456789">+123 456 789</a>
-                      </p>
-                    </div>
-                    <div className="post_meta">
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <i className="fas fa-home" />
-                            Real Estate
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="open_btn">
-                            open now
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-              <Carousel />
-            </div>
-          </section>
-          {/* End explore_city section */}
-          {/* Srart listghor_team section */}
-          <section className="listghor_team_v2 section_padding light_bg">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-6 col-md-8 col-sm-12">
-                  <div className="listghor_title text-center">
-                    <h2>our creative team</h2>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-lg-3 col-md-6 col-sm-12">
-                  <div className="team_box wow fadeInUp">
-                    <div className="listghor_img team_img">
-                      <img
-                        src="assets/images/team_9.jpg"
-                        className="img-fluid"
-                        alt=""
-                      />
-                      <div className="team_social">
-                        <ul>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-facebook-f" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-twitter" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-linkedin-in" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-instagram" />
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="team_info">
-                      <div className="team_text">
-                        <h4>Ronald M. Steil</h4>
-                        <p>CEO &amp; Funder</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-6 col-sm-12">
-                  <div className="team_box wow fadeInUp">
-                    <div className="listghor_img team_img">
-                      <img
-                        src="assets/images/team_10.jpg"
-                        className="img-fluid"
-                        alt=""
-                      />
-                      <div className="team_social">
-                        <ul>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-facebook-f" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-twitter" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-linkedin-in" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-instagram" />
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="team_info">
-                      <div className="team_text">
-                        <h4>Mitzi A. Gamble</h4>
-                        <p>Web Developer</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-6 col-sm-12">
-                  <div className="team_box wow fadeInUp">
-                    <div className="listghor_img team_img">
-                      <img
-                        src="assets/images/team_11.jpg"
-                        className="img-fluid"
-                        alt=""
-                      />
-                      <div className="team_social">
-                        <ul>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-facebook-f" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-twitter" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-linkedin-in" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-instagram" />
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="team_info">
-                      <div className="team_text">
-                        <h4>Thomas Stafford</h4>
-                        <p>Graphics Designer</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-6 col-sm-12">
-                  <div className="team_box wow fadeInUp">
-                    <div className="listghor_img team_img">
-                      <img
-                        src="assets/images/team_12.jpg"
-                        className="img-fluid"
-                        alt=""
-                      />
-                      <div className="team_social">
-                        <ul>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-facebook-f" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-twitter" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-linkedin-in" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-instagram" />
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="team_info">
-                      <div className="team_text">
-                        <h4>Araceli J. Garcia</h4>
-                        <p>Digital Marketer</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* End listghor_team section */}
-          {/* Start listghor_blog section */}
-          <section className="listghor_blog_v2 section_padding">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-6 col-md-8 col-sm-12">
-                  <div className="listghor_title text-center">
-                    <h2>latest News</h2>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-lg-6 col-md-6 col-sm-12">
-                  <div className="blog_box wow fadeInUp">
-                    <div className="listghor_img">
-                      <a href="blog_details.html">
-                        <img
-                          src="assets/images/blog_19.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="blog_info">
-                      <div className="post_text">
-                        <h2>
-                          <a href="blog_details.html">
-                            Jirono Expands the Leadership Team David Lin,
-                            Controller in cheap gesut the way.
-                          </a>
-                        </h2>
-                        <p>
-                          Mauris tellus sem, ultrices varius nisl at, convallis
-                          iaculis mauris. Sed eget sem vitae purus tempus
-                          dignissim.Mauris tellus sem, ultrices varius nisl at,
-                          convallis iaculis mauris.{" "}
-                        </p>
-                        <a href="blog_details.html" className="listghor_link">
-                          Read more
-                        </a>
-                      </div>
-                      <div className="post_meta">
-                        <a href="#" className="date">
-                          <i className="far fa-calendar-alt" />
-                          18 Apr,2019
-                        </a>
-                        <a href="#" className="comment">
-                          <i className="far fa-comments" />
-                          22 Comments
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 col-md-6 col-sm-12">
-                  <div className="blog_box wow fadeInUp">
-                    <div className="listghor_img">
-                      <a href="blog_details.html">
-                        <img
-                          src="assets/images/blog_20.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="blog_info">
-                      <div className="post_text">
-                        <h2>
-                          <a href="blog_details.html">
-                            Jirono Expands the Leadership Team David Lin,
-                            Controller in cheap gesut the way.
-                          </a>
-                        </h2>
-                        <p>
-                          Mauris tellus sem, ultrices varius nisl at, convallis
-                          iaculis mauris. Sed eget sem vitae purus tempus
-                          dignissim.Mauris tellus sem, ultrices varius nisl at,
-                          convallis iaculis mauris.{" "}
-                        </p>
-                        <a href="blog_details.html" className="listghor_link">
-                          Read more
-                        </a>
-                      </div>
-                      <div className="post_meta">
-                        <a href="#" className="date">
-                          <i className="far fa-calendar-alt" />
-                          18 Apr,2019
-                        </a>
-                        <a href="#" className="comment">
-                          <i className="far fa-comments" />
-                          22 Comments
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 col-md-6 col-sm-12">
-                  <div className="blog_box wow fadeInUp">
-                    <div className="listghor_img">
-                      <a href="blog_details.html">
-                        <img
-                          src="assets/images/blog_21.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="blog_info">
-                      <div className="post_text">
-                        <h2>
-                          <a href="blog_details.html">
-                            Jirono Expands the Leadership Team David Lin,
-                            Controller in cheap gesut the way.
-                          </a>
-                        </h2>
-                        <p>
-                          Mauris tellus sem, ultrices varius nisl at, convallis
-                          iaculis mauris. Sed eget sem vitae purus tempus
-                          dignissim.Mauris tellus sem, ultrices varius nisl at,
-                          convallis iaculis mauris.{" "}
-                        </p>
-                        <a href="blog_details.html" className="listghor_link">
-                          Read more
-                        </a>
-                      </div>
-                      <div className="post_meta">
-                        <a href="#" className="date">
-                          <i className="far fa-calendar-alt" />
-                          18 Apr,2019
-                        </a>
-                        <a href="#" className="comment">
-                          <i className="far fa-comments" />
-                          22 Comments
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6 col-md-6 col-sm-12">
-                  <div className="blog_box blog_box_5 wow fadeInUp">
-                    <div className="listghor_img">
-                      <a href="blog_details.html">
-                        <img
-                          src="assets/images/blog_22.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="blog_info">
-                      <div className="post_text">
-                        <h2>
-                          <a href="blog_details.html">
-                            Jirono Expands the Leadership Team David Lin,
-                            Controller in cheap gesut the way.
-                          </a>
-                        </h2>
-                        <p>
-                          Mauris tellus sem, ultrices varius nisl at, convallis
-                          iaculis mauris. Sed eget sem vitae purus tempus
-                          dignissim.Mauris tellus sem, ultrices varius nisl at,
-                          convallis iaculis mauris.{" "}
-                        </p>
-                        <a href="blog_details.html" className="listghor_link">
-                          Read more
-                        </a>
-                      </div>
-                      <div className="post_meta">
-                        <a href="#" className="date">
-                          <i className="far fa-calendar-alt" />
-                          18 Apr,2019
-                        </a>
-                        <a href="#" className="comment">
-                          <i className="far fa-comments" />
-                          22 Comments
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* End listghor-blog section */}
-          {/* Start listghor_client section */}
-          <section className="listghor_testimonial_v2 section_padding light_bg">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-6 col-md-8 col-sm-12">
-                  <div className="listghor_title text-center">
-                    <h2>WHAT OUR CLIENT SAY</h2>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="row justify-content-center">
-                <div className="col-lg-12">
-                  <div className="client_slider_2">
-                    <div className="client_review_box client_review_box_2">
-                      <div className="client_admin">
-                        <div className="avatar_thumb">
-                          <img src="assets/images/admin_2.jpg" alt="" />
-                        </div>
-                        <div className="avatar_text">
-                          <h4>JOHN DOE</h4>
-                          <h6>Co Founder &amp; CEO</h6>
-                          <ul className="rateing_star">
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star-half-alt" />
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="client_text">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Sint molestiae distinctio culpa qui reiciendis
-                          eveniet enim, nemo velit repudiandae unde!
-                        </p>
-                      </div>
-                    </div>
-                    <div className="client_review_box client_review_box_2">
-                      <div className="client_admin">
-                        <div className="avatar_thumb">
-                          <img src="assets/images/admin_3.jpg" alt="" />
-                        </div>
-                        <div className="avatar_text">
-                          <h4>JOHN DOE</h4>
-                          <h6>Co Founder &amp; CEO</h6>
-                          <ul className="rateing_star">
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star-half-alt" />
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="client_text">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Sint molestiae distinctio culpa qui reiciendis
-                          eveniet enim, nemo velit repudiandae unde!
-                        </p>
-                      </div>
-                    </div>
-                    <div className="client_review_box client_review_box_2">
-                      <div className="client_admin">
-                        <div className="avatar_thumb">
-                          <img src="assets/images/admin_4.jpg" alt="" />
-                        </div>
-                        <div className="avatar_text">
-                          <h4>JOHN DOE</h4>
-                          <h6>Co Founder &amp; CEO</h6>
-                          <ul className="rateing_star">
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star-half-alt" />
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="client_text">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Sint molestiae distinctio culpa qui reiciendis
-                          eveniet enim, nemo velit repudiandae unde!
-                        </p>
-                      </div>
-                    </div>
-                    <div className="client_review_box client_review_box_2">
-                      <div className="client_admin">
-                        <div className="avatar_thumb">
-                          <img src="assets/images/admin_2.jpg" alt="" />
-                        </div>
-                        <div className="avatar_text">
-                          <h4>JOHN DOE</h4>
-                          <h6>Co Founder &amp; CEO</h6>
-                          <ul className="rateing_star">
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star-half-alt" />
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="client_text">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Sint molestiae distinctio culpa qui reiciendis
-                          eveniet enim, nemo velit repudiandae unde!
-                        </p>
-                      </div>
-                    </div>
-                    <div className="client_review_box client_review_box_2">
-                      <div className="client_admin">
-                        <div className="avatar_thumb">
-                          <img src="assets/images/admin_2.jpg" alt="" />
-                        </div>
-                        <div className="avatar_text">
-                          <h4>JOHN DOE</h4>
-                          <h6>Co Founder &amp; CEO</h6>
-                          <ul className="rateing_star">
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star-half-alt" />
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="client_text">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Sint molestiae distinctio culpa qui reiciendis
-                          eveniet enim, nemo velit repudiandae unde!
-                        </p>
-                      </div>
-                    </div>
-                    <div className="client_review_box client_review_box_2">
-                      <div className="client_admin">
-                        <div className="avatar_thumb">
-                          <img src="assets/images/admin_2.jpg" alt="" />
-                        </div>
-                        <div className="avatar_text">
-                          <h4>JOHN DOE</h4>
-                          <h6>Co Founder &amp; CEO</h6>
-                          <ul className="rateing_star">
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star-half-alt" />
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="client_text">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Sint molestiae distinctio culpa qui reiciendis
-                          eveniet enim, nemo velit repudiandae unde!
-                        </p>
-                      </div>
-                    </div>
-                    <div className="client_review_box client_review_box_2">
-                      <div className="client_admin">
-                        <div className="avatar_thumb">
-                          <img src="assets/images/admin_2.jpg" alt="" />
-                        </div>
-                        <div className="avatar_text">
-                          <h4>JOHN DOE</h4>
-                          <h6>Co Founder &amp; CEO</h6>
-                          <ul className="rateing_star">
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star" />
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fas fa-star-half-alt" />
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="client_text">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Sint molestiae distinctio culpa qui reiciendis
-                          eveniet enim, nemo velit repudiandae unde!
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* End listghor_client section */}
-          {/* Start listghor_contact section */}
-          <section className="listing_contact_v1 section_padding">
-            <div className="container">
-              <div className="row align-items-center">
-                <div className="col-lg-6">
-                  <div className="listghor_img_box contact_img_box">
-                    <div className="contact_img listghor_img">
-                      <img
-                        src="assets/images/contact_1.png"
-                        className="contact_img_1 img-fluid"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="listghor_content_box contact_content_box">
-                    <div className="contact_title">
-                      <h2>GET IN TOUCH</h2>
-                      <p>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy
-                      </p>
-                    </div>
-                    <div className="contact_form">
-                      <form>
-                        <div className="form_gorup">
-                          <input
-                            type="text"
-                            className="form_control"
-                            placeholder="Your name"
-                            required
-                          />
-                        </div>
-                        <div className="form_gorup">
-                          <input
-                            type="email"
-                            className="form_control"
-                            placeholder="Your email"
-                            required
-                          />
-                        </div>
-                        <div className="form_gorup">
-                          <textarea
-                            name="message"
-                            className="form_control"
-                            placeholder="Your message"
-                            required
-                            defaultValue={""}
-                          />
-                        </div>
-                        <div className="form_button">
-                          <button
-                            type="submit"
-                            className="listghor_btn form_btn"
-                          >
-                            submit
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* End listghor_contact section */}
-          {/* Start listghor_foooter */}
-          {/* <footer
-            className="listghor_foooter foooter_v2 bg_image"
-            style={{ backgroundImage: "url(assets/images/footer_bg_1.jpg)" }}
-          >
-            <div className="listghor_overlay" />
-            <div className="container">
-              <div className="footer_widget_wrapper">
-                <div className="row">
-                  <div className="col-lg-3 col-md-6 col-sm-12">
-                    <div className="widget_box about_widget wow fadeInUp">
-                      <div className="widget_title">
-                        <img
-                          src="assets/images/logo.png"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </div>
-                      <div className="widget_content">
-                        <p>
-                          Lorem Ipsum is simply duammy text of the printing
-                          aadnd type an setting industry.{" "}
-                        </p>
-                        <ul className="social_link">
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-facebook-f" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-twitter" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-linkedin-in" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i className="fab fa-google-plus-g" />
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 offset-lg-1 col-md-6 col-sm-12">
-                    <div className="widget_box widget_link wow fadeInUp">
-                      <div className="widget_title">
-                        <h4>Useful Links</h4>
-                      </div>
-                      <ul className="widget_list">
-                        <li>
-                          <a href="#">Categories</a>
-                        </li>
-                        <li>
-                          <a href="#">Listing</a>
-                        </li>
-                        <li>
-                          <a href="#">Testmonial</a>
-                        </li>
-                        <li>
-                          <a href="#">Appointment</a>
-                        </li>
-                        <li>
-                          <a href="#">Blog Post</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="col-lg-2 col-md-6 col-sm-12">
-                    <div className="widget_box widget_link wow fadeInUp">
-                      <div className="widget_title">
-                        <h4>About us</h4>
-                      </div>
-                      <ul className="widget_list">
-                        <li>
-                          <a href="#">Contact Us</a>
-                        </li>
-                        <li>
-                          <a href="#">Expert Team</a>
-                        </li>
-                        <li>
-                          <a href="#">Review</a>
-                        </li>
-                        <li>
-                          <a href="#">Faq Question</a>
-                        </li>
-                        <li>
-                          <a href="#">Blog Post</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-md-6 col-sm-12">
-                    <div className="widget_box contact_widget wow fadeInUp">
-                      <div className="widget_title">
-                        <h4>Contact Us</h4>
-                      </div>
-                      <div className="contact_list">
-                        <div className="list_icon">
-                          <i className="fas fa-map-marker-alt" />
-                        </div>
-                        <div className="list_info">
-                          <p>
-                            {" "}
-                            360 Harvest ST,North subtract <br />
-                            LondonUnited States of America
-                          </p>
-                        </div>
-                      </div>
-                      <div className="contact_list">
-                        <div className="list_icon">
-                          <i className="far fa-envelope" />
-                        </div>
-                        <div className="list_info">
-                          <p>
-                            <a href="mailto:listghortemplete@gmail.com">
-                              listghortemplete@gmail.com
-                            </a>
-                          </p>
-                        </div>
-                      </div>
-                      <div className="contact_list">
-                        <div className="list_icon">
-                          <i className="fas fa-phone" />
-                        </div>
-                        <div className="list_info">
-                          <p>
-                            <a href="tel:3837389227717">3837 3892 27717</a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="footer_copyright">
-                <div className="row">
-                  <div className="col-lg-6 col-md-6 col-sm-12">
-                    <div className="copyright_text">
-                      <p>Copyright ©2019 Designed by listghor</p>
-                    </div>
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12">
-                    <div className="copyright_link">
-                      <ul>
-                        <li>
-                          <a href="#">Privace &amp; Policy</a>
-                        </li>
-                        <li>
-                          <a href="#">Faq</a>
-                        </li>
-                        <li>
-                          <a href="#">Terms</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer> */}
-          {/* End listghor_foooter */}
-          {/* scroll_top */}
-          
-          {/* jquery  */}
-          {/*modernizr js*/}
-          {/* bootstrap js */}
-          {/* popper js */}
-          {/* slick slider js */}
-          {/* magnific popup js */}
-          {/* isotope js */}
-          {/* imagesloaded js */}
-          {/* couterup js */}
-          {/* jquery_ui js */}
-          {/* sidebar js */}
-          {/* nice select js */}
-          {/* wow js */}
-          {/* main js */}
-        </div>
     );
   }
 }
 
-export default Template;
+export default Home;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import OwlCarousel from "react-owl-carousel";
 
 //components
-import PremiumCard from "./PremiumCard";
+import Card from "./Card";
 
 //styles
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -17,17 +17,17 @@ export class AutoCarousel extends Component {
         <div className="container-fluid">
           <OwlCarousel
             margin={16}
-            className="owl-theme premium"
+            className="owl-theme"
             loop
             responsive={{
               1200: {
-                items: 3,
+                items: 4,
               },
-              768: {
-                items: 2,
+              768:{
+                items: 3
               },
               0: {
-                items: 1,
+                items: 2,
               },
             }}
             autoplay={true}
@@ -47,12 +47,12 @@ export class AutoCarousel extends Component {
             autoplaySpeed={2500}
             autoplayTimeout={10000}
           >
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
           </OwlCarousel>
         </div>
       </div>

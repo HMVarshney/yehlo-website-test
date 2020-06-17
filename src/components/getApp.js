@@ -4,7 +4,7 @@ const GetApp = () => {
     return ( 
         <>
         <section class="listghor_login section_padding wow fadeInUp">
-			<div class="container">
+			<div id='hm' class="container">
 				<div class="listghor_wrapper_form">
 					<div class="wrapper_form_left bg_image" style={{backgroundImage: "url(assets/images/login_bg.jpg)"}}>
 						<div class="content_text">
