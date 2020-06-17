@@ -14,8 +14,8 @@ const Navigationbar = () => {
 
     useEffect(() => {
         const onScroll = () => {
-            setSearchVisible(window.scrollY > 800);
-            window.scrollY>800 ? document.getElementById('navbar').style.background = 'rgb(255,255,255)' : document.getElementById('navbar').style.background = 'transparent';
+            setSearchVisible(window.scrollY > 500);
+            window.scrollY>500 ? document.getElementById('navbar').style.background = 'rgb(255,255,255)' : document.getElementById('navbar').style.background = 'transparent';
             // setScroll(window.scrollY)
         }
         window.addEventListener("scroll", onScroll);;    

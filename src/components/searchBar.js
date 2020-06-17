@@ -32,7 +32,7 @@ const SearchBar = (props) => {
     }
 
     return (
-        <Paper style={{borderRadius:'50px', paddingTop:'10px'}}>
+        <Paper style={{borderRadius:'50px', paddingTop:'10px'}} className='d-none d-md-block'>
         <div className='row justify-content-center'>  
         <div className='col-10'>
             <Grid container justify='center' alignItems='center' spacing={5}>
@@ -97,7 +97,7 @@ const SearchBar = (props) => {
                         </Box> }
                         </Grid>
                 <Grid item>
-                    <Button startIcon={<SearchOutlinedIcon />} style={{borderRadius:'50px'}} className='pt-2 pb-2' variant='outlined' color='primary'> Search</Button>
+                    <Button href='/listings' startIcon={<SearchOutlinedIcon />} style={{borderRadius:'50px'}} className='pt-2 pb-2' variant='outlined' color='primary'> Search</Button>
                 </Grid>
             </Grid>
         </div></div>
