@@ -199,18 +199,6 @@
 	border-radius: 50px;
 }
 
-@media screen and (max-width: 992px){
-	.tags_list{
-		display: none;
-	}
-
-	.search_bar_dropdown_price{
-		position: absolute;
-		right:60px;
-		width: 60%;
-	}
-}
-
 .price_textfield{
 	background: transparent;
 }
@@ -232,4 +220,23 @@
 	border-radius: 50px;
 	background-color:#2e242c;
 	height: 35px;
+}
+
+
+@media screen and (max-width: 992px){
+	.tags_list{
+		display: none;
+	}
+
+	.search_bar_dropdown_price{
+		position: absolute;
+		right:60px;
+		width: 60%;
+	}
+}
+
+@media screen and (min-width: 991px){
+	.search_modal_price_textfields{
+		display:flex;
+	}
 }

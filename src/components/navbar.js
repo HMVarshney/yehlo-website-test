@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {Navbar, NavbarToggler, Collapse, NavItem, NavbarBrand, Nav, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
-import { Link } from 'react-router-dom';
+import {Navbar, NavbarToggler, Collapse, NavItem, NavbarBrand, Nav, NavLink} from 'reactstrap';
 import SearchModal from './searchModal';
-import SearchBase from './searchBase';
 import { TextField, InputAdornment } from '@material-ui/core';
 
 //icons
@@ -13,7 +11,6 @@ const Navigationbar = () => {
     const [searchVisible, setSearchVisible] = useState(false);
     const [navOpen, setNavOpen] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
-    const [collegeDropdownOpen, setDropdown] = useState(false);
 
     useEffect(() => {
         const onScroll = () => {
@@ -67,20 +64,6 @@ const Navigationbar = () => {
         </>
      );
 }
-
-const CollegeDropdown = (props) => {
-    return(
-        <Dropdown inNavbar isOpen={props.open} toggle={() => props.handleOpen(!props.open)} >
-            <DropdownToggle className='offset-md-0 offset-1 width' color='dark' caret style={{width:'100%'}}> Choose your College </DropdownToggle>
-            <DropdownMenu className='college_list_dropdown_menu'>
-                {props.data.map((college,i)=>(
-                    <DropdownItem key={i} className='college_list_dropdown_item' tag='span'><a href='/listings'>{college}</a></DropdownItem>
-                ))}
-            </DropdownMenu>
-        </Dropdown>
-    );
-}
-
  
 const SearchBar = (props) => {
 

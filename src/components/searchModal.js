@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Typography, Box, Tabs, Tab, Button, Slider, FormControlLabel, Checkbox } from '@material-ui/core';
+import { TextField, Typography, Box, Button, Slider, FormControlLabel, Checkbox } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { Modal, ModalBody, ModalHeader, ModalFooter, TabContent, TabPane, Nav, NavItem, NavLink} from 'reactstrap';
 import SearchBase from './searchBase';
@@ -22,17 +22,17 @@ const SearchModal = (props) => {
                     <Nav tabs>
                         <NavItem>
                             <NavLink onClick={() => setActiveTab('1') } active={activeTab==='1'}>
-                                Categories
+                                <span className='fa fa-list mr-1' />Categories
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink onClick={() => setActiveTab('2')} active={activeTab==='2'}>
-                                Location / College
+                                <span className='fa fa-location-arrow mr-1' />Location
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink onClick={() => setActiveTab('3') } active={activeTab==='3'}>
-                                Budget
+                                <span className='fa fa-money-bill mr-1' />Budget
                             </NavLink>
                         </NavItem>
                     </Nav>
@@ -69,11 +69,14 @@ const SearchModal = (props) => {
                         <TabPane tabId='3'>
                             <Typography>Price Range: </Typography>
                             <br />
-                            <TextField size='small' label='Min Price' variant='outlined' value={searchAttr.priceValue[0]} />  
-                             <TextField className='mt-lg-0 mt-sm-2' size='small' label='Max Price' variant='outlined' value={searchAttr.priceValue[1]} />
-                            
+                            <div className='search_modal_price_textfields'>
+                                <div><TextField size='small' label='Min Price' variant='outlined' 
+                                    value={searchAttr.priceValue[0]} onChange={(event)=>setSearchAttr({...searchAttr, priceValue: [event.target.value, searchAttr.priceValue[1]]})} /></div>  
+                                <div className='mt-lg-0 mt-2 ml-0 ml-lg-2'><TextField className='mt-lg-0 mt-sm-2' size='small' label='Max Price' variant='outlined' 
+                                    value={searchAttr.priceValue[1]} onChange={(event)=>setSearchAttr({...searchAttr, priceValue:[searchAttr.priceValue[0],event.target.value]})} /></div>
+                            </div>
                             <br /><br />
-                            <div style={{width:'50%'}}>
+                            <div style={{width:'50%'}}> 
                             <Slider style={{width:'100%'}} value={searchAttr.priceValue} 
                                 onChange={(event,newValue)=>{ setSearchAttr({...searchAttr, priceValue:newValue})}}
                             aria-labelledby="range-slider" valueLabelDisplay='auto' step={500} max={20000} /> 
@@ -83,7 +86,7 @@ const SearchModal = (props) => {
                     </TabContent>
                 </ModalBody>
                 <ModalFooter>
-                    <Button href={`/listings/?items=${searchAttr.category}&college=${searchAttr.college}&max-price=${searchAttr.priceValue[1]}&min-price=${searchAttr.priceValue[0]}`} variant='contained' color='primary'><span className='fa fa-search'/> Search</Button>
+                    <Button href={`/listings/?items=${searchAttr.category}&college=${searchAttr.college}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} variant='contained' color='primary'><span className='fa fa-search'/> Search</Button>
                 </ModalFooter>
             </div>
         </Modal>

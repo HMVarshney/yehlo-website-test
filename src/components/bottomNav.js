@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar, NavItem, Nav } from 'reactstrap';
-import { Button, withStyles } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 
 //icons
@@ -15,12 +15,6 @@ const BottomNav = () => {
         }
         window.addEventListener('scroll', onScroll);
     });
-
-    const NavButton = withStyles(() => ({
-        root: {
-          borderRadius: '50%',
-        },
-      }))(Button);
 
     if(display){
     return ( 

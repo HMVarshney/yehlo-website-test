@@ -15,11 +15,11 @@ const Listings = (props) => {
     if(searchQuery.items!=='all'&& Object.keys(searchQuery).length > 0){
         productToShow = buyProducts.filter((product)=>{
             return product.type===searchQuery.items
-        })
-    }
+                &&parseInt(product.price)>searchQuery.minprice
+                &&parseInt(product.price)<searchQuery.maxprice;
+        });
+    };
     
-    console.log(searchQuery, productToShow)
-
     return(
         <div>
             <div className='pl-3 pr-3 p-lg-0'>
@@ -30,7 +30,7 @@ const Listings = (props) => {
                     </div>
                 </Jumbotron>
             </div>
-
+            <br />
             <div className='container'>
                 <h3 style={{textAlign:'center'}}>Search Results</h3>
 
@@ -150,37 +150,5 @@ export default Listings;
 //     );
 // }
 
-// const RenderListings = (props) => {
-//     return(
-//         <div class="col-lg-4 col-md-4 col-12">
-//             <div class="listing_item_box wow fadeInUp">
-//                 <div class="listghor_img">
-//                     <img src='/assets/images/blog_3.jpg' alt="Product Image" />
-//                     <div class="overlay_img"></div>
-//                         <div class="overlay_content">
-//                             <ul>
-//                                 <li><a href="listing_details.html" class="overlay_btn">205 listing</a></li>
-//                             </ul>
-//                         </div>
-//                     </div>
-//                     <div class="listing_info">
-//                         <div class="post_info">
-//                             <h3><a href={`/details`} style={{textDecoration:'none'}}>Product Name</a></h3>
-//                             <h4 class="price">Product Price</h4>
-//                             <p class="location">Product Location</p>
-//                     </div>
-//                     <div class="post_meta">
-//                         <ul>
-//                             <li class="star"><a href="#"><i class="fas fa-star"></i>4.5</a></li>
-//                             <li class="icon"><a href="#"><i class="far fa-comment-alt"></i></a></li>
-//                             <li class="icon"><a href="#"><i class="fas fa-phone"></i></a></li>
-//                             <li class="icon"><a href="#"><i class="far fa-envelope"></i></a></li>
-//                             <li class="icon"><i class="fa fa-info-circle"></i></li>
-//                         </ul>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>        
-//     );
-// }
+
 

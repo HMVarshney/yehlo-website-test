@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Autocomplete } from '@material-ui/lab';
-import {TextField, FormControlLabel, Checkbox, Button, Box, Grid, Paper, Slider, makeStyles, styled} from '@material-ui/core';
+import {TextField, FormControlLabel, Checkbox, Button, Box, Grid, Paper, Slider, makeStyles} from '@material-ui/core';
 import SearchBase from './searchBase';
 
 //icons
@@ -122,7 +122,7 @@ const SearchBar = (props) => {
                 </Grid>
 
                 <Grid item lg={1} className='d-none d-lg-block'>
-                    <Button href={`/listings/?items=${searchAttr.category}&college=${searchAttr.college}&max-price=${searchAttr.priceValue[1]}&min-price=${searchAttr.priceValue[0]}`} 
+                    <Button href={`/listings/?items=${searchAttr.category}&college=${searchAttr.college}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} 
                     startIcon={<SearchOutlinedIcon />} className={classesBB.root} 
                     variant='contained' style={{backgroundColor:'#2e242c', color:'white'}} disabled={searchAttr.category===''?true:false}>Search</Button>
                 </Grid>
@@ -145,49 +145,3 @@ const SearchBar = (props) => {
  
 export default SearchBase(SearchBar);
 
-
-{/* <form>
-            <div className="row">
-                <Autocomplete
-                    id="combo-box-demo"
-                    options={collegeList}
-                    getOptionLabel={(option) => option}
-                    style={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="College" variant="outlined" />} />
-            
-            <div className="col-lg-3">
-                <div className="form_group">
-                <select className="search_select">
-                    <option data-display="location">
-                    Bnagladesh
-                    </option>
-                    <option value={1}>India</option>
-                    <option value={2}>Chaina</option>
-                    <option value={3}>America</option>
-                    <option value={4}>Russia</option>
-                </select>
-                <i className="fas fa-location-arrow" />
-                </div>
-            </div>
-            <div className="col-lg-3">
-                <div className="form_group">
-                <select className="search_select">
-                    <option data-display="Categories">
-                    Real Estate
-                    </option>
-                    <option value={1}>travel</option>
-                    <option value={2}>Beauty &amp; Spa</option>
-                    <option value={3}>Night Club</option>
-                    <option value={4}>Shopping</option>
-                    <option value={4}>Resturaunt</option>
-                </select>
-                <i className="fas fa-list" />
-                </div>
-            </div>
-            <div className="col-lg-2">
-                <div className="filter_button">
-                <button className="search_btn">Search</button>
-                </div>
-            </div>
-            </div>
-</form> */}

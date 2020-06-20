@@ -1,11 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Box, Grid, Paper, Avatar } from '@material-ui/core';
+import { Paper, Avatar } from '@material-ui/core';
 import { BuyProducts } from '../context/context-provider/buyContextProvider';
 import Preloader from './preloader';
-import axios from 'axios';
 import SlickSlider from './slider';
 import BottomNav from './bottomNav';
 
+//icons
 import PersonIcon from '@material-ui/icons/Person';
 
 
@@ -14,12 +14,8 @@ const PGDetails = (props) => {
     const {buyProducts} = useContext(BuyProducts);
 
     useEffect(()=>{
-        // axios.get(`https://us-central1-yehlo-74093.cloudfunctions.net/api/buy/${props.match.params.product_id}`)
-        // .then((response)=>{
-        //     setProductData(response.data.data);
-        // })
         setProductData(buyProducts.filter((product)=>(product.id === props.match.params.product_id))[0]);
-    });
+    },[buyProducts, props.match.params.product_id]);
     
     if(productData){
     return ( 
