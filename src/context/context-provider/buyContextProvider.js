@@ -11,9 +11,9 @@ const BuyProductsProvider = (props) => {
     const getBuyProductsList = async function(){
         await firebase.firestore().collection('SecondHandProducts').get()
             .then((res)=>{
-                const data = res.docs.map((doc)=>doc.data());
-                const newData = data.map((product,i)=>({...product, productId:i, type:'pg'}));
-                dispatch(BuyProductInitDataRequest(newData))
+                const data = res.docs.map((doc)=>{
+                    return {id: doc.id, ...doc.data()}});
+                dispatch(BuyProductInitDataRequest(data))
         },[])
     };
 

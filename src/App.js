@@ -2,13 +2,16 @@ import React from 'react';
 import Navbar from './components/navbar';
 import Listing from './components/listings';
 import About from './components/about';
-import Footer from './components/footer';
+import Footer from './components/Footer';
 import PGDetails from './components/pgDetails.js';
 import Home from './components/Home.js';
-import GetApp from './components/getApp';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
-import BottomNav from './components/bottomNav';
 import AppIcon from './components/AppIcon';
+import GetApp from './components/GetTheApp';
+
+//css
+import styles from "./css/home.module.css";
+import SponseredListings from './components/sponsoredListings';
 
 function App() {
   return (
@@ -21,9 +24,13 @@ function App() {
             <Route exact path='/about' component={About} />
             <Route exact path='/pgdetails/:product_id' component={PGDetails} />
             <Route exact path='/getApp' component={GetApp} />
+            <Route exact path='/sponslistings' component={SponseredListings} />
             <Redirect to='/' />
           </Switch>
-          <AppIcon />
+          <footer className={styles.footer}>
+            <Footer/>
+          </footer>
+          <a href='/getApp'><AppIcon /></a>
         </BrowserRouter>
     </div>
   )

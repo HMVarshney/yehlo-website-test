@@ -4,10 +4,22 @@ import {BuyProducts} from '../context/context-provider/buyContextProvider';
 import Card from './listingsCard.js';
 import Preloader from './preloader';
 import SearchBar from './searchBar';
+import queryString from 'query-string';
 
 const Listings = (props) => {
     // const [filterDropdown, showFilter] = useState(false);
-    const {buyProducts} = useContext(BuyProducts);
+    const { buyProducts } = useContext(BuyProducts);
+    const searchQuery = queryString.parse(props.location.search);
+    let productToShow = buyProducts;
+
+    if(searchQuery.items!=='all'&& Object.keys(searchQuery).length > 0){
+        productToShow = buyProducts.filter((product)=>{
+            return product.type===searchQuery.items
+        })
+    }
+    
+    console.log(searchQuery, productToShow)
+
     return(
         <div>
             <div className='pl-3 pr-3 p-lg-0'>
@@ -20,29 +32,29 @@ const Listings = (props) => {
             </div>
 
             <div className='container'>
-            <h3 style={{textAlign:'center'}}>Search Results</h3>
+                <h3 style={{textAlign:'center'}}>Search Results</h3>
 
-            <div className='mt-3'>
-                <SearchBar />
-            </div>
+                <div className='mt-3'>
+                    <SearchBar />
+                </div>
 
-            <br /> <br />
-            <section class="listing_style_v1 listing_grid_sidebar wow fadeInUp">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="listing_grid_wrapper row animate__animated animate__fadeIn animate__faster">
-                                {/* {buyProducts ? buyProducts.map((productData)=>(
-                                    <RenderListings data={productData}/> 
-                                )) : <div>Loading....</div>} */}
-                                {
-                                    buyProducts ? buyProducts.map((productData,i)=>(
-                                        <Card data={productData} id={i} />
-                                    )) : <Preloader />
-                                }
+                <br /> <br />
+                <section class="listing_style_v1 listing_grid_sidebar wow fadeInUp">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="listing_grid_wrapper row animate__animated animate__fadeIn animate__faster">
+                                    {/* {buyProducts ? buyProducts.map((productData)=>(
+                                        <RenderListings data={productData}/> 
+                                    )) : <div>Loading....</div>} */}
+                                    {
+                                        productToShow ? productToShow.map((productData)=>(
+                                            <Card data={productData} id={productData.id} searchQuery={searchQuery} />
+                                        )) : <Preloader />
+                                    }
+                                </div>
                             </div>
                         </div>
-                    </div>
-            </section>
+                </section>
             </div>
         </div>
     ); 

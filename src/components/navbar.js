@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {Navbar, NavbarToggler, Collapse, NavItem, NavbarBrand, Nav, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
-
 import SearchModal from './searchModal';
+import SearchBase from './searchBase';
+import { TextField, InputAdornment } from '@material-ui/core';
 
+//icons
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 const Navigationbar = () => {
 
@@ -14,8 +17,8 @@ const Navigationbar = () => {
 
     useEffect(() => {
         const onScroll = () => {
-            setSearchVisible(window.scrollY > 500);
-            window.scrollY>500 ? document.getElementById('navbar').style.background = 'rgb(255,255,255)' : document.getElementById('navbar').style.background = 'transparent';
+            setSearchVisible(window.scrollY > 300);
+            window.scrollY>300 ? document.getElementById('navbar').style.background = 'rgb(255,255,255)' : document.getElementById('navbar').style.background = 'transparent';
             // setScroll(window.scrollY)
         }
         window.addEventListener("scroll", onScroll);;    
@@ -84,13 +87,12 @@ const SearchBar = (props) => {
     return(
         <div className='col-md-7 col-6 animate__animated animate__fadeInUp animate__faster'>
         <div className='row justify-content-center offset-md-3'>
-            {/* <button className='search_button'>
-                <i className='fa fa-search nav_search_icon' />
-                <input className='nav_search_box' type='text' placeholder='Search..' />
-            </button> */}
             <button className='search_button' onClick={props.modalOpen}>
-                {/* <span className='d-none d-md-block search_text'>What are you looking for?</span> */}
-                <span className='search_text_span p-lg-5 p-1'><i className='fa fa-search' /><span className='search_text'>Search</span></span>
+                <span className='search_text_span p-lg-5 p-1'>
+                    <TextField InputProps={{startAdornment:(
+                        <InputAdornment><SearchOutlinedIcon /></InputAdornment>
+                    )}} size='small' placeholder='What are you looking for?' variant='outlined' />
+                </span>
             </button>
         </div>
         </div>

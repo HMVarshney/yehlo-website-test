@@ -18,10 +18,8 @@ const PGDetails = (props) => {
         // .then((response)=>{
         //     setProductData(response.data.data);
         // })
-        setProductData(buyProducts.filter((product)=>(product.productId === parseInt(props.match.params.product_id,10)))[0]);
+        setProductData(buyProducts.filter((product)=>(product.id === props.match.params.product_id))[0]);
     });
-
-    console.log(productData)
     
     if(productData){
     return ( 
@@ -83,7 +81,7 @@ const PGDetails = (props) => {
                             <div className='row mb-2'>
                                 <div className='col-6'>
                                 <h3 className='details_title'>{productData.name}</h3>
-                                <h4 className='details_price'><span className='fa fa-rupee-sign details_icon' />{productData.price} /month</h4>
+                                <h4 className='details_price'><span className='fa fa-rupee-sign details_icon pr-1' />{productData.price} /month</h4>
                             </div>
                             <div className='col-6'>
                                 <Avatar style={{float:'right'}} src={productData.sellerImage} alt='seller image' />
@@ -96,8 +94,8 @@ const PGDetails = (props) => {
                         <p className='details_description_text'>Gregor then turned to look out the window at the dull weather. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed kepping not sure over the horizon.</p>
                         
                         {productData.type === 'Second Hand Product' ? null :
-                        <div>
-                        <h5 class="amenities">AMENITIES</h5>
+                        <Paper elevation={4} className='p-3'>
+                            <h5 class="amenities">AMENITIES</h5>
                             <div class="row">
                                 <div class="col-md-4 col-sm-4">
                                     <div class="featured_list">
@@ -127,14 +125,14 @@ const PGDetails = (props) => {
                                     </div>
                                 </div>
                             </div> 
-                        </div>}
+                        </Paper>}
 
                     </div>
                 </div>
 
                 <div className={productData.type==='Second Hand Product' ? 'd-none' : 'col-md-3 mt-lg-0 mt-3'}>
                     <div class="rateing_box">
-                        <Paper elevation={4} className='p-3'>
+                        <Paper elevation={4} className='p-2'>
                         <h4 class="box_title">Ratings</h4>
                         <div class="row align-items-center">
                             <div class="col-12">
@@ -194,7 +192,7 @@ const PGDetails = (props) => {
                             <h5>{productData.address}</h5>
                             <p>{productData.district}</p>
                         </div>
-                        <iframe src={`https://maps.google.com/maps?q=${productData.latitude}, ${productData.longitude}&z=15&output=embed`}></iframe>                        
+                        <iframe title='address' src={`https://maps.google.com/maps?q=${productData.latitude}, ${productData.longitude}&z=15&output=embed`}></iframe>                        
                     </div>
                 </div>
             </div>
@@ -221,7 +219,7 @@ const PGDetails = (props) => {
             <div className='row justify-content-center'>                       
                 <div className='col-md-10 col-12 mt-3'>
                     <div id='customer_reviews' className='customer_reviews'>
-                        <Paper elevation={4} className='p-1'>
+                        <Paper elevation={2} className='p-1'>
                             <div class="listing_details_box comment_area rateing_box">
                                 <h4 class="box_title">Reviews</h4>
                                 <div class="single_comment">
@@ -229,11 +227,9 @@ const PGDetails = (props) => {
                                         <img src="/assets/images/comment_1.jpg" alt="" />
                                     </div>
                                     <div class="comment_info">
-                                        <h5><a href="#">JHON DOE</a></h5>
+                                        <h5>JHON DOE</h5>
                                         <h6>Oct 15, 2018 at 11:00</h6>
                                         <p>My lady mush hanky panky young delinquent lurgy the little rotter in my flat tomfoolery so I said mufty cockup.!</p>
-                                        <a href="#" class="reply">reply</a>
-                                        <a href="#" class="like"><i class="fas fa-thumbs-up"></i>Like</a>
                                     </div>
                                 </div>
                                 <div class="single_comment">
@@ -241,11 +237,9 @@ const PGDetails = (props) => {
                                         <img src="/assets/images/comment_2.jpg" alt="" />
                                     </div>
                                     <div class="comment_info">
-                                        <h5><a href="#">JHON DOE</a></h5>
+                                        <h5>JHON DOE</h5>
                                         <h6>Oct 15, 2018 at 11:00</h6>
                                         <p>My lady mush hanky panky young delinquent lurgy the little rotter in my flat tomfoolery so I said mufty cockup.!</p>
-                                        <a href="#" class="reply">reply</a>
-                                        <a href="#" class="like"><i class="fas fa-thumbs-up"></i>Like</a>
                                     </div>
                                 </div>
                                 <div class="single_comment">
@@ -253,11 +247,9 @@ const PGDetails = (props) => {
                                         <img src="/assets/images/comment_3.jpg" alt="" />
                                     </div>
                                     <div class="comment_info">
-                                        <h5><a href="#">JHON DOE</a></h5>
+                                        <h5>JHON DOE</h5>
                                         <h6>Oct 15, 2018 at 11:00</h6>
                                         <p>My lady mush hanky panky young delinquent lurgy the little rotter in my flat tomfoolery so I said mufty cockup.!</p>
-                                        <a href="#" class="reply">reply</a>
-                                        <a href="#" class="like"><i class="fas fa-thumbs-up"></i>Like</a>
                                     </div>
                                 </div>
                                 <div class="single_comment">
@@ -265,11 +257,9 @@ const PGDetails = (props) => {
                                         <img src="/assets/images/comment_4.jpg" alt="" />
                                     </div>
                                     <div class="comment_info">
-                                        <h5><a href="#">JHON DOE</a></h5>
+                                        <h5>JHON DOE</h5>
                                         <h6>Oct 15, 2018 at 11:00</h6>
                                         <p>My lady mush hanky panky young delinquent lurgy the little rotter in my flat tomfoolery so I said mufty cockup.!</p>
-                                        <a href="#" class="reply">reply</a>
-                                        <a href="#" class="like"><i class="fas fa-thumbs-up"></i>Like</a>
                                     </div>
                                 </div>
                             </div>

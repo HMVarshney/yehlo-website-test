@@ -1,19 +1,19 @@
 .search_button{
-	border-radius: 12px;
 	background: transparent;
-	border: solid black;
+	border: none;
 	color: 382C2A;
-	padding: 0.27rem;
+	padding: 0.24rem;
 	display: inline-block;
 }
 
-.search_button:hover{
-	background: rgba(211,211,211,0.3);
+.search_text:hover{
+	box-shadow: black;
 	cursor: pointer;
 }
 
 .search_text_span{
-	font-size: 21px;
+	width: 100%;
+	font-size: 18px;
 }
 
 .search_text{
@@ -103,11 +103,6 @@
 	width: 1px;
 }
 
-.customer_reviews{
-	max-height: 500px;
-	overflow: auto;
-}
-
 .cost_text{
 	color: black;
 }
@@ -183,7 +178,7 @@
 	padding-top: 0.4rem;
 	padding: 1.2rem;
 	background-color: rgba(0, 0, 0, 0.89);
-	z-index: 1;
+	z-index:1;
 	border-radius: 12px;
 	color: white;
 }
@@ -196,4 +191,45 @@
 	padding-right: 1rem;
 	margin: 0rem 1rem ;
 	color: white;
+}
+
+.search_bar_button{
+	width: 150px;
+	margin: 1rem;
+	border-radius: 50px;
+}
+
+@media screen and (max-width: 992px){
+	.tags_list{
+		display: none;
+	}
+
+	.search_bar_dropdown_price{
+		position: absolute;
+		right:60px;
+		width: 60%;
+	}
+}
+
+.price_textfield{
+	background: transparent;
+}
+
+.search_modal_dropdowns{
+	padding-top: 0.4rem;
+	padding: 1.2rem;
+	background-color: rgba(0, 0, 0, 0.89);
+	z-index: 1;
+	border-radius: 12px;
+	color: white;
+}
+
+.search_mobile_icon{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: solid #A5AEDC 1px;
+	border-radius: 50px;
+	background-color:#2e242c;
+	height: 35px;
 }

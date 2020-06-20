@@ -30,7 +30,7 @@ const ListingsCard = (props) => {
       <div className='col-md-3 col-6 mb-4' style={{zIndex: 0}}>
         <div className="bnb-card">
           <div>
-            <a href={`/pgdetails/${props.data.productId}`} ><img
+            <a href={`/pgdetails/${props.data.id}`} ><img
               src={props.data.images[0]}
               alt=""
               width='100%'
@@ -40,11 +40,11 @@ const ListingsCard = (props) => {
           </div>
           <div className="pl-1 pr-2 bnb-card-desc">
             <div className='seller-info-circle'>
-              <span className='seller-info-icon'>
+              <span style={{float:'right'}}>
                 <span id={'Popover' + props.id} 
                   onMouseEnter={handlePopupOpen} onMouseLeave={handlePopupClose} 
                   className='fa fa-info-circle' />
-                </span>
+              </span>
             </div>
 
             <Popover className='popup' isOpen={popupOpen} placement='bottom' target={'Popover' + props.id} >
