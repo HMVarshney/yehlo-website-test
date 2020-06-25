@@ -55,7 +55,7 @@ class Home extends Component {
               <h2>Yehlo Partners</h2>
             </div>
           </div>
-          <AutoCarousel style={{ margin: "0" }} />
+          {partner.length? <AutoCarousel style={{ margin: "0" }} items={partner} />:""}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
               <Button outline color="secondary" className={styles.seeMore}>
@@ -73,7 +73,7 @@ class Home extends Component {
               <h2>Yehlo Sponsored</h2>
             </div>
           </div>
-          <AutoCarousel style={{ margin: "0" }} />
+          {sponsered.length? <AutoCarousel style={{ margin: "0" }} items={sponsered} />:""}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
               <Button outline color="secondary" className={styles.seeMore}>

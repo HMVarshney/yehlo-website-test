@@ -128,7 +128,7 @@ class HomepageContextProvider extends Component {
               return { id: doc.id, ...doc.data() };
             })
             .filter((product) => {
-              if (product.approve !== 1) {
+              if (product.approved !== 1) {
                 return false;
               }
 
