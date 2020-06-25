@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import OwlCarousel from "react-owl-carousel";
 
 //components
-import PremiumCard from "./PremiumCard";
+import ImageCard from "./ImageCard";
 
 //styles
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -45,14 +45,14 @@ export class Carousel extends Component {
 </svg>`,
             ]}
           >
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
+            <ImageCard />
+            <ImageCard />
+            <ImageCard />
+            <ImageCard />
+            <ImageCard />
+            <ImageCard />
+            <ImageCard />
+            <ImageCard />
           </OwlCarousel>
         </div>
       </div>

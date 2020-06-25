@@ -1,13 +1,18 @@
 import React from 'react';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+
+//Components
 import Navbar from './components/navbar';
 import Listing from './components/listings';
 import About from './components/about';
 import Footer from './components/Footer';
 import PGDetails from './components/pgDetails.js';
 import Home from './components/Home.js';
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import AppIcon from './components/AppIcon';
 import GetApp from './components/GetTheApp';
+
+//context
+import HomepageContextProvider from './context/context-provider/homepageContext';
 
 //css
 import styles from "./css/home.module.css";
@@ -19,7 +24,11 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/'>
+              <HomepageContextProvider>
+                <Home/>
+              </HomepageContextProvider>
+            </Route>
             <Route exact path='/listings' component={Listing} />
             <Route exact path='/about' component={About} />
             <Route exact path='/pgdetails/:product_id' component={PGDetails} />

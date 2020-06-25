@@ -4,7 +4,7 @@ import {
   CardImg,
 } from "reactstrap";
 
-const PremiumCard = (props) => {
+const ImageCard = (props) => {
   return (
     <div style={{ height: "inherit" }}>
       <Card style={{ height: "inherit" }}>
@@ -19,4 +19,4 @@ const PremiumCard = (props) => {
   );
 };
 
-export default PremiumCard;
+export default ImageCard;

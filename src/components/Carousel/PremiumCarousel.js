@@ -12,6 +12,21 @@ import "../../css/owl.css";
 
 export class AutoCarousel extends Component {
   render() {
+    let carouselCards = this.props.items 
+    // && this.props.items.length >= 4
+      ? this.props.items.map((item, index) => {
+          return <Card details={item} key={index} />;
+        })
+      : [
+          <Card key={1} />,
+          <Card key={2}/>,
+          <Card key={3}/>,
+          <Card key={4}/>,
+          <Card key={5}/>,
+          <Card key={6}/>,
+          <Card key={7}/>,
+          <Card key={8}/>,
+        ];
     return (
       <div>
         <div className="container-fluid">
@@ -47,12 +62,7 @@ export class AutoCarousel extends Component {
             autoplaySpeed={2500}
             autoplayTimeout={10000}
           >
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {carouselCards}
           </OwlCarousel>
         </div>
       </div>

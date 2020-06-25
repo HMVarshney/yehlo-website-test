@@ -5,15 +5,20 @@ import { Container, Button } from "reactstrap";
 import AutoCarousel from "./Carousel/AutoCarousel";
 import Carousel from "./Carousel/Carousel";
 import CategoryCarousel from "./Carousel/CategoryCarousel";
-import TrendingCarousel from "./Carousel/TrendingCarousel";
-import SearchBar from './searchBar'; 
+import PremiumCarousel from "./Carousel/PremiumCarousel";
+import SearchBar from "./searchBar";
 
 //styles
 import styles from "../css/home.module.css";
 import "../css/home.css";
 
+//context
+import { HomepageContext } from "../context/context-provider/homepageContext";
+
 class Home extends Component {
+  static contextType = HomepageContext;
   render() {
+    let { partner, sponsered, premium, pg, gym, buy } = this.context;
     return (
       <div className="home">
         <div className={styles.billBoard}>
@@ -86,7 +91,7 @@ class Home extends Component {
               <h2>Yehlo Premium</h2>
             </div>
           </div>
-          <TrendingCarousel style={{ margin: "0" }} />
+          {premium.length ? <PremiumCarousel style={{ margin: "0" }} items={premium} />: ""}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
               <Button outline color="secondary" className={styles.seeMore}>
@@ -104,7 +109,7 @@ class Home extends Component {
               <h2>Yehlo Buy</h2>
             </div>
           </div>
-          <Carousel />
+          {buy.length ? <Carousel items={buy} /> : ""}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
               <Button outline color="secondary" className={styles.seeMore}>
@@ -122,7 +127,7 @@ class Home extends Component {
               <h2>Yehlo Pgs</h2>
             </div>
           </div>
-          <Carousel />
+          {pg.length ? <Carousel items={pg} /> : ""}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
               <Button outline color="secondary" className={styles.seeMore}>
@@ -140,7 +145,7 @@ class Home extends Component {
               <h2>Yehlo Gyms</h2>
             </div>
           </div>
-          <Carousel />
+          {gym.length ? <Carousel items={gym} /> : ""}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
               <Button outline color="secondary" className={styles.seeMore}>

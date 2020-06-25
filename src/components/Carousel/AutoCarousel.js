@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import OwlCarousel from "react-owl-carousel";
 
 //components
-import PremiumCard from "./PremiumCard";
+import ImageCard from "./ImageCard";
 
 //styles
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -47,12 +47,12 @@ export class AutoCarousel extends Component {
             autoplaySpeed={2500}
             autoplayTimeout={10000}
           >
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
-            <PremiumCard />
+            <ImageCard />
+            <ImageCard />
+            <ImageCard />
+            <ImageCard />
+            <ImageCard />
+            <ImageCard />
           </OwlCarousel>
         </div>
       </div>

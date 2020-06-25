@@ -12,9 +12,22 @@ import "../../css/owl.css";
 
 export class Carousel extends Component {
   render() {
-    // var carouselCards = this.props.items.map((item, index) => {
-    //   return <Card details={item} key={index} />;
-
+    let carouselCards =
+      this.props.items 
+      // && this.props.items.length >= 4
+        ? this.props.items.map((item, index) => {
+            return <Card details={item} key={index} />;
+          })
+        : [
+            <Card key={1} />,
+            <Card key={2} />,
+            <Card key={3} />,
+            <Card key={4} />,
+            <Card key={5} />,
+            <Card key={6} />,
+            <Card key={7} />,
+            <Card key={8} />,
+          ];
     return (
       <div>
         <div className="container-fluid home">
@@ -25,8 +38,8 @@ export class Carousel extends Component {
               1200: {
                 items: 4,
               },
-              768:{
-                items: 3
+              768: {
+                items: 3,
               },
               0: {
                 items: 2,
@@ -46,15 +59,7 @@ export class Carousel extends Component {
 </svg>`,
             ]}
           >
-            {/* {carouselCards} */}
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {carouselCards}
           </OwlCarousel>
         </div>
       </div>
