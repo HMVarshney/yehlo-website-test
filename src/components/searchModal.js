@@ -76,17 +76,17 @@ const SearchModal = (props) => {
                                     value={searchAttr.priceValue[1]} onChange={(event)=>setSearchAttr({...searchAttr, priceValue:[searchAttr.priceValue[0],event.target.value]})} /></div>
                             </div>
                             <br /><br />
-                            <div style={{width:'50%'}}> 
-                            <Slider style={{width:'100%'}} value={searchAttr.priceValue} 
-                                onChange={(event,newValue)=>{ setSearchAttr({...searchAttr, priceValue:newValue})}}
-                            aria-labelledby="range-slider" valueLabelDisplay='auto' step={500} max={20000} /> 
+                            <div style={{ width:'70%'}}> 
+                                <Slider style={{width:'100%'}} value={searchAttr.priceValue} 
+                                    onChange={(event,newValue)=>{ setSearchAttr({...searchAttr, priceValue:newValue})}}
+                                aria-labelledby="range-slider" valueLabelDisplay='on' step={200} max={20000} /> 
                             </div>
                         </TabPane>
 
                     </TabContent>
                 </ModalBody>
                 <ModalFooter>
-                    <Button href={`/listings/?items=${searchAttr.category}&college=${searchAttr.college}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} variant='contained' color='primary'><span className='fa fa-search'/> Search</Button>
+                    <Button href={`/listings/${searchAttr.category}/?college=${searchAttr.college}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} variant='contained' color='primary'><span className='fa fa-search'/> Search</Button>
                 </ModalFooter>
             </div>
         </Modal>

@@ -1,25 +1,74 @@
-import React, {useContext} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Jumbotron } from 'reactstrap';
-import {BuyProducts} from '../context/context-provider/buyContextProvider';
 import Card from './listingsCard.js';
-import Preloader from './preloader';
 import SearchBar from './searchBar';
 import queryString from 'query-string';
+import Isotope from 'isotope-layout';
+import imagesloaded from 'imagesloaded';
+import { FormControl, InputLabel, Select } from '@material-ui/core';
+import { MainContext } from '../context/context-provider/mainContext';
+
+let productToShow = [];
 
 const Listings = (props) => {
-    // const [filterDropdown, showFilter] = useState(false);
-    const { buyProducts } = useContext(BuyProducts);
-    const searchQuery = queryString.parse(props.location.search);
-    let productToShow = buyProducts;
 
-    if(searchQuery.items!=='all'&& Object.keys(searchQuery).length > 0){
-        productToShow = buyProducts.filter((product)=>{
-            return product.type===searchQuery.items
-                &&parseInt(product.price)>searchQuery.minprice
-                &&parseInt(product.price)<searchQuery.maxprice;
-        });
-    };
+    const { buy, pg, gym } = useContext(MainContext)
+    const searchQuery = queryString.parse(props.location.search);
+    const { category } = props.match.params; 
+
+    const [isotope, setIsotope] = useState(null);
+    const [sort, setSort] = useState('');
+   
+    useEffect(()=>{
+        imagesloaded(document.querySelector('.product-card'),()=>{
+            setIsotope(new Isotope('.product-grid',{
+                itemSelector: '.product-card',
+                layoutMode: 'fitRows',
+                getSortData: {
+                    name: '.product-name',
+                    price: '.product-price',
+                    category: '.product-cat',
+                    rating: '.product-rating'
+                },
+            }))
+        }) 
+    },[sort]);
+
+    useEffect(()=>{
+        if(isotope){
+            if(sort === 'Name'){
+                isotope.arrange({sortBy:'name'})
+            } else if(sort === 'Category'){
+                isotope.arrange({sortBy:'category'})
+            } else if(sort === 'Price'){
+                isotope.arrange({sortBy: 'price'})
+            } else if(sort === 'Rating'){
+                isotope.arrange({sortBy:'rating'})
+            }
+        }
+    },[isotope, sort])
+
+    const filterProducts = (productArray) => {
+        const filteredProducts = productArray.filter((product)=>{
+            if(product.price < parseInt(searchQuery.minprice)){
+                return false;
+            }else if(product.price > parseInt(searchQuery.maxprice)){
+                return false;
+            }else{
+                return true;
+            }
+        })
+        return filteredProducts;
+    }
     
+    if(category==='pg'){
+        productToShow = filterProducts(pg);
+    } else if(category==='second hand') {
+        productToShow = filterProducts(buy);
+    } else if(category === 'gym'){
+        productToShow = filterProducts(gym)
+    }
+
     return(
         <div>
             <div className='pl-3 pr-3 p-lg-0'>
@@ -29,7 +78,7 @@ const Listings = (props) => {
                         </div>
                     </div>
                 </Jumbotron>
-            </div>
+            </div> 
             <br />
             <div className='container'>
                 <h3 style={{textAlign:'center'}}>Search Results</h3>
@@ -37,19 +86,29 @@ const Listings = (props) => {
                 <div className='mt-3'>
                     <SearchBar />
                 </div>
-
+                
+                {productToShow.length > 0 ? 
+                <FormControl style={{float:'right',margin:'15px 0px 0px 0px'}} variant='outlined' size='small'>
+                    <InputLabel>Sort</InputLabel>
+                    <Select style={{borderRadius:'10px'}} native label='Sort' value={sort} onChange={(e)=>setSort(e.target.value)}>
+                        <option />
+                        <option>Name</option>
+                        {category === 'pg' ? <option>Rating</option> : null}
+                        <option>Price</option>
+                        {category === 'second hand' ? <option>Category</option> : null}
+                    </Select>
+                </FormControl> : null}
+                <div style={{clear:'both'}} /> 
+                
                 <br /> <br />
                 <section class="listing_style_v1 listing_grid_sidebar wow fadeInUp">
                         <div class="row">
                             <div class="col-12">
-                                <div class="listing_grid_wrapper row animate__animated animate__fadeIn animate__faster">
-                                    {/* {buyProducts ? buyProducts.map((productData)=>(
-                                        <RenderListings data={productData}/> 
-                                    )) : <div>Loading....</div>} */}
+                                <div class="listing_grid_wrapper product-grid row animate__animated animate__fadeIn animate__faster">
                                     {
-                                        productToShow ? productToShow.map((productData)=>(
-                                            <Card data={productData} id={productData.id} searchQuery={searchQuery} />
-                                        )) : <Preloader />
+                                        productToShow.length > 0 ? productToShow.map((productData)=>(
+                                            <Card data={productData} id={productData.id} searchQuery={searchQuery} category={category} />
+                                        )) : null 
                                     }
                                 </div>
                             </div>

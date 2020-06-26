@@ -1,7 +1,7 @@
-export const BuyProductInitDataRequest = (data) => {
+export const BuyProductDataRequest = (buyData) => {
     return {
-        type:'INIT_DATA_REQUEST',
-        payload: data
+        type:'BUY_DATA_REQUEST',
+        payload: buyData
     }
 }
 

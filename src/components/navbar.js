@@ -23,9 +23,9 @@ const Navigationbar = () => {
 
     return ( 
         <>
-        <Navbar id='navbar' className='headerbar' light expand='md' fixed='top'>
-            <div id='navbar-div' style={{fontSize:'17px'}} className='container animate__animated animate__fadeInDown animate__faster'> 
-                    <NavbarBrand className='navbar_brand'><a href='/' id='navbar_logo'>YEHLO</a></NavbarBrand>
+            <Navbar id='navbar' className='headerbar' light expand='md' fixed='top'>
+                <div id='navbar-div' style={{fontSize:'17px'}} className='container animate__animated animate__fadeInDown animate__faster'> 
+                        <NavbarBrand className='navbar_brand'><a href='/' id='navbar_logo'>YEHLO</a></NavbarBrand>
 
                     <span className='d-none d-md-block'>Get. Set. Sell.</span>
 

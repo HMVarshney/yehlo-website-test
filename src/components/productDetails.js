@@ -1,21 +1,30 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Paper, Avatar } from '@material-ui/core';
-import { BuyProducts } from '../context/context-provider/buyContextProvider';
-import Preloader from './preloader';
+// import { BuyProducts } from '../context/context-provider/buyContextProvider';
+// import { PGContext } from '../context/context-provider/pgContextProvider';
 import SlickSlider from './slider';
 import BottomNav from './bottomNav';
 
 //icons
 import PersonIcon from '@material-ui/icons/Person';
+import Spinnerloader from './Preloaders/spinnerLloader';
+import { MainContext } from '../context/context-provider/mainContext';
 
 
-const PGDetails = (props) => {
-    const [productData, setProductData] = useState(null);
-    const {buyProducts} = useContext(BuyProducts);
+const ProductDetails = (props) => {
+    const [ productData, setProductData ] = useState(null);
+    const { buy, pg, gym } = useContext(MainContext)
+    const category = props.match.params.category;
 
     useEffect(()=>{
-        setProductData(buyProducts.filter((product)=>(product.id === props.match.params.product_id))[0]);
-    },[buyProducts, props.match.params.product_id]);
+        if(category === 'pg'){
+            setProductData(pg.filter((product)=>(product.id === props.match.params.product_id))[0]);
+        } else if( category === 'second hand'){
+            setProductData(buy.filter((product)=>(product.id === props.match.params.product_id))[0]);
+        } else if(category === 'gym'){
+            setProductData(gym.filter((product)=>(product.id === props.match.params.product_id))[0]);
+        }
+    },[pg, buy, gym, props.match.params.product_id, category]);
     
     if(productData){
     return ( 
@@ -84,13 +93,13 @@ const PGDetails = (props) => {
                                 <div style={{clear:'both'}} />
                                 <span style={{float:'right'}}><span><PersonIcon style={{color:'	#211a23'}} /></span> { productData.sellerName } </span>
                                 <div style={{clear:'both'}} />
-                                <span style={{float:'right'}}><span className='fa fa-phone details_icon' /> 9898989898 </span>
+                                <span style={{float:'right'}}><span className='fa fa-phone details_icon' /> {productData.contact} </span>
                             </div>
                         </div>
-                        <p className='details_description_text'>Gregor then turned to look out the window at the dull weather. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed kepping not sure over the horizon.</p>
-                        
-                        {productData.type === 'Second Hand Product' ? null :
-                        <Paper elevation={4} className='p-3'>
+                        <p className='details_description_text'>{productData.description}</p>
+                    </div>
+                    {productData.type === 'Second Hand Product' ? null :
+                        <Paper elevation={4} className='p-3 discription_box mt-3'>
                             <h5 class="amenities">AMENITIES</h5>
                             <div class="row">
                                 <div class="col-md-4 col-sm-4">
@@ -122,8 +131,6 @@ const PGDetails = (props) => {
                                 </div>
                             </div> 
                         </Paper>}
-
-                    </div>
                 </div>
 
                 <div className={productData.type==='Second Hand Product' ? 'd-none' : 'col-md-3 mt-lg-0 mt-3'}>
@@ -268,7 +275,7 @@ const PGDetails = (props) => {
         
         <BottomNav />
         </>
-    );} else return <Preloader />
+    );} else return (<Spinnerloader />)
 }
  
-export default PGDetails;
+export default ProductDetails;

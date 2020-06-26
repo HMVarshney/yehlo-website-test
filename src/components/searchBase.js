@@ -7,8 +7,12 @@ function SearchBase(ChildComp){
             const [searchAttr, setSearchAttr] = useState({
                 college:'',
                 priceValue:[0,20000],
-                category: 'all',
+                category: 'pg',
             });
+
+            if(searchAttr.category.length===0){
+                setSearchAttr({...searchAttr, category:'all'})
+            }
 
             return(
                 <ChildComp 
@@ -26,7 +30,7 @@ function SearchBase(ChildComp){
 export default SearchBase;
 
 
-const categoryLabels = ['all','pg', 'services', 'second hand'];
+const categoryLabels = ['pg','gym', 'services', 'second hand'];
 
 
 const collegeList = [ 'Acharya Narendra Dev College',

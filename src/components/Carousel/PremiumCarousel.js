@@ -2,27 +2,41 @@ import React, { Component } from "react";
 import OwlCarousel from "react-owl-carousel";
 
 //components
-import ImageCard from "./ImageCard";
+import Card from "./Card";
 
 //styles
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "../../css/owl.css";
 
-export class Carousel extends Component {
+
+export class AutoCarousel extends Component {
   render() {
+    let carouselCards = this.props.items 
+    // && this.props.items.length >= 4
+      ? this.props.items.map((item, index) => {
+          return <Card details={item} key={index} />;
+        })
+      : [
+          <Card key={1} />,
+          <Card key={2}/>,
+          <Card key={3}/>,
+          <Card key={4}/>,
+          <Card key={5}/>,
+          <Card key={6}/>,
+          <Card key={7}/>,
+          <Card key={8}/>,
+        ];
     return (
       <div>
-        <div className="container-fluid home">
+        <div className="container-fluid">
           <OwlCarousel
-            className="owl-theme category"
+            margin={16}
+            className="owl-theme"
             loop
             responsive={{
               1200: {
-                items: 5,
-              },
-              992:{
-                items:4,
+                items: 4,
               },
               768:{
                 items: 3
@@ -31,7 +45,7 @@ export class Carousel extends Component {
                 items: 2,
               },
             }}
-            margin={12}
+            autoplay={true}
             nav
             dots={false}
             navText={[
@@ -44,15 +58,11 @@ export class Carousel extends Component {
   <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8z"/>
 </svg>`,
             ]}
+            autoplayHoverPause={true}
+            autoplaySpeed={2500}
+            autoplayTimeout={10000}
           >
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
+            {carouselCards}
           </OwlCarousel>
         </div>
       </div>
@@ -60,4 +70,4 @@ export class Carousel extends Component {
   }
 }
 
-export default Carousel;
+export default AutoCarousel;
