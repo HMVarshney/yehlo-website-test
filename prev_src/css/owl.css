@@ -1,0 +1,64 @@
+.title {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+/* Add media queries for height property to adjust the height of carousel */
+.owl-carousel .owl-item {
+  height: 300px;
+  margin: 8px 0;
+}
+
+.owl-carousel .owl-item {
+  height: auto;
+  margin: 8px 0;
+}
+
+.owl-prev {
+  position: absolute;
+  bottom:50%;
+  left: -24px;
+}
+
+.owl-next {
+  position: absolute;
+  bottom:50%;
+  right: -24px;
+}
+
+.premium .owl-prev, .premium .owl-next{
+  bottom: 40%;
+}
+
+.category .owl-prev, .category .owl-next{
+  bottom: 35%;
+}
+
+.owl-nav svg{
+  opacity: 0.4;
+  transform: scale(.6);
+  transition: all 0.3s;
+}
+
+.owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-next{
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 100%;
+  box-shadow: 0 0 5px 0 black;
+}
+
+.owl-theme .owl-nav [class*="owl-"]:focus {
+  outline: none;
+}
+
+.owl-theme .owl-nav [class*="owl-"]:hover {
+  background-color: rgba(255,255,255,0.7);
+}
+
+.owl-theme .owl-nav [class*="owl-"]:hover svg{
+  opacity: 1;
+}
+
+@media screen and (max-height: 992px){
+.owl-nav{
+  margin-bottom: 48px;
+}}

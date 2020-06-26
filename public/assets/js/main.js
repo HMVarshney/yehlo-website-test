@@ -1,8 +1,8 @@
 (function($) {
-  'use strict';  
+  'use strict';
     /*---------------------------------
         Preloader JS
-    -----------------------------------*/ 
+    -----------------------------------*/
     var prealoaderOption = $(window);
     prealoaderOption.on("load", function () {
         var preloader = jQuery('.spinner');
@@ -14,21 +14,21 @@
         Preloader JS
     -----------------------------------*/
 
-    /*---------------------------------  
+    /*---------------------------------
         sticky header JS
     -----------------------------------*/
-    $(window).on('scroll',function() {    
+    $(window).on('scroll',function() {
         var scroll = $(window).scrollTop();
          if (scroll < 100) {
           $(".header_area").removeClass("sticky");
          }else{
           $(".header_area").addClass("sticky");
          }
-    }); 
-    /*---------------------------------  
+    });
+    /*---------------------------------
         sticky header JS
     -----------------------------------*/
-    /*---------------------- 
+    /*----------------------
         Scroll top js
     ------------------------*/
      $(window).on('scroll', function() {
@@ -44,7 +44,7 @@
         }, 600);
         return false;
     });*/
-    /*---------------------- 
+    /*----------------------
         Scroll top js
     ------------------------*/
     $(".menu_icon").on('click', function (e) {
@@ -57,7 +57,7 @@
     });
     $.sidebarMenu($('.sidebar-menu'))
     /*------
-    /*---------------------- 
+    /*----------------------
         slider js
     ------------------------*/
     $('.client_slider_1').slick({
@@ -258,10 +258,10 @@
         }
       ]
     });
-    /*---------------------- 
+    /*----------------------
         slider js
-    ------------------------*/  
-    /*---------------------- 
+    ------------------------*/
+    /*----------------------
         magnific-Popup js
     ----------------------*/
     $('.play_btn').magnificPopup({
@@ -269,12 +269,12 @@
         removalDelay: 300,
         mainClass: 'mfp-fade'
     });
-    /*---------------------- 
+    /*----------------------
         magnific-Popup js
     ----------------------*/
-    /*---------------------- 
+    /*----------------------
         Isotope js
-    ------------------------*/ 
+    ------------------------*/
     $('#popular_catagory').imagesLoaded( function() {
         var $grid = $('.category_grid').isotope({
             itemSelector: '.grid_item',
@@ -319,4 +319,8 @@
         wow js
     ------------------------*/
 
-})(window.jQuery);   
+    $('.sortButton').on('click', function () {
+        console.log('clicked')
+    })
+
+})(window.jQuery);
