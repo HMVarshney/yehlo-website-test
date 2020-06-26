@@ -1,5 +1,10 @@
 import React, { createContext, Component } from "react";
-import firebase from "../../api/fbConfig";
+import {
+  getBuyData,
+  getPgData,
+  getGymData,
+  getSponseredData,
+} from "../utility/handlers";
 
 export const HomepageContext = createContext();
 
@@ -14,168 +19,61 @@ class HomepageContextProvider extends Component {
   };
 
   componentDidMount() {
-    const currentDate = firebase.firestore.Timestamp.fromDate(new Date());
-
-    const compareRank = (a, b) => {
-      return a.rank - b.rank;
-    };
-
-    let pgList = [],
-      gymList = [],
-      buyList = [],
-      partnerList = [],
-      premiumList = [],
-      sponseredList = [];
-
     const fetchData = async () => {
-      // fetching yeh!o buy data
-      await firebase
-        .firestore()
-        .collection("SecondHandProducts")
-        .orderBy("date", "asc")
-        .limit(8)
-        .get()
-        .then((res) => {
-          buyList = res.docs.map((doc) => {
-            return { id: doc.id, ...doc.data() };
-          });
-        });
+      let buyInfo = [], pgInfo = [], gymInfo= [], sponseredInfo = [] 
+      buyInfo = await getBuyData([]);
+      pgInfo = await getPgData(
+        [],
+        [],
+        []
+      );
+      gymInfo = await getGymData(
+        [],
+        pgInfo.premiumPgList,
+        pgInfo.partnerPgList
+      );
+      sponseredInfo = await getSponseredData([]);
 
-      // fetching yeh!o pg data
-      await firebase
-        .firestore()
-        .collection("PGs")
-        .get()
-        .then((res) => {
-          pgList = res.docs
-            .map((doc) => {
-              return { id: doc.id, ...doc.data() };
-            })
-            .filter((product) => {
-              if (product.approved !== 1) {
-                return false;
-              }
+      let buyList = buyInfo.buyList.slice(0, 8);
+      let pgList = pgInfo.pgList.slice(0, 8);
+      let gymList = gymInfo.gymList.slice(0, 8);
+      let sponseredList = sponseredInfo.sponseredList.slice(0, 8);
+      let premiumList = gymInfo.premiumGymList.slice(0, 8);
+      let partnerList = gymInfo.partnerGymList.slice(0, 8);
 
-              if (product.startDate > currentDate) {
-                return false;
-              }
-
-              if (product.endDate !== "") {
-                if (product.endDate >= currentDate) {
-                  product.activePlan = true;
-                  if (product.plan === "partner") {
-                    partnerList.push(product);
-                  } else if (product.plan === "premium") {
-                    premiumList.push(product);
-                  }
-                } else {
-                  product.activePlan = false;
-                }
-              }
-              return true;
-            });
-
-          pgList.sort(compareRank);
-          pgList = pgList.slice(0, 8);
-        });
-
-      //fetching yeh!o gym data
-      await firebase
-        .firestore()
-        .collection("Gyms")
-        .get()
-        .then((res) => {
-          gymList = res.docs
-            .map((doc) => {
-              return { id: doc.id, ...doc.data() };
-            })
-            .filter((product) => {
-              if (product.approved !== 1) {
-                return false;
-              }
-
-              if (product.startDate > currentDate) {
-                return false;
-              }
-
-              if (product.endDate !== "") {
-                if (product.endDate >= currentDate) {
-                  product.activePlan = true;
-                  if (product.plan === "partner") {
-                    partnerList.push(product);
-                  } else if (product.plan === "premium") {
-                    premiumList.push(product);
-                  }
-                } else {
-                  product.activePlan = false;
-                }
-              }
-              return true;
-            });
-
-          gymList.sort(compareRank);
-          gymList = gymList.slice(0, 8);
-        });
-
-      // fetching yeh!o sponsered data
-      await firebase
-        .firestore()
-        .collection("Ads")
-        .get()
-        .then((res) => {
-          sponseredList = res.docs
-            .map((doc) => {
-              return { id: doc.id, ...doc.data() };
-            })
-            .filter((product) => {
-              if (product.approved !== 1) {
-                return false;
-              }
-
-              if (
-                product.startDate > currentDate ||
-                product.endDate < currentDate
-              ) {
-                return false;
-              }
-
-              return true;
-            });
-
-          sponseredList.sort(compareRank);
-          sponseredList = sponseredList.slice(0, 8);
-        });
+      return {
+        buyList,
+        pgList,
+        gymList,
+        sponseredList,
+        premiumList,
+        partnerList,
+      };
     };
 
-    fetchData().then(() => {
-      partnerList = partnerList.sort(compareRank);
-      partnerList = partnerList.slice(0, 8);
-
-      premiumList = premiumList.sort(compareRank);
-      premiumList = premiumList.slice(0, 8);
-
+    fetchData().then((data) => {
       this.setState({
-        pg: pgList,
-        buy: buyList,
-        gym: gymList,
-        partner: partnerList,
-        premium: premiumList,
-        sponsered: sponseredList,
+        pg: data.pgList,
+        buy: data.buyList,
+        gym: data.gymList,
+        partner: data.partnerList,
+        premium: data.premiumList,
+        sponsered: data.sponseredList,
       });
 
       console.log(
         "pg :",
-        pgList,
+        data.pgList,
         "buy :",
-        buyList,
+        data.buyList,
         "gym :",
-        gymList,
+        data.gymList,
         "premium :",
-        premiumList,
+        data.premiumList,
         "partner :",
-        partnerList,
+        data.partnerList,
         "sponsered :",
-        sponseredList
+        data.sponseredList
       );
     });
   }
