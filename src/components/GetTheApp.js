@@ -45,7 +45,7 @@ class GetTheApp extends Component {
                   <div className="TemplateShimmer__shimmer--1HNwN TemplateShimmer__shimmerWrapper--Py2CJ TemplateShimmer__hidden--1oL9u" />
                   <img
                     className="HomeAppDownloadNew__imgButton--2cxd8"
-                    src="/assets/images/PlayStoreBadge.png"
+                    src="/assets/images/playStore.png"
                     alt="Play Store"
                     itemScope
                     itemProp="image"

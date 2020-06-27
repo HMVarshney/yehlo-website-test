@@ -168,9 +168,13 @@
 	font-size: 1rem;
 }
 
-.search_bar{
+.search_bar_background{
 	background: white;
 	padding: 1.24rem;
+	height: 100px;
+	width: 80%;
+	position: absolute;
+	left: 130px;
 }
 
 .search_bar_dropdowns{
@@ -233,10 +237,23 @@
 		right:60px;
 		width: 60%;
 	}
+
+	.search_bar_background{
+		display:none;
+	}
 }
 
 @media screen and (min-width: 991px){
 	.search_modal_price_textfields{
 		display:flex;
 	}
+
+	.search_bar_price_textfields{
+		display: flex;
+	}
 }
+
+.search_bar_price_textfields{
+	margin-top: 10px;
+}
+

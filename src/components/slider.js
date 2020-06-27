@@ -72,13 +72,10 @@ export default class SlickSlider extends Component {
                 <img src={this.props.images[1]} alt="" />
             </div>
             <div class="single_img">
-                <img src="/assets/images/g_3.jpg" alt="" />
+                <img src={this.props.images[2]} alt="" />
             </div>
             <div class="single_img">
-                <img src="/assets/images/g_4.jpg" alt="" />
-            </div>
-            <div class="single_img">
-                <img src="/assets/images/g_5.jpg" alt="" />
+                <img src={this.props.images[3]} alt="" />
             </div>
         </Slider>
       </div>

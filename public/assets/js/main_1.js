@@ -61,7 +61,7 @@
     /*---------------------- 
         slider js
     ------------------------*/
-/*
+    /*
     $('.client_slider_1').slick({
       dots: true,
       infinite: true,
@@ -322,5 +322,20 @@
     /*----------------------
         wow js
     ------------------------*/
+    // $('.product-gird').isotope({
+    //   itemSelector: 'product-name',
+    //   layoutMode: 'fitRows',
+    //   getSortData: {
+    //     name: '.product-name parseInt'
+    //   }
+    // })
+    
+    // $('.sortButton').on('click', function () {
+    //   console.log('clicked')
+    //   $('.product-grid').isotope({
+    //     filter: '.filter'
+    //   })
+    // })
+
   });
 })(window.jQuery);

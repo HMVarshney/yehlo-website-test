@@ -3425,11 +3425,10 @@ input[type="file"] {
 	color: #fff;
 }
 .listing_details_box{
-	margin-bottom: 40px;
 	padding: 30px;
 	background: rgb(255, 255, 255);
   	-webkit-box-shadow: 0px 0px 30px 0px rgba(13, 13, 13, 0.15);
-  	box-shadow: 0px 0px 30px 0px rgba(13, 13, 13, 0.15);
+  	box-shadow: 0px 0px 20px 0px rgba(13, 13, 13, 0.11);
 }
 .listing_details_box:last-child {
     margin-bottom: 0;
