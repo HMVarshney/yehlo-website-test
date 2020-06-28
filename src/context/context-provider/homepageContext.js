@@ -34,12 +34,12 @@ class HomepageContextProvider extends Component {
       );
       sponseredInfo = await getSponseredData([]);
 
-      let buyList = buyInfo.buyList.slice(0, 8);
-      let pgList = pgInfo.pgList.slice(0, 8);
-      let gymList = gymInfo.gymList.slice(0, 8);
-      let sponseredList = sponseredInfo.sponseredList.slice(0, 8);
-      let premiumList = gymInfo.premiumGymList.slice(0, 8);
-      let partnerList = gymInfo.partnerGymList.slice(0, 8);
+      let buyList = buyInfo.buyList;
+      let pgList = pgInfo.pgList;
+      let gymList = gymInfo.gymList;
+      let sponseredList = sponseredInfo.sponseredList;
+      let premiumList = gymInfo.premiumGymList;
+      let partnerList = gymInfo.partnerGymList;
 
       return {
         buyList,

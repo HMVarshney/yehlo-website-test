@@ -3591,9 +3591,9 @@ input[type="file"] {
 .comment_area.rateing_box .single_comment{
 	padding: 20px 0px;
 }
-.comment_area.rateing_box .single_comment:nth-child(2n+1){
+/* .comment_area.rateing_box .single_comment:nth-child(2n+1){
 	padding-left: 70px;
-}
+} */
 .comment_area.rateing_box .comment_info p{
 	margin-bottom: 10px;
 }
@@ -4194,9 +4194,9 @@ ul.social_link_2 li a:focus,
 	padding: 24px 30px 24px 30px;
 	border-top: 1px solid #e5e9f7;
 }
-.comment_area .single_comment:nth-child(2n+1){
+/* .comment_area .single_comment:nth-child(2n+1){
 	padding-left: 100px;
-}
+} */
 .comment_area .single_comment .comment_info{
 	margin-left: 20px;
 }

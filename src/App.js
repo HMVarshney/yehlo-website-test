@@ -15,9 +15,6 @@ import SponseredListings from './components/sponsoredListings';
 //context
 import MainContextProvider from './context/context-provider/mainContext';
 
-//context
-import HomepageContextProvider from './context/context-provider/homepageContext';
-
 //css
 import styles from "./css/home.module.css";
 

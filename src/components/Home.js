@@ -20,6 +20,13 @@ class Home extends Component {
   static contextType = MainContext;
   render() {
     let { partner, sponsered, premium, pg, gym, buy } = this.context;
+    buy = buy.slice(0, 8);
+    pg =pg.slice(0, 8);
+    gym = gym.slice(0, 8);
+    sponsered = sponsered.slice(0, 8);
+    premium = premium.slice(0, 8);
+    partner = partner.slice(0, 8);
+
     return (
       <div className="home">
         <div className={styles.billBoard}>
