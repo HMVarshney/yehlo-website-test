@@ -45,14 +45,14 @@ export class Carousel extends Component {
 </svg>`,
             ]}
           >
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
-            <ImageCard />
+            <ImageCard static/>
+            <ImageCard static/>
+            <ImageCard static/>
+            <ImageCard static/>
+            <ImageCard static/>
+            <ImageCard static/>
+            <ImageCard static/>
+            <ImageCard static/>
           </OwlCarousel>
         </div>
       </div>

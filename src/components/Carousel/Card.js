@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Tooltip from '@material-ui/core/Tooltip';
 import "../../css/card.css";
+import { Link } from "react-router-dom";
 class Card extends Component {
   render() {
-    let { name, images, district, price, type, plan, activePlan, avgRating } = !this.props.details
-      ? { name: "", images: [], district: "", price: "", type: "", activePlan: "", avgRating:"" }
+    let { name, images, district, price, type, plan, activePlan, avgRating, section, id } = !this.props.details
+      ? { name: "", images: [], district: "", price: "", type: "", activePlan: "", avgRating:"", section:"", id:"" }
       : this.props.details;
 
       let badge = false;
@@ -19,7 +20,8 @@ class Card extends Component {
     //temporary fix until database is sorted
     images = images ? images : [];
     return (
-      <div className="bnb-card">
+      <Link to={`/productdetails/${section}/${id}`}>
+        <div className="bnb-card">
         {badge ? (
           <div className="bnb-card-plan-badge">
             <Tooltip title={plan.toUpperCase()}>
@@ -86,7 +88,9 @@ class Card extends Component {
           )}
         </div>
       </div>
-    );
+   
+      </Link>
+      );
   }
 }
 

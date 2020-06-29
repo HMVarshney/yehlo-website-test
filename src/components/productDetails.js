@@ -14,7 +14,7 @@ import { MainContext } from "../context/context-provider/mainContext";
 
 const ProductDetails = (props) => {
   const [productData, setProductData] = useState(null);
-  const { buy, pg, gym } = useContext(MainContext);
+  const { buy, pg, gym, sponsered } = useContext(MainContext);
   const category = props.match.params.category;
   useEffect(() => {
     async function fetchSeller(id) {
@@ -38,7 +38,7 @@ const ProductDetails = (props) => {
       product(pg).then((docData) => {
         setProductData(docData);
       });
-    } else if (category === "second hand") {
+    } else if (category === "buy") {
       product(buy).then((docData) => {
         setProductData(docData);
       });
@@ -46,12 +46,16 @@ const ProductDetails = (props) => {
       product(gym).then((docData) => {
         setProductData(docData);
       });
+    }else if (category === "ad") {
+        product(sponsered).then((docData) => {
+          setProductData(docData);
+        });  
     }
-  }, [pg, buy, gym, props.match.params.product_id, category]);
-
-  if (productData) {
+  }, [pg, buy, gym, sponsered, props.match.params.product_id, category]);
+  
+  if (productData  && category !== "ad") {
     var ratingData, guidelines, reviews;
-    if (category !== "second hand") {
+    if (category !== "buy") {
       ratingData = productData.ratings.map((rating) => {
         rating /= 5;
         rating *= 100;
@@ -60,23 +64,29 @@ const ProductDetails = (props) => {
 
       guidelines = productData.rules.map((rule, index) => {
         return (
-          <li>
+          <li key={index}>
             <div className="rule">{rule}</div>
           </li>
         );
       });
 
-      reviews = productData.reviews.map((comment) => {
+      reviews = productData.reviews.map((comment, index) => {
+        const options = {
+          weekday: "short",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        let date = new Date(comment.date.seconds * 1000);
+        let formatDate = date.toLocaleDateString(undefined, options);
+        let time = date.toLocaleTimeString().split(":");
+        let formatTime = `${time[0]}:${time[1]} ${
+          time[2][3] === "A" ? "am" : "pm"
+        }`;
+        let displayDate = formatDate + " " + formatTime;
 
-        const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
-        let date = new Date(comment.date.seconds*1000);
-        let formatDate = date.toLocaleDateString(undefined,options)
-        let time = date.toLocaleTimeString().split(":")
-        let formatTime = `${time[0]}:${time[1]} ${time[2][3] === 'A'?"am":"pm"}`
-        let displayDate = formatDate+" "+formatTime
-        
         return (
-          <div class="single_comment">
+          <div class="single_comment" key={index}>
             <div className="desc-message-box" style={{ display: "flex" }}>
               <div className="quote-box">
                 <svg
@@ -101,16 +111,19 @@ const ProductDetails = (props) => {
                   />
                 </div>
                 <div>
-                  <h5 className = "desc-review-name">{comment.username}</h5>
-                  <h6 className = "desc-review-date">
-                    {displayDate}
-                    </h6>
+                  <h5 className="desc-review-name">{comment.username}</h5>
+                  <h6 className="desc-review-date">{displayDate}</h6>
                 </div>
               </div>
             </div>
           </div>
         );
       });
+
+      var premiumImageFlag = 0;
+      if (productData.activePlan && productData.plan === "partner") {
+        premiumImageFlag = 1;
+      }
     }
 
     return (
@@ -120,20 +133,20 @@ const ProductDetails = (props) => {
             <div class="col-lg-9 col-md-10 col-12">
               <Paper elevation={4} style={{ padding: "30px" }}>
                 <div className="gallery_box">
-                  <SlickSlider images={productData.images} />
+                  <SlickSlider
+                    images={
+                      premiumImageFlag
+                        ? productData.premiumImage.concat(productData.images)
+                        : productData.images
+                    }
+                  />
                 </div>
               </Paper>
             </div>
           </div>
 
           <div className="row mt-5">
-            <div
-              className={
-                productData.type === "Second Hand Product"
-                  ? "col-md-12"
-                  : "col-md-8"
-              }
-            >
+            <div className={category === "buy" ? "col-md-12" : "col-md-8"}>
               <Paper elevation={4} style={{ padding: "30px" }}>
                 <div className="row mb-2">
                   <div
@@ -147,7 +160,7 @@ const ProductDetails = (props) => {
                     >
                       <span className="fa fa-rupee-sign pr-1" />
                       {productData.price}
-                      {category !== "second hand" ? " /month" : ""}
+                      {category !== "buy" ? " /month" : ""}
                     </h5>
                   </div>
                   <div
@@ -173,7 +186,7 @@ const ProductDetails = (props) => {
                     </div>
                   </div>
                 </div>
-                {category === "second hand" ? (
+                {category === "buy" ? (
                   ""
                 ) : (
                   <div>
@@ -187,11 +200,10 @@ const ProductDetails = (props) => {
                   </div>
                 )}
               </Paper>
-              {productData.type === "Second Hand Product" ? null : category ===
-                "pg" ? (
+              {category === "buy" ? null : category === "pg" ? (
                 <Paper elevation={4} className="p-3 discription_box mt-3">
                   <div
-                    class="row"
+                    className="row"
                     style={{
                       justifyContent: "space-evenly",
                       padding: "0 12px",
@@ -389,110 +401,111 @@ const ProductDetails = (props) => {
                 </Paper>
               )}
             </div>
-            <div
-              className={
-                productData.type === "Second Hand Product"
-                  ? "d-none"
-                  : "col-md-4"
-              }
-            >
-              <div class="rateing_box">
-                <Paper elevation={4} className="p-2">
-                  <h4
-                    class="box_title"
-                    style={{ padding: "8px 0", textAlign: "center" }}
-                  >
-                    Ratings
-                  </h4>
-                  <div class="row align-items-center">
-                    <div
-                      class="col-12"
-                      style={{ margin: "12px 0px", padding: "0px 24px" }}
+
+            {category === "buy" ? (
+              ""
+            ) : (
+              <div className="col-md-4">
+                <div class="rateing_box">
+                  <Paper elevation={4} className="p-2">
+                    <h4
+                      class="box_title"
+                      style={{ padding: "8px 0", textAlign: "center" }}
                     >
-                      <div class="single_bar">
-                        <h6>
-                          {category === "pg" ? "Space" : "Equipments"}{" "}
-                          <span>{ratingData[0]}%</span>
-                        </h6>
-                        <div class="progress">
-                          <div
-                            class="progress-bar slideInLeft wow"
-                            style={{ width: `${ratingData[0]}%` }}
-                          ></div>
+                      Ratings
+                    </h4>
+                    <div class="row align-items-center">
+                      <div
+                        class="col-12"
+                        style={{ margin: "12px 0px", padding: "0px 24px" }}
+                      >
+                        <div class="single_bar">
+                          <h6>
+                            {category === "pg" ? "Space" : "Equipments"}{" "}
+                            <span>{ratingData[0]}%</span>
+                          </h6>
+                          <div class="progress">
+                            <div
+                              class="progress-bar slideInLeft wow"
+                              style={{ width: `${ratingData[0]}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="single_bar">
+                          <h6>
+                            {category === "pg" ? "Cleanliness" : "Staff"}
+                            <span>{ratingData[1]}%</span>
+                          </h6>
+                          <div class="progress">
+                            <div
+                              class="progress-bar slideInLeft wow"
+                              style={{ width: `${ratingData[1]}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="single_bar">
+                          <h6>
+                            {category === "pg" ? "Location" : "Activities"}
+                            <span>{ratingData[2]}%</span>
+                          </h6>
+                          <div class="progress">
+                            <div
+                              class="progress-bar slideInLeft wow"
+                              style={{ width: `${ratingData[2]}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="single_bar">
+                          <h6>
+                            {category === "pg" ? "Maintenance" : "Atmosphere"}
+                            <span>{ratingData[3]}%</span>
+                          </h6>
+                          <div class="progress">
+                            <div
+                              class="progress-bar slideInLeft wow"
+                              style={{ width: `${ratingData[3]}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="single_bar">
+                          <h6>
+                            {category === "pg" ? "Price" : "Ambience"}
+                            <span>{ratingData[4]}%</span>
+                          </h6>
+                          <div class="progress">
+                            <div
+                              class="progress-bar slideInLeft wow"
+                              style={{ width: `${ratingData[4]}%` }}
+                            ></div>
+                          </div>
                         </div>
                       </div>
-                      <div class="single_bar">
-                        <h6>
-                          {category === "pg" ? "Cleanliness" : "Staff"}
-                          <span>{ratingData[1]}%</span>
-                        </h6>
-                        <div class="progress">
-                          <div
-                            class="progress-bar slideInLeft wow"
-                            style={{ width: `${ratingData[1]}%` }}
-                          ></div>
-                        </div>
-                      </div>
-                      <div class="single_bar">
-                        <h6>
-                          {category === "pg" ? "Location" : "Activities"}
-                          <span>{ratingData[2]}%</span>
-                        </h6>
-                        <div class="progress">
-                          <div
-                            class="progress-bar slideInLeft wow"
-                            style={{ width: `${ratingData[2]}%` }}
-                          ></div>
-                        </div>
-                      </div>
-                      <div class="single_bar">
-                        <h6>
-                          {category === "pg" ? "Maintenance" : "Atmosphere"}
-                          <span>{ratingData[3]}%</span>
-                        </h6>
-                        <div class="progress">
-                          <div
-                            class="progress-bar slideInLeft wow"
-                            style={{ width: `${ratingData[3]}%` }}
-                          ></div>
-                        </div>
-                      </div>
-                      <div class="single_bar">
-                        <h6>
-                          {category === "pg" ? "Price" : "Ambience"}
-                          <span>{ratingData[4]}%</span>
-                        </h6>
-                        <div class="progress">
-                          <div
-                            class="progress-bar slideInLeft wow"
-                            style={{ width: `${ratingData[4]}%` }}
-                          ></div>
+                      <div class="col-12">
+                        <div class="riview_bg_box">
+                          <div class="listghor_overlay desc"></div>
+                          <div class="rateing_content">
+                            <h5 style={{ fontWeight: "600" }}>
+                              Avarage Rating
+                            </h5>
+                            <h3>{productData.avgRating}</h3>
+                            <a
+                              href="#customer_reviews"
+                              style={{
+                                textDecoration: "none",
+                                color: "white",
+                                fontWeight: "600",
+                              }}
+                            >
+                              {`${productData.reviews.length}`} Reviews
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-12">
-                      <div class="riview_bg_box">
-                        <div class="listghor_overlay desc"></div>
-                        <div class="rateing_content">
-                          <h5 style={{ fontWeight: "600" }}>Avarage Rating</h5>
-                          <h3>{productData.avgRating}</h3>
-                          <a
-                            href="#customer_reviews"
-                            style={{
-                              textDecoration: "none",
-                              color: "white",
-                              fontWeight: "600",
-                            }}
-                          >
-                            {`${productData.reviews.length}`} Reviews
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Paper>
+                  </Paper>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <div className="row mt-3">
@@ -519,7 +532,7 @@ const ProductDetails = (props) => {
             </div>
           </div>
 
-          {productData.type === "Second Hand Product" ? null : (
+          {category === "buy" ? null : (
             <div className="row justify-content-center">
               <div className="col-12 mt-3">
                 <div id="customer_reviews" className="customer_reviews">

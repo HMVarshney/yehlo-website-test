@@ -15,7 +15,7 @@ const getBuyData = (buyList) => {
     .get()
     .then((res) => {
       buyList = res.docs.map((doc) => {
-        return { id: doc.id, ...doc.data() };
+        return { id: doc.id, ...doc.data(), section:"buy"};
       });
       return { buyList };
     });
@@ -30,7 +30,7 @@ const getPgData = (pgList, premiumPgList, partnerPgList) => {
     .then((res) => {
       pgList = res.docs
         .map((doc) => {
-          return { id: doc.id, ...doc.data() };
+          return { id: doc.id, ...doc.data(), section:"pg" };
         })
         .filter((product) => {
           if (product.approved !== 1) {
@@ -73,7 +73,7 @@ const getGymData = (gymList, premiumGymList, partnerGymList) => {
     .then((res) => {
       gymList = res.docs
         .map((doc) => {
-          return { id: doc.id, ...doc.data() };
+          return { id: doc.id, ...doc.data(), section:"gym" };
         })
         .filter((product) => {
           if (product.approved !== 1) {
@@ -116,7 +116,7 @@ const getSponseredData = (sponseredList) => {
     .then((res) => {
       sponseredList = res.docs
         .map((doc) => {
-          return { id: doc.id, ...doc.data() };
+          return { id: doc.id, ...doc.data(), section:"ad"};
         })
         .filter((product) => {
           if (product.approved !== 1) {
