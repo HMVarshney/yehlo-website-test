@@ -19,6 +19,8 @@
 .bnb-card-title {
   text-align: start;
   font-size: 1em;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -43,4 +45,9 @@
   right: 4px;
   height: 28px;
   width: 28px;
+}
+
+a, a:hover{
+  text-decoration: none;
+  color: unset;
 }

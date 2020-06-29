@@ -126,3 +126,24 @@ div[class*="amenity-icon"] svg{
         padding-top: 12px;
     }
 }
+
+.advert-button-container{
+    display: flex;
+    justify-content: center;
+}
+
+.customBlock-button{
+  width: 100%;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+  outline: none;
+  background-color: #fff;
+}
+
+.customBlock-button:hover{
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.customBlock-button:focus{
+    box-shadow: 0 0 0;
+}

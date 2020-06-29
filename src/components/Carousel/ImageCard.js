@@ -3,7 +3,6 @@ import {
   Card,
   CardImg,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 
 const ImageCard = (props) => {
   let { premiumImage, id, section} = !props.details
@@ -13,7 +12,7 @@ const ImageCard = (props) => {
   let jump = props.static ? "" : `/productdetails/${section}/${id}`
   
   return (
-    <Link to={jump}>
+    <a href={jump} style={{textDecoration:"none", color:"unset"}}>
       <div style={{ height: "inherit" }}>
       <Card style={{ height: "inherit" }}>
         <CardImg
@@ -26,7 +25,7 @@ const ImageCard = (props) => {
         />
       </Card>
     </div>
-    </Link>
+    </a>
   );
 };
 

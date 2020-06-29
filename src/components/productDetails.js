@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Paper, Avatar } from "@material-ui/core";
+import { Button } from "reactstrap";
 import SlickSlider from "./slider";
 
 //icons
@@ -46,79 +47,106 @@ const ProductDetails = (props) => {
       product(gym).then((docData) => {
         setProductData(docData);
       });
-    }else if (category === "ad") {
-        product(sponsered).then((docData) => {
-          setProductData(docData);
-        });  
+    } else if (category === "ad") {
+      product(sponsered).then((docData) => {
+        setProductData(docData);
+      });
     }
   }, [pg, buy, gym, sponsered, props.match.params.product_id, category]);
-  
-  if (productData  && category !== "ad") {
-    var ratingData, guidelines, reviews;
+
+  if (productData) {
+    var ratingData = [],
+      guidelines = [],
+      reviews = [],
+      customBlocks = [];
     if (category !== "buy") {
-      ratingData = productData.ratings.map((rating) => {
-        rating /= 5;
-        rating *= 100;
-        return rating;
-      });
+      if (category !== "ad") {
+        ratingData = productData.ratings.map((rating) => {
+          rating /= 5;
+          rating *= 100;
+          return rating;
+        });
 
-      guidelines = productData.rules.map((rule, index) => {
-        return (
-          <li key={index}>
-            <div className="rule">{rule}</div>
-          </li>
-        );
-      });
+        guidelines = productData.rules.map((rule, index) => {
+          return (
+            <li key={index}>
+              <div className="rule">{rule}</div>
+            </li>
+          );
+        });
+      }
 
-      reviews = productData.reviews.map((comment, index) => {
-        const options = {
-          weekday: "short",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        };
-        let date = new Date(comment.date.seconds * 1000);
-        let formatDate = date.toLocaleDateString(undefined, options);
-        let time = date.toLocaleTimeString().split(":");
-        let formatTime = `${time[0]}:${time[1]} ${
-          time[2][3] === "A" ? "am" : "pm"
-        }`;
-        let displayDate = formatDate + " " + formatTime;
-
-        return (
-          <div class="single_comment" key={index}>
-            <div className="desc-message-box" style={{ display: "flex" }}>
-              <div className="quote-box">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  style={{ transform: "rotate(180deg)" }}
-                  className="quote"
-                >
-                  <path d="M0 0h24v24H0V0z" fill="none" />
-                  <path d="M7.17 17c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94zm10 0c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94z" />
-                </svg>
+      if (category === "ad") {
+        customBlocks = productData.customData
+          .filter((block) => (block.filled !== "no" ? true : false))
+          .map((block, index) => (
+            <div className="p-3" key={index}>
+              <h4 className="mb-2">{block.heading}</h4>
+              <p style={{ fontSize: "1.1em" }} className="mb-3">
+                {block.subHeading}
+              </p>
+              <div className="advert-button-container">
+              <div className="col-xs-12 col-sm-6 col-md-4">
+                <a href={block.buttonUrl}>
+                  <Button className="customBlock-button">{block.buttonText}</Button>
+                </a>
               </div>
-              <p className="message-quote">{comment.remark}</p>
-            </div>
-            <div class="comment_info">
-              <div className="comment-user-details">
-                <div style={{ marginRight: "8px" }}>
-                  <Avatar
-                    variant="rounded"
-                    src={comment.imageURL}
-                    alt="seller image"
-                  />
-                </div>
-                <div>
-                  <h5 className="desc-review-name">{comment.username}</h5>
-                  <h6 className="desc-review-date">{displayDate}</h6>
-                </div>
               </div>
             </div>
-          </div>
-        );
-      });
+          ));
+      }
+
+      if (productData.reviews) {
+        reviews = productData.reviews.map((comment, index) => {
+          const options = {
+            weekday: "short",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          };
+          let date = new Date(comment.date.seconds * 1000);
+          let formatDate = date.toLocaleDateString(undefined, options);
+          let time = date.toLocaleTimeString().split(":");
+          let formatTime = `${time[0]}:${time[1]} ${
+            time[2][3] === "A" ? "am" : "pm"
+          }`;
+          let displayDate = formatDate + " " + formatTime;
+
+          return (
+            <div class="single_comment" key={index}>
+              <div className="desc-message-box" style={{ display: "flex" }}>
+                <div className="quote-box">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    style={{ transform: "rotate(180deg)" }}
+                    className="quote"
+                  >
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M7.17 17c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94zm10 0c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94z" />
+                  </svg>
+                </div>
+                <p className="message-quote">{comment.remark}</p>
+              </div>
+              <div class="comment_info">
+                <div className="comment-user-details">
+                  <div style={{ marginRight: "8px" }}>
+                    <Avatar
+                      variant="rounded"
+                      src={comment.imageURL}
+                      alt="seller image"
+                    />
+                  </div>
+                  <div>
+                    <h5 className="desc-review-name">{comment.username}</h5>
+                    <h6 className="desc-review-date">{displayDate}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        });
+      }
 
       var premiumImageFlag = 0;
       if (productData.activePlan && productData.plan === "partner") {
@@ -146,22 +174,36 @@ const ProductDetails = (props) => {
           </div>
 
           <div className="row mt-5">
-            <div className={category === "buy" ? "col-md-12" : "col-md-8"}>
+            <div
+              className={
+                category === "buy" || category === "ad"
+                  ? "col-md-12"
+                  : "col-md-8"
+              }
+            >
               <Paper elevation={4} style={{ padding: "30px" }}>
                 <div className="row mb-2">
                   <div
                     className="col-12 pb-3"
                     style={{ borderBottom: "1px solid #e5e9f7" }}
                   >
-                    <h4 className="pt-1 pb-1">{productData.name}</h4>
-                    <h5
-                      className="details_price"
-                      style={{ color: "rgba(0,0,0,0.7)" }}
-                    >
-                      <span className="fa fa-rupee-sign pr-1" />
-                      {productData.price}
-                      {category !== "buy" ? " /month" : ""}
-                    </h5>
+                    {category === "ad" ? (
+                      <h3 className="pt-1 pb-1">{productData.name}</h3>
+                    ) : (
+                      <h4 className="pt-1 pb-1">{productData.name}</h4>
+                    )}
+                    {category !== "ad" ? (
+                      <h5
+                        className="details_price"
+                        style={{ color: "rgba(0,0,0,0.7)" }}
+                      >
+                        <span className="fa fa-rupee-sign pr-1" />
+                        {productData.price}
+                        {category !== "buy" ? " /month" : ""}
+                      </h5>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div
                     className="col-12 pt-3 pb-3"
@@ -188,6 +230,8 @@ const ProductDetails = (props) => {
                 </div>
                 {category === "buy" ? (
                   ""
+                ) : category === "ad" ? (
+                  <div style={{ marginBottom: "8px" }}>{customBlocks}</div>
                 ) : (
                   <div>
                     <p className="details_description_text pt-3">
@@ -200,7 +244,8 @@ const ProductDetails = (props) => {
                   </div>
                 )}
               </Paper>
-              {category === "buy" ? null : category === "pg" ? (
+              {category === "buy" || category === "ad" ? null : category ===
+                "pg" ? (
                 <Paper elevation={4} className="p-3 discription_box mt-3">
                   <div
                     className="row"
@@ -402,7 +447,7 @@ const ProductDetails = (props) => {
               )}
             </div>
 
-            {category === "buy" ? (
+            {category === "buy" || category === "ad" ? (
               ""
             ) : (
               <div className="col-md-4">

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Tooltip from '@material-ui/core/Tooltip';
 import "../../css/card.css";
-import { Link } from "react-router-dom";
+
 class Card extends Component {
   render() {
     let { name, images, district, price, type, plan, activePlan, avgRating, section, id } = !this.props.details
@@ -20,7 +20,7 @@ class Card extends Component {
     //temporary fix until database is sorted
     images = images ? images : [];
     return (
-      <Link to={`/productdetails/${section}/${id}`}>
+      <a href={`/productdetails/${section}/${id}`}>
         <div className="bnb-card">
         {badge ? (
           <div className="bnb-card-plan-badge">
@@ -88,8 +88,7 @@ class Card extends Component {
           )}
         </div>
       </div>
-   
-      </Link>
+    </a>
       );
   }
 }
