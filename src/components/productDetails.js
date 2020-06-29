@@ -50,7 +50,7 @@ const ProductDetails = (props) => {
   }, [pg, buy, gym, props.match.params.product_id, category]);
 
   if (productData) {
-    var ratingData, guidelines;
+    var ratingData, guidelines, reviews;
     if (category !== "second hand") {
       ratingData = productData.ratings.map((rating) => {
         rating /= 5;
@@ -63,6 +63,52 @@ const ProductDetails = (props) => {
           <li>
             <div className="rule">{rule}</div>
           </li>
+        );
+      });
+
+      reviews = productData.reviews.map((comment) => {
+
+        const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
+        let date = new Date(comment.date.seconds*1000);
+        let formatDate = date.toLocaleDateString(undefined,options)
+        let time = date.toLocaleTimeString().split(":")
+        let formatTime = `${time[0]}:${time[1]} ${time[2][3] === 'A'?"am":"pm"}`
+        let displayDate = formatDate+" "+formatTime
+        
+        return (
+          <div class="single_comment">
+            <div className="desc-message-box" style={{ display: "flex" }}>
+              <div className="quote-box">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  style={{ transform: "rotate(180deg)" }}
+                  className="quote"
+                >
+                  <path d="M0 0h24v24H0V0z" fill="none" />
+                  <path d="M7.17 17c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94zm10 0c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94z" />
+                </svg>
+              </div>
+              <p className="message-quote">{comment.remark}</p>
+            </div>
+            <div class="comment_info">
+              <div className="comment-user-details">
+                <div style={{ marginRight: "8px" }}>
+                  <Avatar
+                    variant="rounded"
+                    src={comment.imageURL}
+                    alt="seller image"
+                  />
+                </div>
+                <div>
+                  <h5 className = "desc-review-name">{comment.username}</h5>
+                  <h6 className = "desc-review-date">
+                    {displayDate}
+                    </h6>
+                </div>
+              </div>
+            </div>
+          </div>
         );
       });
     }
@@ -480,62 +526,7 @@ const ProductDetails = (props) => {
                   <Paper elevation={4}>
                     <div class="listing_details_box comment_area rateing_box">
                       <h4 className="desc-box-title">Reviews</h4>
-                      <div class="single_comment">
-                        <div class="comment_thumb">
-                          <img src="/assets/images/comment_1.jpg" alt="" />
-                        </div>
-                        <div class="comment_info">
-                          <h5>JHON DOE</h5>
-                          <h6>Oct 15, 2018 at 11:00</h6>
-                          <p>
-                            My lady mush hanky panky young delinquent lurgy the
-                            little rotter in my flat tomfoolery so I said mufty
-                            cockup.!
-                          </p>
-                        </div>
-                      </div>
-                      <div class="single_comment">
-                        <div class="comment_thumb">
-                          <img src="/assets/images/comment_2.jpg" alt="" />
-                        </div>
-                        <div class="comment_info">
-                          <h5>JHON DOE</h5>
-                          <h6>Oct 15, 2018 at 11:00</h6>
-                          <p>
-                            My lady mush hanky panky young delinquent lurgy the
-                            little rotter in my flat tomfoolery so I said mufty
-                            cockup.!
-                          </p>
-                        </div>
-                      </div>
-                      <div class="single_comment">
-                        <div class="comment_thumb">
-                          <img src="/assets/images/comment_3.jpg" alt="" />
-                        </div>
-                        <div class="comment_info">
-                          <h5>JHON DOE</h5>
-                          <h6>Oct 15, 2018 at 11:00</h6>
-                          <p>
-                            My lady mush hanky panky young delinquent lurgy the
-                            little rotter in my flat tomfoolery so I said mufty
-                            cockup.!
-                          </p>
-                        </div>
-                      </div>
-                      <div class="single_comment">
-                        <div class="comment_thumb">
-                          <img src="/assets/images/comment_4.jpg" alt="" />
-                        </div>
-                        <div class="comment_info">
-                          <h5>JHON DOE</h5>
-                          <h6>Oct 15, 2018 at 11:00</h6>
-                          <p>
-                            My lady mush hanky panky young delinquent lurgy the
-                            little rotter in my flat tomfoolery so I said mufty
-                            cockup.!
-                          </p>
-                        </div>
-                      </div>
+                      {reviews}
                     </div>
                   </Paper>
                 </div>

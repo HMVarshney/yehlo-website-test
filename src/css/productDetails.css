@@ -69,3 +69,60 @@ div[class*="amenity-icon"] svg{
     padding-top: 2px;
     margin-left: 8px;
 }
+
+.single_comment{
+    display: flex;
+    flex-direction: column;
+}
+
+.desc-message-box{
+    align-items: flex-start;
+}
+
+.single_comment .quote-box{
+    position: relative;
+}
+
+.single_comment svg.quote{
+    width: 4em;
+    margin-right: 12px;
+    top: 0;
+    fill:#fda085;   
+}
+
+.message-quote{
+    padding-top: 18px;
+}
+
+.comment_info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.comment-user-details{
+    margin-top: 8px;
+    display: flex;
+    width: fit-content;
+}
+
+.desc-review-name{
+    width: 225px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.desc-review-date{
+    width: 225px;
+}
+
+@media (max-width:576px){
+    .single_comment svg.quote{
+        width: 3em;
+        margin-right: 12px;
+    }
+    .message-quote{
+        padding-top: 12px;
+    }
+}

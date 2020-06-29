@@ -37,6 +37,14 @@ export default class SlickSlider extends Component {
   }
 
   render() {
+    let smImages = this.props.images.map((im) => (
+      <div class="single_img">
+        <img src={im} alt="" />
+      </div>
+    ));
+
+    small_settings.slidesToShow = this.props.images.length < 4 ? this.props.images.length : 4
+
     return (
       <div>
         <Slider
@@ -46,27 +54,17 @@ export default class SlickSlider extends Component {
           {...big_settings}
         >
           {this.props.images.map((image) => (
-            <div className="single_img"
-            >
-              <div style={{display:"flex", justifyContent:"center"}}>
-              <img   style={{maxHeight:"400px", width:"auto"}} src={image} alt=""/>
-
+            <div className="single_img">
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <img
+                  style={{ maxHeight: "325px", width: "auto" }}
+                  src={image}
+                  alt=""
+                  className="desc-carousel-main-img"
+                />
               </div>
             </div>
           ))}
-
-          {/* <div class="single_img">
-                <img src="/assets/images/gallery_2.jpg" class="img-fluid" alt="" />
-            </div>
-            <div class="single_img">
-                <img src="/assets/images/gallery_3.jpg" class="img-fluid" alt="" />
-            </div>
-            <div class="single_img">
-                <img src="/assets/images/gallery_4.jpg" class="img-fluid" alt="" />
-            </div>
-            <div class="single_img">
-                <img src="/assets/images/gallery_5.jpg" class="img-fluid" alt="" />
-            </div> */}
         </Slider>
 
         <Slider
@@ -75,18 +73,7 @@ export default class SlickSlider extends Component {
           ref={(slider) => (this.slider2 = slider)}
           {...small_settings}
         >
-          <div class="single_img">
-            <img src={this.props.images[0]} alt="" />
-          </div>
-          <div class="single_img">
-            <img src={this.props.images[1]} alt="" />
-          </div>
-          <div class="single_img">
-            <img src={this.props.images[2]} alt="" />
-          </div>
-          <div class="single_img">
-            <img src={this.props.images[3]} alt="" />
-          </div>
+         {smImages}
         </Slider>
       </div>
     );
