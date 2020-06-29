@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {CollegeListContext} from '../context/context-provider/collegeListContext';
+import {CollegeListContext} from '../../context/context-provider/collegeListContext';
 import { makeStyles } from '@material-ui/core';
 
 function SearchBase(ChildComp){

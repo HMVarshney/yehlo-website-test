@@ -7,7 +7,7 @@ import AutoCarousel from "./Carousel/AutoCarousel";
 import Carousel from "./Carousel/Carousel";
 import CategoryCarousel from "./Carousel/CategoryCarousel";
 import PremiumCarousel from "./Carousel/PremiumCarousel";
-import SearchBar from "./searchBar";
+import SearchBar from "./Search/searchBar";
 
 //styles
 import styles from "../css/home.module.css";

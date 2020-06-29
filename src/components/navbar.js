@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Navbar, NavbarToggler, Collapse, NavItem, NavbarBrand, Nav, NavLink} from 'reactstrap';
-import SearchModal from './searchModal';
+import SearchModal from './Search/searchModal';
 import { TextField, InputAdornment } from '@material-ui/core';
 
 //icons

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Avatar, Tooltip } from "@material-ui/core";
+import { Avatar, Tooltip, Typography } from "@material-ui/core";
 import { Popover, PopoverBody } from 'reactstrap';
 
 //css
@@ -7,7 +7,7 @@ import '../css/card.css';
 
 const ListingsCard = (props) => {
     let title = props.data.name;
-    if(title.length>30){
+    if(title.length>18){
       title = title.slice(0,30) + "..."; }
       
     let location = props.data.address;
@@ -33,7 +33,7 @@ const ListingsCard = (props) => {
 
     return ( 
       <>
-         {badge ? (
+         {/* {badge ? (
           <div className="bnb-card-plan-badge mr-3">
             {props.data.plan ? <Tooltip title={props.data.plan.toUpperCase()}> 
             <svg
@@ -52,9 +52,8 @@ const ListingsCard = (props) => {
             </svg>
             </Tooltip> : null }
           </div>
-        ) : (
-          ""
-        )}
+        ) : ( ""
+        )} */}
         <div className='col-md-3 col-6 mb-4 product-card' style={{zIndex: 0}}>
           <div className="bnb-card">
             <div>
@@ -83,32 +82,16 @@ const ListingsCard = (props) => {
                 </PopoverBody>            
               </Popover>
 
-              <h6 className="listings-card-title">
-                <a className='product-name' style={{textDecoration:'none'}} href={`/pgdetails/${props.data.productId}`} >{title}</a>
-              </h6>
+              {/* <h6 className="listings-card-title">
+                <a className='product-name' style={{textDecoration:'none', color:'black'}} href={`/pgdetails/${props.data.productId}`} >{title}</a>
+              </h6> */}
+              <Typography variant='body2' color='textPrimary' className='mb-2' >{props.data.district}</Typography>
+              <Typography display='inline' variant='body1' className='product-name mr-2' >{title}</Typography>
               {props.data.type === 'Second Hand Product' ? 
-                <div className='product-category'>
-                  <p>(<span className='product-cat'>{props.data.category}</span>)</p>
-                </div> : 
-                <div className='product-rating'>
-                <p><span className='product-rating fa fa-star'>{props.data.avgRating}</span></p>
-                </div>
+                  <Typography display='inline' className='product-cat' variant='caption' color='textPrimary'>({props.data.category})</Typography> 
+                : <Typography display='inline' className='product-rating' color='textPrimary' variant='body2'><span className='fa fa-star' /> {props.data.avgRating} </Typography>
               }
-
-              <div className='bnb-card-sub product-price'><span className='fa fa-rupee-sign listings-card-icon' /> {parseInt(props.data.price,10)} </div>
-              <div className='bnb-card-sub'><span className='fa fa-location-arrow listings-card-icon' /> {location} </div>
-              {/* <div className="bnb-card-rating">
-                <svg
-                  className="bi bi-star-fill mr-1 bnb-card-star-icon"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                </svg>
-                <span>4.99 (277)</span>
-              </div> */}
+                  <Typography variant='body2' className='product-price' color='textPrimary'><span className='fa fa-sm fa-rupee-sign'/> {parseInt(props.data.price,10)} /month </Typography>
             </div>
           </div>
           <hr />
