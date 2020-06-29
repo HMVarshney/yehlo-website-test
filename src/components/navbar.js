@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Navbar, NavbarToggler, Collapse, NavItem, NavbarBrand, Nav, NavLink} from 'reactstrap';
-import SearchModal from './searchModal';
+import SearchModal from './Search/searchModal';
 import { TextField, InputAdornment } from '@material-ui/core';
 
 //icons
@@ -15,7 +15,7 @@ const Navigationbar = () => {
     useEffect(() => {
         const onScroll = () => {
             setSearchVisible(window.scrollY > 300);
-            window.scrollY>300 ? document.getElementById('navbar').style.background = 'rgb(255,255,255)' : document.getElementById('navbar').style.background = 'transparent';
+            window.scrollY>100 ? document.getElementById('navbar').style.background = 'rgb(255,255,255)' : document.getElementById('navbar').style.background = 'transparent';
             // setScroll(window.scrollY)
         }
         window.addEventListener("scroll", onScroll);;    
@@ -32,35 +32,22 @@ const Navigationbar = () => {
                     {searchVisible && <SearchBar modalOpen={()=>setModalOpen(!modalOpen)} />}
 
                     <NavbarToggler onClick={()=>setNavOpen(!navOpen)} />
-                        <Collapse isOpen={navOpen} navbar>
-                            <div className={searchVisible ? 'd-block d-md-none col-12' : 'col-12'}>
-                                <Nav navbar className='float-md-right'>
-                                    {/* <NavItem className='d-lg-none d-xl-none d-md-none d-sm-block mt-3 mt-lg-0'>
-                                        <CollegeDropdown data={collegeList} open={collegeDropdownOpen} handleOpen={setDropdown}/>
-                                    </NavItem> */}
-                                    <NavItem>
-                                        <NavLink href='/'> Home </NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href='/listings'>  Listings </NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href='/about'>  About </NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href='/contact'> Contact </NavLink>
-                                    </NavItem>
-                                </Nav>
-                            </div>
-                        </Collapse>
-                    {/* <Nav navbar>
-                        <NavItem className='d-none d-md-block' style={{width:'150px'}}> 
-                            <Button variant='contained' component={Link} to='/getApp'><span className='fa fa-plus mr-1'></span> Add Listing </Button>
-                        </NavItem>
-                    </Nav>  */}
+                    <Collapse isOpen={navOpen} navbar>
+                        <div className={searchVisible ? 'd-block d-md-none col-12' : 'col-12'}>
+                            <Nav navbar className='float-md-right'>
+                                <NavItem className='nav-item'>
+                                    <NavLink className='nav-link' href='/about'>  About </NavLink>
+                                </NavItem>
+                                <NavItem className='nav-item'>
+                                    <NavLink className='nav-link' href='/contact'> Contact </NavLink>
+                                </NavItem>
+                            </Nav>
+                        </div>
+                    </Collapse>
                 </div>
+                <SearchModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
             </Navbar>
-            <SearchModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+            
         </>
      );
 }

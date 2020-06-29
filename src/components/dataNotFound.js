@@ -3,7 +3,7 @@ import { Typography } from '@material-ui/core';
 
 const NoData = () => {
     return ( 
-        <div className='container mt-n5 mb-2'>
+        <div className='container mt-n5 mb-3'>
             <div className='row justify-content-center align-items-center'>
                 <div className='col-8'>
                     <img width='100%' src='/assets/images/animated/noData_2.jpg' alt='no data found' />
@@ -13,6 +13,7 @@ const NoData = () => {
                     <Typography variant='h5'>No relevant data found. Keep Searching!</Typography>
                 </div>
             </div>
+            <br />
         </div>
      );
 }

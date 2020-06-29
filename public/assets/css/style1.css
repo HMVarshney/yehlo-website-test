@@ -17,7 +17,7 @@
 }
 
 .search_text{
-	padding: 0px 15px;
+	padding: 10px 0px;
 }
 
 .headerbar{
@@ -26,8 +26,8 @@
 }
 
 .listings-jumbotron{
-	padding: 30px;
-	height: 350px;
+	padding: 20px;
+	height: 250px;
 }
 
 .listings-jumbotron-text{
@@ -53,7 +53,7 @@
 
 .listings-container{
 	background: url('/assets/images/animated/search_1.jpg') center no-repeat;
-	background-size: 1000px 100%;
+	background-size: 800px 100%;
 	border-radius: 10px;
 }
 
@@ -147,11 +147,6 @@
 	background-image: linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0));
 }
 
-.search-modal{
-	padding: 8px;
-}
-
-
 .details_title{
 	color: #565656;
 }
@@ -220,9 +215,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: solid #A5AEDC 1px;
+	border: solid white 1px;
 	border-radius: 50px;
-	background-color:#2e242c;
+	background: transparent;
 	height: 35px;
 }
 
@@ -257,3 +252,25 @@
 	margin-top: 10px;
 }
 
+.nav-link{
+	color: black;
+}
+
+.nav-item :hover{
+	border-bottom: #1e272c solid 3px;
+}
+
+.sort-selection{
+	padding: 1.25rem;
+	position: absolute;
+	margin-top: 23%;
+	margin-left: 5px;
+	border: #1e272c solid 2px;
+	
+}
+
+.breadcrumb{
+	width: 60%;
+	margin: auto;
+	background-color: #E0E0E0;
+}

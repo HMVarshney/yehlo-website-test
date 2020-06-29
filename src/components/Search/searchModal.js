@@ -11,12 +11,12 @@ import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutline
 const SearchModal = (props) => {
 
     const [activeTab, setActiveTab] = useState('1');
-    const{searchAttr, setSearchAttr, categoryLabels, collegeList} = props;
+    const{searchAttr, setSearchAttr, categoryLabels, collegeList,
+       styles: { sliderStyle, textfield }} = props;
     
     return (  
         <Modal size='lg' isOpen={props.modalOpen} toggle={()=>props.setModalOpen(!props.modalOpen)}>
-            <div className='search-modal'>
-            <ModalHeader className='row justify-content-center'><h4 className='search_text'>What are you looking for?</h4></ModalHeader>
+            <ModalHeader><h4 className='search_text'>What are you looking for?</h4></ModalHeader>
                 <ModalBody>
 
                     <Nav tabs>
@@ -52,21 +52,17 @@ const SearchModal = (props) => {
                         <TabPane tabId='2'>
                             <div className='search_box'>
                                 <Autocomplete
-                                    options={collegeList}
-                                    getOptionLabel={(option) => option}
+                                    classes={{root: textfield.autocompleteRoot}}
+                                    disabled={!collegeList.length>0}
+                                    options={collegeList.length > 0 ? collegeList : null}
+                                    getOptionLabel={(option) => option.name}
                                     fullWidth={true}
-                                    value={searchAttr.college}
-                                    onKeyUp={(event)=>{
-                                        if(event.keyCode === 13){
-                                            setSearchAttr({...searchAttr, college:event.target.value})
-                                        }
-                                    }}
-                                    onChange={(event)=>setSearchAttr({...searchAttr, college:event.target.innerHTML})}
-                                    renderInput={(params) => <TextField {...params} label="College Search.." variant="outlined" />} 
-                                />  
+                                    onChange={(event, newValue)=> setSearchAttr({...searchAttr, college: newValue ? newValue : {name: '', location: null}})}
+                                    renderInput={(params) =><TextField {...params} label="College Search.." variant="filled" />} 
+                                />
                             </div>
                         </TabPane>
-                        <TabPane tabId='3'>
+                        <TabPane tabId='3' className='p-3'>
                             <Typography>Price Range: </Typography>
                             <br />
                             <div className='search_modal_price_textfields'>
@@ -77,18 +73,19 @@ const SearchModal = (props) => {
                             </div>
                             <br /><br />
                             <div style={{ width:'70%'}}> 
-                                <Slider style={{width:'100%'}} value={searchAttr.priceValue} 
-                                    onChange={(event,newValue)=>{ setSearchAttr({...searchAttr, priceValue:newValue})}}
-                                aria-labelledby="range-slider" valueLabelDisplay='on' step={200} max={20000} /> 
+                            <Slider
+                                classes={{thumb: sliderStyle.thumb, root: sliderStyle.modalRoot}}
+                                style={{width:'100%'}} value={searchAttr.priceValue} onChange={(e,newValue)=>setSearchAttr({...searchAttr, priceValue:newValue})}
+                                valueLabelDisplay='on' step={200} max={20000} /> 
                             </div>
                         </TabPane>
 
                     </TabContent>
                 </ModalBody>
                 <ModalFooter>
-                    <Button href={`/listings/${searchAttr.category}/?college=${searchAttr.college}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} variant='contained' color='primary'><span className='fa fa-search'/> Search</Button>
+                    <Button style={{background:'#1e272c', color:'white'}} 
+                        href={`/listings/${searchAttr.category}/?college=${searchAttr.college.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} variant='contained' ><span className='fa fa-search'/> Search</Button>
                 </ModalFooter>
-            </div>
         </Modal>
      );
 }
