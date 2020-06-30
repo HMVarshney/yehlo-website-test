@@ -1,19 +1,17 @@
 import React, { Component } from "react";
-
+import "../css/terms.css";
 class Terms extends Component {
   render() {
     return (
-      <div>
-        <section className="row bg-white">
+      <div className="terms mb-5">
+        <section className="row">
           <div className="container">
-            <h1 className="h2 text-black m-all-0 text-center m-top-md text-semibold">
-              Terms of Service
-            </h1>
-            <div className="row p-top-md m-top-xs">
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28 p-top-sm m-top">
+            <h1 className="h2 text-center mb-4">Terms of Service</h1>
+            <div className="main-body">
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       PLEASE CAREFULLY READ THESE TERMS OF USE. BY USING THIS
                       PLATFORM YOU INDICATE YOUR UNDERSTANDING AND ACCEPTANCE OF
                       THESE TERMS. IF YOU DO NOT AGREE TO THESE TERMS YOU MAY
@@ -22,47 +20,44 @@ class Terms extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">Content</h2>
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">Content</h2>
                   </div>
                 </div>
+
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28"></p>
-                    <ol className="p-left-sm line-height-24">
-                      <li className="text-gray">Description of the Services</li>
-                      <li className="text-gray">Acceptance</li>
-                      <li className="text-gray">Conduct and Content Policy</li>
-                      <li className="text-gray">
-                        Access to Service and Registration
-                      </li>
-                      <li className="text-gray">No spam policy</li>
-                      <li className="text-gray">Disclaimer of warranties</li>
-                      <li className="text-gray">Limitation of Liability</li>
-                      <li className="text-gray">
-                        Notification of Claim of Infringement
-                      </li>
-                      <li className="text-gray">General Information</li>
-                      <li className="text-gray">Privacy Policy</li>
-                      <li className="text-gray">Grievance Officer</li>
+                  <div className="col-12">
+                    <p className="line-height-28"></p>
+                    <ol>
+                      <li>Description of the Services</li>
+                      <li>Acceptance</li>
+                      <li>Conduct and Content Policy</li>
+                      <li>Access to Service and Registration</li>
+                      <li>No spam policy</li>
+                      <li>Disclaimer of warranties</li>
+                      <li>Limitation of Liability</li>
+                      <li>Notification of Claim of Infringement</li>
+                      <li>General Information</li>
+                      <li>Privacy Policy</li>
+                      <li>Grievance Officer</li>
                     </ol>
                     <p />
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">
-                      Description of the Services
-                    </h2>
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">Description of the Services</h2>
                   </div>
                 </div>
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       OLX People is an end-to-end recruitment marketplace
                       connecting employers, consultants and job seekers for jobs
                       across hierarchies in an organization.
@@ -70,15 +65,16 @@ class Terms extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">Acceptance</h2>
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">Acceptance</h2>
                   </div>
                 </div>
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       The Platform and the Service are provided to you subject
                       to these OLX People Terms of Use (these "Terms"). For the
                       purpose of the Terms and wherever the context so requires,
@@ -106,15 +102,16 @@ class Terms extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">Content Policy</h2>
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">Content Policy</h2>
                   </div>
                 </div>
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       Users of the OLX People must not post content or
                       information that is unlawful, fraudulent, threatening,
                       abusive, libelous, defamatory, obscene or otherwise
@@ -145,7 +142,7 @@ class Terms extends Component {
                       visitors; and to comply with legal obligations or
                       governmental requests.
                     </p>
-                    <p className="text-medium text-gray line-height-28">
+                    <p className="line-height-28">
                       If you post content or submit material, you grant OLX
                       People a nonexclusive, worldwide, perpetual, irrevocable,
                       royalty-free, sub-licensable (through multiple layers of
@@ -166,7 +163,7 @@ class Terms extends Component {
                       resulting from any content or materials you provide here
                       under.
                     </p>
-                    <p className="text-medium text-gray line-height-28">
+                    <p className="line-height-28">
                       At your discretion, you may provide feedback to OLX People
                       concerning the functionality and performance of the OLX
                       People service or site from time to time, including,
@@ -185,7 +182,7 @@ class Terms extends Component {
                       that OLX People has the ability to sublicense all Feedback
                       in any form to any third party without restriction.
                     </p>
-                    <p className="text-medium text-gray line-height-28">
+                    <p className="line-height-28">
                       You agree not to access (or attempt to access) any of the
                       services or site by any means other than through the
                       interface that is provided by OLX People, unless you have
@@ -204,7 +201,7 @@ class Terms extends Component {
                       (including any loss or damage which OLX People may suffer)
                       of any such breach.
                     </p>
-                    <p className="text-medium text-gray line-height-28">
+                    <p className="line-height-28">
                       OLX People reserves the right to use the content of
                       messages sent through OLX People to prevent potentially
                       illegal activities and activities that are detrimental to
@@ -218,17 +215,16 @@ class Terms extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">
-                      Access to Service and Registration
-                    </h2>
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">Access to Service and Registration</h2>
                   </div>
                 </div>
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       Some areas of the OLX People service require you to
                       register. If you register, you agree to provide true,
                       accurate, current and complete information about yourself
@@ -246,15 +242,16 @@ class Terms extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">No spam policy</h2>
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">No spam policy</h2>
                   </div>
                 </div>
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       You understand and agree that sending unsolicited email
                       advertisements or other unsolicited communications to OLX
                       email addresses or through OLX are expressly prohibited by
@@ -274,15 +271,16 @@ class Terms extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">Disclaimer of Warranties</h2>
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">Disclaimer of Warranties</h2>
                   </div>
                 </div>
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       OLX People disclaims any and all responsibility or
                       liability for the accuracy, content, completeness,
                       legality, reliability, or operability or availability of
@@ -305,15 +303,16 @@ class Terms extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">Limitation of Liability</h2>
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">Limitation of Liability</h2>
                   </div>
                 </div>
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       IN NO EVENT SHALL OLX, ITS OFFICERS, DIRECTORS, EMPLOYEES,
                       OR AGENTS, BE LIABLE FOR DIRECT, INDIRECT, INCIDENTAL,
                       SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES (EVEN IF OLX
@@ -347,17 +346,18 @@ class Terms extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">
                       NOTIFICATION OF CLAIMS OF INFRINGEMENTS
                     </h2>
                   </div>
                 </div>
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       OLX is not liable for any infringement of intellectual
                       property rights arising out of materials posted on or
                       transmitted through the site, or items advertised on the
@@ -375,15 +375,16 @@ class Terms extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">General Information</h2>
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">General Information</h2>
                   </div>
                 </div>
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       These Terms of Service will be governed by and construed
                       in accordance with the laws of of India, without giving
                       effect to its conflict of laws provisions or your actual
@@ -399,18 +400,18 @@ class Terms extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">Privacy Policy</h2>
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">Privacy Policy</h2>
                   </div>
                 </div>
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       <a
-                        href="https://www.olxpeople.com/privacy/"
-                        target="_blank"
+                        href="/"
                       >
                         Privacy Policy
                       </a>
@@ -418,21 +419,22 @@ class Terms extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12">
-                <div className="row p-bottom-sm">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <h2 className="text-black h3">Grievance officer</h2>
+
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h2 className="h3">Grievance officer</h2>
                   </div>
                 </div>
                 <div className="row m-top-5 m-bottom-md">
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28">
+                  <div className="col-12">
+                    <p className="line-height-28">
                       If you have any grievance with respect to the Platform or
                       the Service, you can contact our grievance officer at:
                     </p>
                   </div>
-                  <div className="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-                    <p className="text-medium text-gray line-height-28"></p>
+                  <div className="col-12">
+                    <p className="line-height-28"></p>
                     <ol className="p-left-sm line-height-24">
                       <li className="text-gray">Name: Sumitra Patnaik</li>
                       <li className="text-gray">

@@ -2,6 +2,8 @@ import React, { useEffect, useContext, useState } from "react";
 import { Paper, Avatar } from "@material-ui/core";
 import { Button } from "reactstrap";
 import SlickSlider from "./slider";
+import ChatRoundedIcon from "@material-ui/icons/ChatRounded";
+import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
 
 //icons
 import Spinnerloader from "./Preloaders/spinnerLloader";
@@ -241,7 +243,9 @@ const ProductDetails = (props) => {
                           {productData.description}
                         </p>
                         <div className="desc-guide pt-3">
-                          <h5 className="pb-2">Guidelines</h5>
+                          <h5 className="pb-2">
+                            {category === "pg" ? "House Rules" : "Gym Policies"}
+                          </h5>
                           <ul>{guidelines}</ul>
                         </div>
                       </div>
@@ -721,13 +725,21 @@ const ProductDetails = (props) => {
                   </div>
                 )}
                 <div className="app-button-box mt-3">
-                  <Paper elevation={3} className="p-2" style={{width:"100%"}}>
-                    <Button  className="customBlock-button">
-                      Chat with Seller
-                    </Button>
-                    <Button className="customBlock-button mt-2">
-                      Add to Wishlist
-                    </Button>
+                  <Paper
+                    elevation={3}
+                    className="p-2"
+                    style={{ width: "100%" }}
+                  >
+                    <a href="/getApp">
+                      <Button className="customBlock-button">
+                        <ChatRoundedIcon /> Chat with Seller
+                      </Button>
+                    </a>
+                    <a href="/getApp">
+                      <Button className="customBlock-button mt-2">
+                        <FavoriteBorderRoundedIcon /> Add to Wishlist
+                      </Button>
+                    </a>
                   </Paper>
                 </div>
               </div>

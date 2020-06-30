@@ -12,3 +12,8 @@ font-style: normal;
 font-weight: normal;
 src: local('Airbnb Cereal App Book'), url('/assets/fonts/AirbnbCerealBook.woff') format('woff');
 }
+
+.getTheApp + footer {
+  position: absolute;
+  bottom: 0;
+}

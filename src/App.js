@@ -36,7 +36,12 @@ function App() {
         />
         <Route exact path="/getApp" component={GetApp} />
         <Route exact path="/sponslistings" component={SponseredListings} />
-        <Route exact path="/terms" component={Terms} />
+        <Route exact path="/terms">
+          <Terms />
+          <a href="/getApp">
+            <AppIcon />
+          </a>
+        </Route>
         <Redirect to="/" />
       </Switch>
       <footer className={styles.footer}>
