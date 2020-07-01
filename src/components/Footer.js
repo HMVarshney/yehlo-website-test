@@ -8,7 +8,21 @@ class Footer extends Component {
     return (
       <Container className="pt-4 pb-4">
         <div className={styles.footerContent}>
-          <div className="mb-4">About us</div>
+          <div
+            className="mb-4"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <a href="/about">
+              <div>About us</div>
+            </a>
+            <a href="/terms">
+              <div>Terms & Conditions</div>
+            </a>
+          </div>
           <div className={styles.alignment} style={{ width: "250px" }}>
             {/* Facebook */}
             <svg

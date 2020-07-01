@@ -152,9 +152,9 @@ const ProductDetails = (props) => {
         });
       }
 
-      var premiumImageFlag = 0;
+      var partnerFlag = 0;
       if (productData.activePlan && productData.plan === "partner") {
-        premiumImageFlag = 1;
+        partnerFlag = 1;
       }
     }
 
@@ -167,7 +167,7 @@ const ProductDetails = (props) => {
               <div className="gallery_box">
                 <SlickSlider
                   images={
-                    premiumImageFlag
+                    partnerFlag
                       ? productData.premiumImage.concat(productData.images)
                       : productData.images
                   }
@@ -242,6 +242,19 @@ const ProductDetails = (props) => {
                         <p className="details_description_text pt-3">
                           {productData.description}
                         </p>
+                        {partnerFlag ? (
+                          <div className="advert-button-container mt-3">
+                            <div className="col-xs-12 col-sm-8 col-md-6">
+                              <a href="">
+                                <Button className="customBlock-button">
+                                  Visit the Website
+                                </Button>
+                              </a>
+                            </div>
+                          </div>
+                        ) : (
+                          ""
+                        )}
                         <div className="desc-guide pt-3">
                           <h5 className="pb-2">
                             {category === "pg" ? "House Rules" : "Gym Policies"}
@@ -570,6 +583,26 @@ const ProductDetails = (props) => {
                 <div className="col-12">
                   <Paper
                     elevation={3}
+                    className="partner-media-box"
+                    style={{ padding: "30px" }}
+                  >
+                    <div style={{ marginBottom: "20px" }}>
+                      <h4 className="desc-box-title">Introductory video</h4>
+                    </div>
+                    <div className="videoWrapper">
+                      <iframe
+                      width="560" height="349"
+                        src="https://www.youtube.com/embed/tgbNymZ7vqY"
+                      ></iframe>
+                    </div>
+                  </Paper>
+                </div>
+              </div>
+
+              <div className="row mt-3">
+                <div className="col-12">
+                  <Paper
+                    elevation={3}
                     className="map_box"
                     style={{ padding: "30px" }}
                   >
@@ -724,19 +757,29 @@ const ProductDetails = (props) => {
                     </Paper>
                   </div>
                 )}
-                <div className="app-button-box mt-3">
+                <div
+                  className={
+                    category === "buy" || category === "ad"
+                      ? "app-button-box"
+                      : "app-button-box mt-3"
+                  }
+                >
                   <Paper
                     elevation={3}
                     className="p-2"
                     style={{ width: "100%" }}
                   >
+                    {category === "buy" ? (
+                      <a href="/getApp">
+                        <Button className="customBlock-button mb-2">
+                          <ChatRoundedIcon /> Chat with Seller
+                        </Button>
+                      </a>
+                    ) : (
+                      ""
+                    )}
                     <a href="/getApp">
                       <Button className="customBlock-button">
-                        <ChatRoundedIcon /> Chat with Seller
-                      </Button>
-                    </a>
-                    <a href="/getApp">
-                      <Button className="customBlock-button mt-2">
                         <FavoriteBorderRoundedIcon /> Add to Wishlist
                       </Button>
                     </a>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Avatar, Tooltip, Typography } from "@material-ui/core";
+import { Avatar, Typography } from "@material-ui/core";
 import { Popover, PopoverBody } from 'reactstrap';
 
 //css

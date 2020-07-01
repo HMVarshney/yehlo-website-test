@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 //Components
 import Navbar from "./components/navbar";
 import Listing from "./components/listings";
-import About from "./components/about";
+import About from "./components/About";
 import Footer from "./components/Footer";
 import ProductDetails from "./components/productDetails.js";
 import Home from "./components/Home.js";

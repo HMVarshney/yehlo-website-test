@@ -9,6 +9,7 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import "../../css/owl.css";
+import TeamCard from "./TeamCard";
 
 export class Carousel extends Component {
   render() {
@@ -59,7 +60,16 @@ export class Carousel extends Component {
 </svg>`,
             ]}
           >
-            {carouselCards}
+                        {this.props.team ? (
+              <>
+               <TeamCard/>
+               <TeamCard/>
+               <TeamCard/>
+               <TeamCard/>
+               <TeamCard/>
+              </>
+            ):
+            carouselCards}
           </OwlCarousel>
         </div>
       </div>

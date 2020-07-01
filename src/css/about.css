@@ -1,0 +1,59 @@
+.about {
+    position: relative;
+  }
+  
+  .about i.fa-facebook-f {
+    color: royalblue;
+  }
+  
+  .about .section_padding {
+    padding: 0;
+    padding-bottom: 120px;
+  }
+  
+  .about .top_section {
+    padding-top: 120px;
+  }
+  
+  .about .listghor_title h2 {
+    text-transform: none;
+  }
+  
+  .about .team_tech {
+    margin-top: 3rem;
+  }
+  
+  @media (max-width: 991px) {
+    .about .section_padding {
+      padding-bottom: 80px;
+    }
+  
+    .about .top_section {
+      padding-top: 80px;
+    }
+  
+    .about .team_tech {
+      margin-top: -10px;
+    }
+  
+    .about .team_market {
+      margin-top: -50px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .about .listghor_title h2 {
+      font-size: 32px;
+      line-height: 45px;
+    }
+  
+    .about .team_market {
+      margin-top: -60px;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .about .top_section {
+      padding-top: 28px;
+    }
+  }
