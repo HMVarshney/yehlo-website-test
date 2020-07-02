@@ -1,0 +1,165 @@
+.partner-website{
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.partner-website .MuiAppBar-root {
+  z-index: 1350;
+  padding-right: 0 !important;
+}
+
+.partner-web-nav .MuiDrawer-paperAnchorTop.MuiDrawer-paper {
+  padding-top: 56px;
+}
+
+.partner-website .responsive-overflow-nav {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .partner-website .normal-nav {
+    display: none;
+  }
+
+  .partner-website .responsive-overflow-nav {
+    display: unset;
+  }
+}
+
+.partner-website .landing {
+  height: 100vh;
+  background-color: white;
+}
+
+.partner-website .bg-image-box {
+  height: 100%;
+  width: 100%;
+}
+
+.partner-website .overlay-shadow {
+  background-color: rgba(255, 255, 255, 0.1);
+  height: inherit;
+  width: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.partner-website .central-flex-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(1.9);
+  padding: 0 38px;
+}
+
+@media (max-width: 991px) {
+  .partner-website .central-flex-box {
+    transform: scale(1.5);
+  }
+}
+
+@media (max-width: 576px) {
+  .partner-website .central-flex-box {
+    transform: scale(1.1);
+  }
+}
+
+.partner-website .videoWrapper,
+.partner-website .location-frame {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+
+.partner-website .videoWrapper iframe,
+.partner-website .location-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.partner-website .linked-section {
+  padding: 12% 0;
+}
+
+.partner-website .linked-inner-section {
+  padding-top: 48px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .partner-website .linked-section {
+    padding: 8% 0;
+  }
+
+  .partner-website .linked-inner-section {
+    padding-top: 72px;
+  }
+
+  .partner-website .location-static-image {
+    display: none;
+  }
+}
+
+@media(min-width:1200px){
+  .partner-website .about-carousel{
+    padding: 62px;
+  }
+}
+
+.partner-website .testimonial-heading {
+  text-align: center;
+  padding: 0 32px 46px 32px;
+}
+
+.partner-website .testimonial-heading h2 {
+  color: white;
+}
+
+.partner-website .owl-nav {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.partner-website .owl-carousel .owl-stage-outer {
+  overflow: unset;
+}
+
+.partner-website .contact-section,
+.partner-website .contact-section h2 {
+  color: white;
+}
+
+.partner-website .contact-prop {
+  display: flex;
+  padding: 12px 0;
+}
+
+.partner-website .contact-prop svg {
+  margin-right: 12px;
+}
+
+.partner-website .get-in-touch-form {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 991px) {
+  .partner-website .get-in-touch-form {
+    margin-top: 32px;
+  }
+}
+
+.partner-website form{
+  display:flex;
+  flex-direction: column ;
+  padding: 16px 0;
+}
+
+.partner-website .MuiFormControl-root{
+  margin-bottom: 12px !important;
+}

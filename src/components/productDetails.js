@@ -159,7 +159,7 @@ const ProductDetails = (props) => {
     }
 
     return (
-      <>
+      <div className="desc-page">
         <div className="container contentIn">
           <div class="row justify-content-center">
             <div class="col-lg-9 col-md-10 col-12">
@@ -579,25 +579,30 @@ const ProductDetails = (props) => {
                 )}
               </div>
 
-              <div className="row mt-3">
-                <div className="col-12">
-                  <Paper
-                    elevation={3}
-                    className="partner-media-box"
-                    style={{ padding: "30px" }}
-                  >
-                    <div style={{ marginBottom: "20px" }}>
-                      <h4 className="desc-box-title">Introductory video</h4>
-                    </div>
-                    <div className="videoWrapper">
-                      <iframe
-                      width="560" height="349"
-                        src="https://www.youtube.com/embed/tgbNymZ7vqY"
-                      ></iframe>
-                    </div>
-                  </Paper>
+              {partnerFlag ? (
+                <div className="row mt-3">
+                  <div className="col-12">
+                    <Paper
+                      elevation={3}
+                      className="partner-media-box"
+                      style={{ padding: "30px" }}
+                    >
+                      <div style={{ marginBottom: "20px" }}>
+                        <h4 className="desc-box-title">Introductory video</h4>
+                      </div>
+                      <div className="videoWrapper">
+                        <iframe
+                          width="560"
+                          height="349"
+                          src="https://www.youtube.com/embed/tgbNymZ7vqY"
+                        ></iframe>
+                      </div>
+                    </Paper>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                ""
+              )}
 
               <div className="row mt-3">
                 <div className="col-12">
@@ -789,7 +794,7 @@ const ProductDetails = (props) => {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   } else return <Spinnerloader />;
 };

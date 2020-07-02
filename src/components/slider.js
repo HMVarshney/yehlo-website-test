@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-// import "../css/slider.css";
+
 var big_settings = {
   dots: true,
   infinite: true,

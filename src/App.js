@@ -15,6 +15,7 @@ import SponseredListings from "./components/sponsoredListings";
 //css
 import styles from "./css/home.module.css";
 import Terms from "./components/Terms";
+import PartnerWebsite from "./components/Partner-website/PartnerWebsite";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             <AppIcon />
           </a>
         </Route>
+        <Route exact path="/partnerTemplateWebsite" component={PartnerWebsite} />
         <Redirect to="/" />
       </Switch>
       <footer className={styles.footer}>

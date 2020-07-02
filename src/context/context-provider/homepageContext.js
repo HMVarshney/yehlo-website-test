@@ -60,21 +60,6 @@ class HomepageContextProvider extends Component {
         premium: data.premiumList,
         sponsered: data.sponseredList,
       });
-
-      console.log(
-        "pg :",
-        data.pgList,
-        "buy :",
-        data.buyList,
-        "gym :",
-        data.gymList,
-        "premium :",
-        data.premiumList,
-        "partner :",
-        data.partnerList,
-        "sponsered :",
-        data.sponseredList
-      );
     });
   }
 

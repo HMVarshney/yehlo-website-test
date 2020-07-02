@@ -169,19 +169,19 @@ div[class*="amenity-icon"] svg {
   box-shadow: 0 0 0;
 }
 
-.slick-prev{
+.desc-page .slick-prev{
     top: 0;
     margin-left: 4px;
     z-index: 5;
 }
 
-.slick-next{
+.desc-page .slick-next{
     right: 0;
     top: 0;
     margin-right: 4px;
 }
 
-.slick-next, .slick-prev {
+.desc-page .slick-next, .desc-page .slick-prev {
     font-size: unset;
     line-height: unset;
     opacity: 0.4;
@@ -193,17 +193,17 @@ div[class*="amenity-icon"] svg {
     width: 56px;
 }
 
-.slick-next:hover, .slick-prev:hover {
+.desc-page .slick-next:hover, .desc-page .slick-prev:hover {
   opacity: 0.8;
 }
 
 @media(max-width:576px){
-  .slick-next, .slick-prev {
+  .desc-page .slick-next, .desc-page .slick-prev {
     margin-top: 162px;
   }
 }
 
-.slick-slider.gallery_small{
+.desc-page .slick-slider.gallery_small{
     padding: 16px;
     box-shadow: 0 0 4px 0.2rem rgba(130,138,145,.5);
     border-radius: 6px;

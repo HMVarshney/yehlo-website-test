@@ -1,0 +1,20 @@
+.alignment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  width: 100%;
+  height: fit-content;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  font-size: 1em;
+}
+
+.footerContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

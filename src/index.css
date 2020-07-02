@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Airbnb Cereal App Book;
@@ -16,4 +20,8 @@ src: local('Airbnb Cereal App Book'), url('/assets/fonts/AirbnbCerealBook.woff')
 .getTheApp + footer {
   position: absolute;
   bottom: 0;
+}
+
+.partner-website + footer{
+  display: none;
 }
