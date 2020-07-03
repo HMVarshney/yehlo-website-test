@@ -96,7 +96,7 @@ const SearchModal = (props) => {
                 </ModalBody>
                 <ModalFooter>
                     <Button style={{background:'#1e272c', color:'white'}} 
-                        href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} variant='contained' ><span className='fa fa-search'/> Search</Button>
+                        href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} variant='contained' ><span className='fa fa-search'/> Search</Button>
                 </ModalFooter>
         </Modal>
      );

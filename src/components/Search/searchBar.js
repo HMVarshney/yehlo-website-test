@@ -104,7 +104,7 @@ const SearchBar = (props) => {
                 </Grid>
                 
                 <Grid item md xs className='d-block d-lg-none'>
-                <a href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`}>
+                <a href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`}>
                     <div className='search_mobile_icon'>
                     <span style={{color:'white'}} className='fa fa-search' /></div>
                 </a>
