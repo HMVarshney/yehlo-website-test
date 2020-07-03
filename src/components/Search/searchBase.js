@@ -7,14 +7,13 @@ function SearchBase(ChildComp){
         function Child(ownProps)
         {
             const [searchAttr, setSearchAttr] = useState({
-                college:{
+                place:{
                     name:'',
-                    location: null
+                    location: {lat:null, lng:null}
                 },
                 priceValue:[0,20000],
                 category: 'pg',
             });
-
 
             const { collegeList, getCollegeList } = useContext(CollegeListContext);
 
@@ -30,12 +29,12 @@ function SearchBase(ChildComp){
             },[])
 
             return(
-                <ChildComp 
+                <ChildComp
                     searchAttr={searchAttr} 
                     setSearchAttr={(changes)=>setSearchAttr(changes)} 
                     collegeList={collegeList}
                     categoryLabels={categoryLabels}
-                    styles = {{buttonStyle, paperStyle, tagStyle, sliderStyle, textfield}}
+                    styles = {{buttonStyle, paperStyle, tagStyle, sliderStyle, textfield }}
                     {...ownProps}
                         />
             );
@@ -46,7 +45,7 @@ function SearchBase(ChildComp){
 export default SearchBase;
 
 
-const categoryLabels = ['pg','gym', 'services', 'second hand'];
+const categoryLabels = ['pg','gym', 'services', 'buy'];
 
 
 const buttonStyles = makeStyles({
@@ -72,8 +71,9 @@ const tagStyles = makeStyles({
     root:{
         margin: '1rem',
         borderRadius:'50px',
+        border: 'solid #1e272c 1.6px',
         width:'150px',
-        color:'#2e242c',
+        background: 'rgba(	248, 248, 255, 0.04 )',
         '&:hover':{
             background:'#282C35',
             color:'white'
@@ -87,10 +87,10 @@ const tagStyles = makeStyles({
 
 const sliderStyles = makeStyles({
     root:{
-        color:'white'
+        color:'white',
     },
     thumb:{
-        color:'black'
+        color:'grey'
     },
     modalRoot:{
         color:'black'
@@ -109,3 +109,11 @@ const textfieldstyles = makeStyles({
     }
 });
 
+// const categoryCheckbox = makeStyles({
+//     root:{
+//         color:'grey',
+//     },
+//     checked:{
+//         color:'blue'
+//     }
+// });

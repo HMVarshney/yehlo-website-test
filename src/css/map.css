@@ -1,0 +1,17 @@
+.map_search_header{
+    padding: 0px 10px
+}
+
+.search_combobox{
+    width: 100%;
+    padding: 5px;
+}
+
+.place_selected_text{
+    float: left;
+}
+
+.search_combobox_container{
+    float: right;
+}
+

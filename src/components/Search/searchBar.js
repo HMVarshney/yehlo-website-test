@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Autocomplete } from '@material-ui/lab';
-import {TextField, FormControlLabel, Checkbox, Button, Box, Grid, Paper, Slider, makeStyles, withStyles, createMuiTheme, ThemeProvider} from '@material-ui/core';
+import {TextField, FormControlLabel, Checkbox, Button, Box, Grid, Paper, Slider, InputAdornment} from '@material-ui/core';
 import SearchBase from './searchBase';
+import Map from '../googleMap';
 
 //icons
 import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
 import ArrowDropDownOutlinedIcon from '@material-ui/icons/ArrowDropDownOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 
 const SearchBar = (props) => {
@@ -17,8 +19,8 @@ const SearchBar = (props) => {
     //state
     const [priceDropdownOpen, togglePriceDropdown] = useState(false);
     const [categoryDropdownOpen, toggleCategoryDropdown] = useState(false);
+    const [mapOpen, setMapOpen] = useState(false);
 
-   
 
     return (
         <>
@@ -35,7 +37,7 @@ const SearchBar = (props) => {
         <Paper classes={{ root: paperStyle.root }} elevation={3} className='searchbar_container p-2'>
             <Grid container justify='center' alignItems='center' spacing={2}>
 
-                <Grid item lg={6} xs={12}>
+                {/* <Grid item lg={3} md={3} xs={6}>
                     <div className='search_box'>
                         <Autocomplete
                             classes={{root: textfield.autocompleteRoot}}
@@ -47,8 +49,21 @@ const SearchBar = (props) => {
                             renderInput={(params) =><TextField {...params} label="College Search.." variant="filled" />} 
                         />
                     </div>
+                </Grid> */}
+                <Grid item lg={6} md={6} xs={12}>
+                    <TextField 
+                        style={{cursor:'pointer'}}
+                        disabled 
+                        onClick={()=>setMapOpen(true)} 
+                        fullWidth 
+                        classes={{root: textfield.autocompleteRoot}} 
+                        label={searchAttr.place.name === '' ? <><span className='fa fa-location-arrow mr-2' /><span>Location</span> </>
+                         : searchAttr.place.name} variant='filled' />
                 </Grid>
-                <Grid item xs className='d-md-none d-block'>
+
+                <Map setSearchAttr={setSearchAttr} mapOpen={mapOpen} setMapOpen={()=>setMapOpen(!mapOpen)}/>
+
+                <Grid item xs md className='d-lg-none d-block'>
                     <Button endIcon={<ArrowDropDownOutlinedIcon />} className={buttonStyle.root} size='large' onClick={()=>{
                         toggleCategoryDropdown(!categoryDropdownOpen);
                         togglePriceDropdown(false);}} 
@@ -57,18 +72,18 @@ const SearchBar = (props) => {
                     {categoryDropdownOpen && 
                     <div className='search_bar_dropdowns'>
                         {categoryLabels.map((label)=>(<>
-                            <FormControlLabel label={label.toUpperCase()} control={<Checkbox icon={<CheckBoxOutlineBlankOutlinedIcon color='primary' />} color='primary' name={label} 
+                            <FormControlLabel label={label.toUpperCase()} control={<Checkbox icon={<CheckBoxOutlineBlankOutlinedIcon color='inherit' />} color='primary' name={label} 
                                 checked={searchAttr.category === label} onChange={()=>setSearchAttr({...searchAttr, category: label})} />} />
                             <br /></>
                         ))}
                     </div> }                            
                 </Grid>
 
-                <Grid item lg={2} xs>
+                <Grid item lg={2} xs md>
                     <Button endIcon={<ArrowDropDownOutlinedIcon />} className={buttonStyle.root} size='large' onClick={()=>{
                         togglePriceDropdown(!priceDropdownOpen);
                         toggleCategoryDropdown(false);}} 
-                        variant='outlined' ><span className='fa fa-rupee-sign  d-md-none d-block' /><span className='d-none d-lg-block'>Price</span> </Button>  
+                        variant='outlined' ><span className='fa fa-rupee-sign  d-lg-none d-block' /><span className='d-none d-lg-block'>Price</span> </Button>  
                     
                     {priceDropdownOpen && 
                     <Box className='search_bar_dropdowns search_bar_dropdown_price'>
@@ -88,15 +103,15 @@ const SearchBar = (props) => {
                     </Box> }
                 </Grid>
                 
-                <Grid item xs className='d-block d-md-none'>
-                <a href={`/listings/${searchAttr.category}/?college=${searchAttr.college.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`}>
+                <Grid item md xs className='d-block d-lg-none'>
+                <a href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`}>
                     <div className='search_mobile_icon'>
                     <span style={{color:'white'}} className='fa fa-search' /></div>
                 </a>
                 </Grid>
 
                 <Grid item lg={1} className='d-none d-lg-block'>
-                    <Button href={`/listings/${searchAttr.category}/?college=${searchAttr.college.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} 
+                    <Button href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}`} 
                     startIcon={<SearchOutlinedIcon />} className={buttonStyle.root} 
                     variant='outlined' disabled={searchAttr.category===''?true:false}>Search</Button>
                 </Grid>

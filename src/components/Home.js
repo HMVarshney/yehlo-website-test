@@ -25,18 +25,17 @@ class Home extends Component {
     return (
       <div className="home">
         <div className={styles.billBoard}>
-          <Container
-            style={{
-              position: "relative",
-              height: "inherit",
-            }}
-          >
+          <Container className='d-none d-lg-block'>
             <div className={styles.centerBlock}>
               <SearchBar />
-              <div className={styles.centerBrand}>YEH!O</div>
             </div>
           </Container>
         </div>
+        <Container className='d-block d-lg-none'>
+          <div className={styles.centerBlockMobile}>
+            <SearchBar />
+          </div>
+        </Container>
         <Container className={styles.contain}>
           <div style={{ marginBottom: "14px" }} className="mt-4">
             <div

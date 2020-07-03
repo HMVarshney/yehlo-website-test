@@ -1,17 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { NavItem } from 'reactstrap';
 import Card from './listingsCard.js';
 import SearchBar from './Search/searchBar';
 import queryString from 'query-string';
 import Isotope from 'isotope-layout';
 import imagesloaded from 'imagesloaded';
-import { FormControl, MenuItem, TextField, Typography, Breadcrumbs, Chip } from '@material-ui/core';
+import { FormControl, MenuItem, TextField, Typography, Chip, Tooltip } from '@material-ui/core';
 import SkeletonLoader from './Preloaders/skeletonLoader';
-import { NavLink } from 'react-router-dom';
 
 //icons
-import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
-import ViewListTwoToneIcon from '@material-ui/icons/ViewListTwoTone';
 import ClassTwoToneIcon from '@material-ui/icons/ClassTwoTone';
 import SchoolTwoToneIcon from '@material-ui/icons/SchoolTwoTone';
 import AttachMoneyTwoToneIcon from '@material-ui/icons/AttachMoneyTwoTone';
@@ -19,7 +15,6 @@ import AttachMoneyTwoToneIcon from '@material-ui/icons/AttachMoneyTwoTone';
 //context
 import { MainContext } from '../context/context-provider/mainContext';
 import { CollegeListContext } from '../context/context-provider/collegeListContext.js';
-import NoData from './dataNotFound.js';
 
 let productToShow = [];
 let location = null;
@@ -27,7 +22,7 @@ let location = null;
 const Listings = (props) => {
 
     const { buy, pg, gym, partner, premium, sponsered } = useContext(MainContext);
-    const { collegeList } = useContext(CollegeListContext);
+    // const { collegeList } = useContext(CollegeListContext);
     const searchQuery = queryString.parse(props.location.search);
     const { category } = props.match.params; 
 
@@ -61,15 +56,15 @@ const Listings = (props) => {
                 isotope.arrange({sortBy:'rating'})
             }
         }
-    },[isotope, sort])
+    },[isotope, sort]);
 
-    if(searchQuery.college && collegeList.length > 0){
-        location = collegeList.filter((college)=>college.name===searchQuery.college)[0].location;
+    if(searchQuery.lat!=='null'){
+        location = {latitude: searchQuery.lat, longitude: searchQuery.lng}
     }
 
     if(category==='pg' && pg.length > 0){
         productToShow = filterProducts(pg,searchQuery.minprice, searchQuery.maxprice,location);
-    } else if(category==='second hand' && buy.length > 0) {
+    } else if(category==='buy' && buy.length > 0) {
         productToShow = filterProducts(buy,searchQuery.minprice, searchQuery.maxprice, location);
     } else if(category === 'gym' && gym.length > 0){
         productToShow = filterProducts(gym,searchQuery.minprice, searchQuery.maxprice, location);
@@ -83,7 +78,7 @@ const Listings = (props) => {
 
     return(
         <div>
-            <br /> 
+            <br /> <br />
                 {/* <div className='row justify-content-center breadcrumb'>
                     <Breadcrumbs separator='>'>
                         <NavLink to='/'><HomeTwoToneIcon /> Home</NavLink>
@@ -110,7 +105,7 @@ const Listings = (props) => {
                 <div className='mt-3' >
                     <Typography variant='body1'>Showing results for: </Typography>
                     <Chip className='mr-1' size='small' icon={<ClassTwoToneIcon />} label={category.toUpperCase()} /> <br className='d-block d-lg-none' />
-                    {searchQuery.college && <><Chip className='mr-1' size='small' icon={<SchoolTwoToneIcon />} label={searchQuery.college} />  <br className='d-block d-lg-none' /> </>}
+                    {searchQuery.place && <><Tooltip title={searchQuery.place}><Chip style={{width:'200px', overflow:'ellipsis'}} className='mr-1' size='small' icon={<SchoolTwoToneIcon />} label={searchQuery.place} /></Tooltip>  <br className='d-block d-lg-none' /> </>}
                     {searchQuery.minprice && <Chip className='mr-1' size='small' icon={<AttachMoneyTwoToneIcon />} label={`${searchQuery.minprice} - ${searchQuery.maxprice}`} /> }
                 </div>
                 <div style={{clear:'both'}} /> 
@@ -119,7 +114,7 @@ const Listings = (props) => {
                 { productToShow.length > 0 ? <section class="listing_style_v1 listing_grid_sidebar wow fadeInUp">
                         <div class="row">
                             <div class="col-12">
-                                <div class="listing_grid_wrapper product-grid row animate__animated animate__fadeIn animate__faster">
+                                <div className="listing_grid_wrapper product-grid row animate__animated animate__fadeIn animate__faster">
                                     {
                                         productToShow.length > 0 ? productToShow.map((productData)=>(
                                             <Card data={productData} id={productData.id} searchQuery={searchQuery} category={category} />
@@ -162,20 +157,27 @@ const calcDistance = (product, location) => {
 		return 0;
 	}
 	else {
-		var radlat1 = Math.PI * lat1/180;
-		var radlat2 = Math.PI * lat2/180;
-		var theta = lon1-lon2;
-		var radtheta = Math.PI * theta/180;
-		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-		if (dist > 1) {
-			dist = 1;
-		}
-		dist = Math.acos(dist);
-		dist = dist * 180/Math.PI;
-		dist = dist * 60 * 1.1515;
-        dist = dist * 1.609344 ;
-        return {...product, distance: dist }
-        
+		// var radlat1 = Math.PI * lat1/180;
+		// var radlat2 = Math.PI * lat2/180;
+		// var theta = lon1-lon2;
+		// var radtheta = Math.PI * theta/180;
+		// var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+		// if (dist > 1) {
+		// 	dist = 1;
+		// }
+		// dist = Math.acos(dist);
+		// dist = dist * 180/Math.PI;
+		// dist = dist * 60 * 1.1515;
+        // dist = dist * 1.609344 ;
+        // return {...product, distance: dist }
+            var R = 3958.8; // Radius of the Earth in miles
+            var rlat1 = lat1 * (Math.PI/180); // Convert degrees to radians
+            var rlat2 = lat2 * (Math.PI/180); // Convert degrees to radians
+            var difflat = rlat2-rlat1; // Radian difference (latitudes)
+            var difflon = (lon2-lon1) * (Math.PI/180); // Radian difference (longitudes)
+      
+            var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+            return {...product, distance: d};
 	}
 }
 

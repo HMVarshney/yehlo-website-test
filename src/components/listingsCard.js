@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Avatar, Typography } from "@material-ui/core";
+import { Avatar, Tooltip, Typography } from "@material-ui/core";
 import { Popover, PopoverBody } from 'reactstrap';
 
 //css
@@ -14,12 +14,7 @@ const ListingsCard = (props) => {
     if(location.length>40){
       location = location.slice(0,26) + ".."; }
 
-    let datePosted = (Date(props.data.date).toLocaleString().slice(0,15))
-
-    let badge = true;
-    if(props.data.type!=='Second Hand Product' && props.data.plan !== "basic" && props.data.activePlan === true){
-      badge = true;
-    }
+    let datePosted = (Date(props.data.date).toLocaleString().slice(0,15));
 
     const [popupOpen, setPopupOpen] = useState(false);
 
@@ -68,7 +63,7 @@ const ListingsCard = (props) => {
             <div className="pl-1 pr-2 bnb-card-desc">
               <div className='seller-info-circle'>
                 <span style={{float:'right'}}>
-                  <span id={'Popover' + props.id} 
+                  <span id={'Popover' + props.id} style={{color:'rgba(0,0,0,0.8)'}} 
                     onMouseEnter={handlePopupOpen} onMouseLeave={handlePopupClose} 
                     className='fa fa-info-circle' />
                 </span>
@@ -85,7 +80,7 @@ const ListingsCard = (props) => {
               {/* <h6 className="listings-card-title">
                 <a className='product-name' style={{textDecoration:'none', color:'black'}} href={`/pgdetails/${props.data.productId}`} >{title}</a>
               </h6> */}
-              <Typography variant='body2' color='textPrimary' className='mb-2' >{props.data.district}</Typography>
+              <Typography variant='body2' color='textPrimary' className='mb-2'>{props.data.district}</Typography>
               <Typography display='inline' variant='body1' className='product-name mr-2' >{title}</Typography>
               {props.data.type === 'Second Hand Product' ? 
                   <Typography display='inline' className='product-cat' variant='caption' color='textPrimary'>({props.data.category})</Typography> 

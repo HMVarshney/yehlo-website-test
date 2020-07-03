@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { TextField, Typography, Box, Button, Slider, FormControlLabel, Checkbox } from '@material-ui/core';
-import { Autocomplete } from '@material-ui/lab';
 import { Modal, ModalBody, ModalHeader, ModalFooter, TabContent, TabPane, Nav, NavItem, NavLink} from 'reactstrap';
 import SearchBase from './searchBase';
+import Map from '../googleMap';
 
 //icons
 import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
@@ -11,6 +11,7 @@ import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutline
 const SearchModal = (props) => {
 
     const [activeTab, setActiveTab] = useState('1');
+    const [mapOpen, setMapOpen] = useState(false);
     const{searchAttr, setSearchAttr, categoryLabels, collegeList,
        styles: { sliderStyle, textfield }} = props;
     
@@ -50,7 +51,7 @@ const SearchModal = (props) => {
                             </div>
                         </TabPane>
                         <TabPane tabId='2'>
-                            <div className='search_box'>
+                            {/* <div className='search_box'>
                                 <Autocomplete
                                     classes={{root: textfield.autocompleteRoot}}
                                     disabled={!collegeList.length>0}
@@ -60,31 +61,42 @@ const SearchModal = (props) => {
                                     onChange={(event, newValue)=> setSearchAttr({...searchAttr, college: newValue ? newValue : {name: '', location: null}})}
                                     renderInput={(params) =><TextField {...params} label="College Search.." variant="filled" />} 
                                 />
-                            </div>
+                            </div> */}
+                            <TextField 
+                                style={{cursor:'pointer'}}
+                                disabled 
+                                onClick={()=>setMapOpen(true)} 
+                                fullWidth 
+                                classes={{root: textfield.autocompleteRoot}} 
+                                label={searchAttr.place.name === '' ? 'Location' : searchAttr.place.name} variant='filled' 
+                            />
+                            <Map setSearchAttr={setSearchAttr} mapOpen={mapOpen} setMapOpen={()=>setMapOpen(!mapOpen)}/>
                         </TabPane>
-                        <TabPane tabId='3' className='p-3'>
-                            <Typography>Price Range: </Typography>
-                            <br />
-                            <div className='search_modal_price_textfields'>
-                                <div><TextField size='small' label='Min Price' variant='outlined' 
-                                    value={searchAttr.priceValue[0]} onChange={(event)=>setSearchAttr({...searchAttr, priceValue: [event.target.value, searchAttr.priceValue[1]]})} /></div>  
-                                <div className='mt-lg-0 mt-2 ml-0 ml-lg-2'><TextField className='mt-lg-0 mt-sm-2' size='small' label='Max Price' variant='outlined' 
-                                    value={searchAttr.priceValue[1]} onChange={(event)=>setSearchAttr({...searchAttr, priceValue:[searchAttr.priceValue[0],event.target.value]})} /></div>
-                            </div>
-                            <br /><br />
-                            <div style={{ width:'70%'}}> 
-                            <Slider
-                                classes={{thumb: sliderStyle.thumb, root: sliderStyle.modalRoot}}
-                                style={{width:'100%'}} value={searchAttr.priceValue} onChange={(e,newValue)=>setSearchAttr({...searchAttr, priceValue:newValue})}
-                                valueLabelDisplay='on' step={200} max={20000} /> 
-                            </div>
+                        <TabPane tabId='3'>
+                            <Box className='search_modal_dropdowns'>
+                                <Typography>Price Range: </Typography>
+                                <br />
+                                <div className='search_modal_price_textfields'>
+                                    <div><TextField classes={{root:textfield.root}} size='small' label='Min Price' variant='filled' 
+                                        value={searchAttr.priceValue[0]} onChange={(event)=>setSearchAttr({...searchAttr, priceValue: [event.target.value, searchAttr.priceValue[1]]})} /></div>  
+                                    <div className='mt-lg-0 mt-2 ml-0 ml-lg-2'><TextField classes={{root:textfield.root}} className='mt-lg-0 mt-sm-2' size='small' label='Max Price' variant='filled' 
+                                        value={searchAttr.priceValue[1]} onChange={(event)=>setSearchAttr({...searchAttr, priceValue:[searchAttr.priceValue[0],event.target.value]})} /></div>
+                                </div>
+                                <br /><br />
+                                <div style={{ width:'70%'}}> 
+                                <Slider
+                                    classes={{thumb: sliderStyle.thumb, root: sliderStyle.modalRoot}}
+                                    style={{width:'100%'}} value={searchAttr.priceValue} onChange={(e,newValue)=>setSearchAttr({...searchAttr, priceValue:newValue})}
+                                    valueLabelDisplay='on' step={200} max={20000} /> 
+                                </div>
+                            </Box>
                         </TabPane>
 
                     </TabContent>
                 </ModalBody>
                 <ModalFooter>
                     <Button style={{background:'#1e272c', color:'white'}} 
-                        href={`/listings/${searchAttr.category}/?college=${searchAttr.college.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} variant='contained' ><span className='fa fa-search'/> Search</Button>
+                        href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} variant='contained' ><span className='fa fa-search'/> Search</Button>
                 </ModalFooter>
         </Modal>
      );
