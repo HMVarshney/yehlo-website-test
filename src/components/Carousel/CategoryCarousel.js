@@ -15,6 +15,7 @@ export class Carousel extends Component {
       <div>
         <div className="container-fluid home">
           <OwlCarousel
+            style={{zIndex:'-1'}}
             className="owl-theme category"
             loop
             responsive={{

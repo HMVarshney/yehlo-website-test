@@ -14,7 +14,7 @@ const SkeletonLoader = (props) => {
         <div className='container mt-n5 d-none d-lg-block'>
             <div className='row'>
                {numberToShow.map(()=>(
-                    <div className={`col-${12/number}`}>
+                    <div  className={`col-${12/number}`}>
                         <Skeleton height='30em' />
                     </div>
                ))}
@@ -34,12 +34,6 @@ const SkeletonLoader = (props) => {
                     <Skeleton height='25em' />
                 </div>
                 <div className='col-6'>
-                    <Skeleton height='25em' />
-                </div>
-                <div className='col-6 mt-n5'>
-                    <Skeleton height='25em' />
-                </div>
-                <div className='col-6 mt-n5'>
                     <Skeleton height='25em' />
                 </div>
             </div>

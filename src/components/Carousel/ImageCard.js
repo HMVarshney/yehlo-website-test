@@ -14,7 +14,7 @@ const ImageCard = (props) => {
   
   return (
     <Link to={jump}>
-      <div style={{ height: "inherit" }}>
+      <div style={{ height: "inherit", }}>
       <Card style={{ height: "inherit" }}>
         <CardImg
           top
@@ -22,7 +22,7 @@ const ImageCard = (props) => {
             ? premiumImage[0]
             : "https://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg"}
           alt="Card image cap"
-          style={{ height: "inherit", objectFit: "cover" }}
+          style={{ height: "inherit", objectFit: "cover"}}
         />
       </Card>
     </div>

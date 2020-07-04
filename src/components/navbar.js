@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import {Navbar, NavbarToggler, Collapse, NavItem, NavbarBrand, Nav, NavLink} from 'reactstrap';
+import React, { useState, useEffect } from 'react';
 import SearchModal from './Search/searchModal';
-import { TextField, InputAdornment } from '@material-ui/core';
+import { TextField, InputAdornment, Typography, makeStyles, Button } from '@material-ui/core';
+import { Navbar, Nav, NavItem } from 'reactstrap';
 
 //icons
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
@@ -9,21 +9,20 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 const Navigationbar = () => {
 
     const [searchVisible, setSearchVisible] = useState(false);
-    const [navOpen, setNavOpen] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
         const onScroll = () => {
-            setSearchVisible(window.scrollY > 300);
-            window.scrollY>100 ? document.getElementById('navbar').style.background = 'rgb(255,255,255)' : document.getElementById('navbar').style.background = 'transparent';
-            // setScroll(window.scrollY)
+            setSearchVisible(window.scrollY > 500);
+            window.scrollY > 50 ? document.getElementById('navbar').style.background = 'rgba(0,0,0,0.5)' : document.getElementById('navbar').style.background = 'rgba(0,0,0,0.3)';
         }
+
         window.addEventListener("scroll", onScroll);;    
     });
 
     return ( 
         <>
-            <Navbar id='navbar' className='headerbar' light expand='md' fixed='top'>
+            {/* <Navbar id='navbar' className='headerbar' light expand='md' fixed='top'>
                 <div id='navbar-div' style={{fontSize:'17px'}} className='container animate__animated animate__fadeInDown animate__faster'> 
                         <NavbarBrand className='navbar_brand'><a href='/' id='navbar_logo'>YEHLO</a></NavbarBrand>
 
@@ -46,27 +45,47 @@ const Navigationbar = () => {
                     </Collapse>
                 </div>
                 <SearchModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
-            </Navbar>
+            </Navbar> */}
             
+              <Navbar style={{background:'rgba(0,0,0,0.3)'}} id='navbar' fixed='top' dark>
+                <div className='container'>
+                    <a href='/'><img width='50px' src='/assets/images/logo_no_name1.png' alt='logo' /></a>
+                    {searchVisible && <SearchBar modalOpen={()=>setModalOpen(!modalOpen)} />}
+                    <Nav navbar>
+                        <NavItem>
+                            <i style={{color:'white'}} className='fa fa-info mr-2'></i>
+                            <Typography style={{color:'white'}} className='d-none d-lg-inline' component='h6'>About</Typography>
+                        </NavItem>
+                    </Nav>
+                </div> 
+            </Navbar>
+            <SearchModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
         </>
      );
 }
  
 const SearchBar = (props) => {
 
+    const textfield = textfieldStyles();
+
     return(
-        <div className='col-md-7 col-6 animate__animated animate__fadeInUp animate__faster'>
-        <div className='row justify-content-center offset-md-3'>
-            <button className='search_button' onClick={props.modalOpen}>
-                <span className='search_text_span p-lg-5 p-1'>
-                    <TextField InputProps={{startAdornment:(
-                        <InputAdornment><SearchOutlinedIcon /></InputAdornment>
-                    )}} size='small' placeholder='What are you looking for?' variant='outlined' />
-                </span>
-            </button>
-        </div>
-        </div>
+        <>
+            <div className='animate__animated animate__fadeInUp animate__faster'>
+                <Button onClick={()=>props.modalOpen(true)}>
+                <TextField  disabled classes={{root: textfield.root}} InputProps={{startAdornment:(
+                    <InputAdornment><SearchOutlinedIcon /></InputAdornment>
+                        )}} size='small' placeholder='What are you looking for?' variant='outlined' />
+                </Button>
+            </div>
+        </>
     );
 }
 
 export default Navigationbar;
+
+const textfieldStyles = makeStyles({
+    root:{
+        borderRadius:'5px',
+        background:'white',
+    }
+});

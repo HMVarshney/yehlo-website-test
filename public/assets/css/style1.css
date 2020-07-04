@@ -4,6 +4,12 @@
 	color: 382C2A;
 	padding: 0.24rem;
 	display: inline-block;
+	height: inherit;
+}
+
+.navbar_search{
+	display: flex;
+	justify-content: center;
 }
 
 .search_text:hover{
@@ -16,9 +22,9 @@
 	font-size: 18px;
 }
 
-.search_text{
+/* .search_text{
 	padding: 10px 0px;
-}
+} */
 
 .headerbar{
 	/* background-image: linear-gradient(to right, #e6e9f0 0%, #eef1f5 100%); */
@@ -206,7 +212,6 @@
 	padding-top: 0.4rem;
 	padding: 1.2rem;
 	background-color: rgba(0, 0, 0, 0.89);
-	z-index: 1;
 	border-radius: 12px;
 	color: white;
 }
@@ -222,7 +227,7 @@
 }
 
 
-@media screen and (max-width: 992px){
+@media screen and (max-width: 990px){
 	.tags_list{
 		display: none;
 	}
@@ -238,7 +243,7 @@
 	}
 }
 
-@media screen and (min-width: 991px){
+@media screen and (min-width: 992px){
 	.search_modal_price_textfields{
 		display:flex;
 	}
