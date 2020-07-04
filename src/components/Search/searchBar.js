@@ -21,7 +21,6 @@ const SearchBar = (props) => {
     const [categoryDropdownOpen, toggleCategoryDropdown] = useState(false);
     const [mapOpen, setMapOpen] = useState(false);
 
-    console.log(searchAttr);
     return (
         <>
         <div className='row justify-content-center align-items-center tags_list'>

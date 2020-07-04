@@ -1,6 +1,8 @@
 import firebase from "../../api/fbConfig";
+import { Data } from "@react-google-maps/api";
 
 const currentDate = firebase.firestore.Timestamp.fromDate(new Date());
+console.log(new Date(currentDate), currentDate.toDate());
 
 const compareRank = (a, b) => {
   return a.rank - b.rank;
@@ -26,6 +28,8 @@ const getPgData = (pgList, premiumPgList, partnerPgList) => {
   return firebase
     .firestore()
     .collection("PGs")
+    .orderBy('rank')
+    .limit(4)
     .get()
     .then((res) => {
       pgList = res.docs
@@ -56,13 +60,57 @@ const getPgData = (pgList, premiumPgList, partnerPgList) => {
           return true;
         });
 
-      pgList.sort(compareRank);
       premiumPgList.sort(compareRank);
       partnerPgList.sort(compareRank);
-
       return { pgList, premiumPgList, partnerPgList };
     });
 };
+
+// const getMorePGData = (pgList, premiumPgList, partnerPgList) => {
+//   let pgs = [];
+//   return firebase
+//     .firestore()
+//     .collection("PGs")
+//     .orderBy('rank')
+//     .startAfter(pgList[pgList.length-1].rank)
+//     .limit(4)
+//     .get()
+//     .then((res) => {
+//       pgs = res.docs
+//         .map((doc) => {
+//           return { id: doc.id, ...doc.data(), section:"pg" };
+//         })
+//         .filter((product) => {
+//           if (product.approved !== 1) {
+//             return false;
+//           }
+
+//           if (product.startDate > currentDate) {
+//             return false;
+//           }
+
+//           if (product.endDate !== "") {
+//             if (product.endDate >= currentDate) {
+//               product.activePlan = true;
+//               if (product.plan === "partner") {
+//                 partnerPgList.push(product);
+//               } else if (product.plan === "premium") {
+//                 premiumPgList.push(product);
+//               }
+//             } else {
+//               product.activePlan = false;
+//             }
+//           }
+//           return true;
+//         });
+
+//       pgList = [...pgList, ...pgs];
+//       premiumPgList.sort(compareRank);
+//       partnerPgList.sort(compareRank);;
+
+//       return { pgList, premiumPgList, partnerPgList };
+//     });
+// };
 
 const getGymData = (gymList, premiumGymList, partnerGymList) => {
   //fetching yeh!o gym data

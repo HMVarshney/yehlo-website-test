@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import Card from './listingsCard.js';
 import SearchBar from './Search/searchBar';
 import queryString from 'query-string';
@@ -74,8 +74,7 @@ const Listings = (props) => {
         productToShow = filterProducts(premium,searchQuery.minprice, searchQuery.maxprice, location);
     } else if(category === 'sponsered' && sponsered.length > 0){
         productToShow = filterProducts(sponsered,searchQuery.minprice, searchQuery.maxprice, location);
-    }
-
+    };
 
     return(
         <div>
@@ -147,42 +146,26 @@ const filterProducts = (productArray, minprice, maxprice, location) => {
         filteredProducts = filteredProducts.map((product)=>calcDistance(product,location))}
 
     let sortedProducts =  filteredProducts.sort(function(a,b){
-        console.log('sort');
         return a.distance-b.distance });
-    
-    console.log(sortedProducts[0], sortedProducts[1]);
+
     return sortedProducts;
 }
 
 const calcDistance = (product, location) => {
-    console.log('calcDist')
     let lat1 = product.latitude, lat2 = location.latitude;
     let lon1 = product.longitude, lon2 = location.longitude;
     if ((lat1 === lat2) && (lon1 === lon2)) {
 		return 0;
 	}
 	else {
-		// var radlat1 = Math.PI * lat1/180;
-		// var radlat2 = Math.PI * lat2/180;
-		// var theta = lon1-lon2;
-		// var radtheta = Math.PI * theta/180;
-		// var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-		// if (dist > 1) {
-		// 	dist = 1;
-		// }
-		// dist = Math.acos(dist);
-		// dist = dist * 180/Math.PI;
-		// dist = dist * 60 * 1.1515;
-        // dist = dist * 1.609344 ;
-        // return {...product, distance: dist }
-            var R = 3958.8; // Radius of the Earth in miles
-            var rlat1 = lat1 * (Math.PI/180); // Convert degrees to radians
-            var rlat2 = lat2 * (Math.PI/180); // Convert degrees to radians
-            var difflat = rlat2-rlat1; // Radian difference (latitudes)
-            var difflon = (lon2-lon1) * (Math.PI/180); // Radian difference (longitudes)
-      
-            var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
-            return {...product, distance: d};
+        var R = 3958.8; // Radius of the Earth in miles
+        var rlat1 = lat1 * (Math.PI/180); // Convert degrees to radians
+        var rlat2 = lat2 * (Math.PI/180); // Convert degrees to radians
+        var difflat = rlat2-rlat1; // Radian difference (latitudes)
+        var difflon = (lon2-lon1) * (Math.PI/180); // Radian difference (longitudes)
+    
+        var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+        return {...product, distance: d};
 	}
 }
 
