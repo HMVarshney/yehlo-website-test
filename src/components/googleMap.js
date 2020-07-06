@@ -25,14 +25,13 @@ const center = {
     lat: 28.5273342, lng: 77.2090212
 };
 
-export default function MapContainer(props){
+function MapContainer(props){
 
-    const [finalPlace, setFinalPlace] = useState({});
     const [markers, setMarkers] = useState([]);
     const [selectedMarker, setSelected] = useState(null);
     const [currentPlaceStatus, setPlaceStatus] = useState({message:'Let us pick up your current location', status:false});
 
-    const { setSearchAttr } = props;
+    const { setSearchAttr, searchAttr, setMapOpen } = props;
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: 'AIzaSyBJkuK4zLuPXuBdSpf-43nV09rX6gkcmzs',
@@ -66,7 +65,9 @@ export default function MapContainer(props){
                 ...current, 
                 place: {name: 'Your current location', location:{lat: position.coords.latitude, lng: position.coords.longitude}}
             }));
-            setPlaceStatus({message: 'Using your current location', status: true})
+            setPlaceStatus({message: 'Using your current location', status: true});
+            panTo({lat: position.coords.latitude, lng: position.coords.longitude});
+            setMarkers([{lat: position.coords.latitude, lng: position.coords.longitude, time: new Date()}]);
         }, (error)=>{setPlaceStatus({message: error.message, status: false})})
     },[]);
 
@@ -77,23 +78,26 @@ export default function MapContainer(props){
     } else {
     return(
         <>
-        <Modal isOpen={props.mapOpen} toggle={()=>props.setMapOpen(!props.mapOpen)} size='xl'>
-            <ModalHeader toggle={()=>props.setMapOpen(!props.mapOpen)}>
-                <div className='row align-items-center map_search_header'>
-                    <div>
-                        <Search setSearchAttr={setSearchAttr} panTo={panTo} setMarkers={setMarkers} setPlaceStatus={setPlaceStatus} setFinalPlace={setFinalPlace}/>
-                    </div>
-                    <div className='ml-3' style={{position:'absolute', right:'30px'}}>
-                        <Tooltip title={currentPlaceStatus.message}>
-                            <IconButton onClick={()=>getCurrentLocation()}>
-                                {currentPlaceStatus.status ? <LocationSearchingIcon /> : <LocationDisabledIcon />}
-                            </IconButton>
-                        </Tooltip>
-                    </div>
+            <div className='row map_search_header'>
+                <div className='modal_back_button' style={{cursor:'pointer'}}>
+                    <span onClick={()=>setMapOpen(false)} className='fa fa-arrow-left mr-2' />
                 </div>
-            </ModalHeader>
-            
-            <ModalBody>
+                <div style={{width:'70%'}}>
+                    <Search currentPlaceStatus={currentPlaceStatus} 
+                        setSearchAttr={setSearchAttr} panTo={panTo} 
+                        setMarkers={setMarkers} 
+                        setPlaceStatus={setPlaceStatus} />
+                </div>
+                <div>
+                    <Tooltip title={currentPlaceStatus.message}>
+                        <IconButton onClick={()=>getCurrentLocation()}>
+                            {currentPlaceStatus.status ? <LocationSearchingIcon /> : <LocationDisabledIcon />}
+                        </IconButton>
+                    </Tooltip>
+                </div>
+            </div>
+
+            <div>
                 <GoogleMap 
                     mapContainerStyle={mapContainerStyle}  
                     zoom={10} 
@@ -102,8 +106,7 @@ export default function MapContainer(props){
                     options={mapOptions}
                     >
                         {markers.map((marker)=>
-                            <Marker onDragEnd={(e)=>console.log(e)} 
-                                draggable 
+                            <Marker
                                 key={marker.time.toISOString()} 
                                 position={{lat: marker.lat, lng: marker.lng}} 
                                 onClick={()=>setSelected(marker)} />)
@@ -111,18 +114,16 @@ export default function MapContainer(props){
                             
                             {selectedMarker && 
                             <InfoWindow position={{lat: selectedMarker.lat, lng: selectedMarker.lng}} onCloseClick={()=>setSelected(null)}>
-                                <div>Hey</div>
+                                <div>{searchAttr.place.name}</div>
                             </InfoWindow>}
                 </GoogleMap>
-            </ModalBody>
-        </Modal>       
-            
+            </div>      
         </>
     );
     }
 };
 
-function Search({ panTo, setSearchAttr, setMarkers, setPlaceStatus, setFinalPlace }){
+function Search({ panTo, setSearchAttr, setMarkers, setPlaceStatus, currentPlaceStatus }){
     const { ready, value, suggestions: {status, data}, setValue, clearSuggestions } = usePlacesAutocomplete({
         requestOptions:{lat: () => 28.608344, lng: ()=> 77.0328173},
         radius: 10 * 1000,
@@ -134,7 +135,7 @@ function Search({ panTo, setSearchAttr, setMarkers, setPlaceStatus, setFinalPlac
                 console.log(address)
                 setValue(address, false);
                 clearSuggestions();
-                try{
+                try {
                     const place = await getGeocode({address});
                     const { lat, lng } = await getLatLng(place[0]);
                     panTo({lat, lng});
@@ -146,11 +147,11 @@ function Search({ panTo, setSearchAttr, setMarkers, setPlaceStatus, setFinalPlac
                     ]);
                     setPlaceStatus({ message:'Location mode changed', status:false });
                     
-                }catch(error){
+                } catch(error) {
                     console.log(error);
                 }
         }}>
-            <ComboboxInput style={{borderRadius:'18px', boxShadow:'0px 1px 1px', border:'0.01px'}}  className='search_combobox' value={value} onChange={(event)=>setValue(event.target.value)} disabled={!ready} placeholder='Seach Place' />
+            <ComboboxInput className='search_combobox' value={value} onChange={(event)=>setValue(event.target.value)} disabled={!ready} placeholder='Seach Place' />
             <ComboboxPopover style={{zIndex:'2000'}}>
                 <ComboboxList>
                 {status === 'OK' && data.map(({id, description})=><ComboboxOption key={id} value={description}>
@@ -162,3 +163,15 @@ function Search({ panTo, setSearchAttr, setMarkers, setPlaceStatus, setFinalPlac
         </Combobox>
     );
 }
+
+const MapModal = (props) => {
+    return(
+        <Modal className='map_modal' isOpen={props.mapOpen} toggle={()=>props.setMapOpen(!props.mapOpen)} size='xl'>
+            <ModalBody style={{padding:'0px'}}>
+                <MapContainer setMapOpen={props.setMapOpen} setSearchAttr={props.setSearchAttr} searchAttr={props.searchAttr} />
+            </ModalBody>
+        </Modal>
+    );
+}
+
+export default MapModal;

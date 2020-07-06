@@ -10,7 +10,6 @@ import ProductDetails from './components/productDetails.js';
 import Home from './components/Home.js';
 import AppIcon from './components/AppIcon';
 import GetApp from './components/GetTheApp';
-import SponseredListings from './components/sponsoredListings';
 
 //css
 import styles from "./css/home.module.css";
@@ -25,7 +24,6 @@ function App() {
           <Route exact path='/about' component={About} />
           <Route exact path='/productdetails/:category/:product_id' component={ProductDetails} />
           <Route exact path='/getApp' component={GetApp} />
-          <Route exact path='/sponslistings' component={SponseredListings} />
           <Redirect to='/' />
       </Switch>
       <footer className={styles.footer}>

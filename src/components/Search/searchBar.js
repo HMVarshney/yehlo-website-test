@@ -60,7 +60,7 @@ const SearchBar = (props) => {
                          : searchAttr.place.name} variant='filled' />
                 </Grid>
 
-                <Map setSearchAttr={setSearchAttr} mapOpen={mapOpen} setMapOpen={()=>setMapOpen(!mapOpen)}/>
+                <Map setSearchAttr={setSearchAttr} searchAttr={searchAttr} mapOpen={mapOpen} setMapOpen={(value)=>setMapOpen(value)}/>
 
                 <Grid item xs md className='d-lg-none d-block'>
                     <Button endIcon={<ArrowDropDownOutlinedIcon />} className={buttonStyle.root} size='large' onClick={()=>{
