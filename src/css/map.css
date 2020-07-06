@@ -1,17 +1,33 @@
 .map_search_header{
-    padding: 0px 10px
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1051;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .search_combobox{
+    border-radius: 18px;
+    box-shadow: 0px 1px 1px;
+    border: 0.01px;
     width: 100%;
-    padding: 5px;
+    padding: 8px;
 }
+
 
 .place_selected_text{
     float: left;
 }
 
-.search_combobox_container{
-    float: right;
-}
 
+@media screen and (max-width: 992px){
+    .map_search_header{
+        margin-left: 10px;
+    }
+
+    .map_modal{
+        margin-top: 10px;
+    }
+}

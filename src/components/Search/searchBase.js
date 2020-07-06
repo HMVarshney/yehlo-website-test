@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
-import {CollegeListContext} from '../../context/context-provider/collegeListContext';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 
 function SearchBase(ChildComp){
@@ -15,8 +14,6 @@ function SearchBase(ChildComp){
                 category: 'pg',
             });
 
-            const { collegeList, getCollegeList } = useContext(CollegeListContext);
-
             //styles
             const buttonStyle = buttonStyles();
             const textfield = textfieldstyles();
@@ -24,15 +21,10 @@ function SearchBase(ChildComp){
             const tagStyle = tagStyles(); 
             const sliderStyle = sliderStyles();
 
-            useEffect(()=>{
-                getCollegeList();
-            },[])
-
             return(
                 <ChildComp
                     searchAttr={searchAttr} 
                     setSearchAttr={(changes)=>setSearchAttr(changes)} 
-                    collegeList={collegeList}
                     categoryLabels={categoryLabels}
                     styles = {{buttonStyle, paperStyle, tagStyle, sliderStyle, textfield }}
                     {...ownProps}

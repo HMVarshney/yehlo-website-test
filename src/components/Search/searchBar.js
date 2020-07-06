@@ -21,7 +21,6 @@ const SearchBar = (props) => {
     const [categoryDropdownOpen, toggleCategoryDropdown] = useState(false);
     const [mapOpen, setMapOpen] = useState(false);
 
-
     return (
         <>
         <div className='row justify-content-center align-items-center tags_list'>
@@ -61,7 +60,7 @@ const SearchBar = (props) => {
                          : searchAttr.place.name} variant='filled' />
                 </Grid>
 
-                <Map setSearchAttr={setSearchAttr} mapOpen={mapOpen} setMapOpen={()=>setMapOpen(!mapOpen)}/>
+                <Map setSearchAttr={setSearchAttr} searchAttr={searchAttr} mapOpen={mapOpen} setMapOpen={(value)=>setMapOpen(value)}/>
 
                 <Grid item xs md className='d-lg-none d-block'>
                     <Button endIcon={<ArrowDropDownOutlinedIcon />} className={buttonStyle.root} size='large' onClick={()=>{
@@ -104,7 +103,7 @@ const SearchBar = (props) => {
                 </Grid>
                 
                 <Grid item md xs className='d-block d-lg-none'>
-                <a href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`}>
+                <a href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}`}>
                     <div className='search_mobile_icon'>
                     <span style={{color:'white'}} className='fa fa-search' /></div>
                 </a>
