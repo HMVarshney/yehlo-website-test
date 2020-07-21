@@ -15,7 +15,7 @@ import "../css/home.css";
 
 //context
 import { MainContext } from "../context/context-provider/mainContext";
-
+import { Link } from "react-router-dom";
 
 
 class Home extends Component {
@@ -59,9 +59,11 @@ class Home extends Component {
           {partner.length? <AutoCarousel style={{ margin: "0" }} items={partner} />: <SkeletonLoader number={3} />}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
-              <Button href='/listings/partner' outline color="secondary" className={styles.seeMore}>
+              <Link to='/listings/partner'>
+              <Button outline color="secondary" className={styles.seeMore}>
                 See More
               </Button>
+              </Link>
             </div>
           </div>
         </Container>
@@ -77,9 +79,11 @@ class Home extends Component {
           {sponsered.length ? <AutoCarousel style={{ margin: "0" }} items={sponsered} />: <SkeletonLoader number={3} />}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
-              <Button href='/listings/sponsered' outline color="secondary" className={styles.seeMore}>
+              <Link to='/listings/sponsored'>
+              <Button outline color="secondary" className={styles.seeMore}>
                 See More
               </Button>
+              </Link>
             </div>
           </div>
         </Container>
@@ -95,9 +99,11 @@ class Home extends Component {
           {premium.length ? <PremiumCarousel style={{ margin: "0" }} items={premium} />: <SkeletonLoader number={4} />}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
-              <Button href='/listings/premium' outline color="secondary" className={styles.seeMore}>
+              <Link to='/listings/premium'>
+              <Button outline color="secondary" className={styles.seeMore}>
                 See More
               </Button>
+              </Link>
             </div>
           </div>
         </Container>
@@ -113,9 +119,11 @@ class Home extends Component {
           {buy.length ? <Carousel items={buy} /> : <SkeletonLoader number={4} />}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
-              <Button href='/listings/second hand' outline color="secondary" className={styles.seeMore}>
+              <Link to='/listings/second hand'>
+              <Button outline color="secondary" className={styles.seeMore}>
                 See More
               </Button>
+              </Link>
             </div>
           </div>
         </Container>
@@ -131,9 +139,11 @@ class Home extends Component {
           {pg.length ? <Carousel items={pg} /> : <SkeletonLoader number={4} />}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
-              <Button href='/listings/pg' outline color="secondary" className={styles.seeMore}>
+              <Link to='/listings/pg'>
+              <Button outline color="secondary" className={styles.seeMore}>
                 See More
               </Button>
+              </Link>
             </div>
           </div>
         </Container>
@@ -149,9 +159,11 @@ class Home extends Component {
           {gym.length ? <Carousel items={gym} /> : <SkeletonLoader number={4} />}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
-              <Button href='/listings/gym' outline color="secondary" className={styles.seeMore}>
+              <Link to='/listings/gym'>
+              <Button outline color="secondary" className={styles.seeMore}>
                 See More
               </Button>
+              </Link>
             </div>
           </div>
         </Container>

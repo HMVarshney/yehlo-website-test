@@ -5,6 +5,7 @@ import { Navbar, Nav, NavItem } from 'reactstrap';
 
 //icons
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import { Link } from 'react-router-dom';
 
 const Navigationbar = () => {
 
@@ -49,12 +50,14 @@ const Navigationbar = () => {
             
               <Navbar style={{background:'rgba(0,0,0,0.3)'}} id='navbar' fixed='top' dark>
                 <div className='container'>
-                    <a href='/'><img width='50px' src='/assets/images/logo_no_name1.png' alt='logo' /></a>
+                    <Link to='/'><img width='50px' src='/assets/images/logo_no_name1.png' alt='logo' /></Link>
                     {searchVisible && <SearchBar modalOpen={()=>setModalOpen(!modalOpen)} />}
                     <Nav navbar>
                         <NavItem>
-                            <i style={{color:'white'}} className='fa fa-info mr-2'></i>
-                            <Typography style={{color:'white'}} className='d-none d-lg-inline' component='h6'>About</Typography>
+                            <Link to='/about'>
+                                <i style={{color:'white'}} className='fa fa-info mr-2'></i>
+                                <Typography style={{color:'white'}} className='d-none d-lg-inline' component='h6'>About</Typography>
+                            </Link>
                         </NavItem>
                     </Nav>
                 </div> 

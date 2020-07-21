@@ -6,13 +6,14 @@ import Map from '../googleMap';
 
 //icons
 import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
+import { Link } from 'react-router-dom';
 
 
 const SearchModal = (props) => {
 
     const [activeTab, setActiveTab] = useState('1');
     const [mapOpen, setMapOpen] = useState(false);
-    const{searchAttr, setSearchAttr, categoryLabels, collegeList,
+    const{searchAttr, setSearchAttr, categoryLabels,
        styles: { sliderStyle, textfield }} = props;
     
     return (  
@@ -95,8 +96,13 @@ const SearchModal = (props) => {
                     </TabContent>
                 </ModalBody>
                 <ModalFooter>
+                    <Link to={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`}>
                     <Button style={{background:'#1e272c', color:'white'}} 
-                        href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}`} variant='contained' ><span className='fa fa-search'/> Search</Button>
+                        onCLick={()=>props.setModalOpen(false)}
+                        variant='contained' ><span className='fa fa-search'/> 
+                        Search
+                    </Button>
+                    </Link>
                 </ModalFooter>
         </Modal>
      );

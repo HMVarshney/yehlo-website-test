@@ -1,7 +1,3 @@
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
   font-family: Airbnb Cereal App Book;
@@ -17,11 +13,9 @@ font-weight: normal;
 src: local('Airbnb Cereal App Book'), url('/assets/fonts/AirbnbCerealBook.woff') format('woff');
 }
 
-.getTheApp + footer {
-  position: absolute;
-  bottom: 0;
-}
-
-.partner-website + footer{
-  display: none;
+@font-face{
+  font-family: 'Bree Serif';
+  font-style: 'normal';
+  font-weight: 'normal';
+  src: local('BreeSerif-Regular'), url('/assets/fonts/BreeSerif-Regular.otf') format('.otf');
 }

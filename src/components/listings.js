@@ -14,7 +14,6 @@ import AttachMoneyTwoToneIcon from '@material-ui/icons/AttachMoneyTwoTone';
 
 //context
 import { MainContext } from '../context/context-provider/mainContext';
-import { CollegeListContext } from '../context/context-provider/collegeListContext.js';
 
 let productToShow = [];
 let location = null;
@@ -34,6 +33,12 @@ const Listings = (props) => {
             setIsotope(new Isotope('.product-grid',{
                 itemSelector: '.product-card',
                 layoutMode: 'fitRows',
+                sortAscending: {
+                    rating: false,
+                    price: false,
+                    name: true,
+                    category: true,
+                },
                 getSortData: {
                     name: '.product-name',
                     price: '.product-price',
@@ -74,7 +79,7 @@ const Listings = (props) => {
         productToShow = filterProducts(premium,searchQuery.minprice, searchQuery.maxprice, location);
     } else if(category === 'sponsered' && sponsered.length > 0){
         productToShow = filterProducts(sponsered,searchQuery.minprice, searchQuery.maxprice, location);
-    }
+    };
 
     return(
         <div>
@@ -98,7 +103,7 @@ const Listings = (props) => {
                     <TextField size='small' select label='Sort' value={sort} onChange={(e)=>setSort(e.target.value)} variant='outlined'>
                         <MenuItem>None</MenuItem>
                         <MenuItem value='Name'>Name</MenuItem>
-                        {category === 'pg' ? <MenuItem value='Rating'>Rating</MenuItem> : <MenuItem value='Category'>Category</MenuItem>}
+                        {category === 'buy' ? <MenuItem value='Category'>Category</MenuItem> : <MenuItem value='Rating'>Rating</MenuItem>}
                         <MenuItem value='Price'>Price</MenuItem>
                     </TextField>
                 </FormControl> : null }
@@ -140,44 +145,32 @@ const filterProducts = (productArray, minprice, maxprice, location) => {
         }else{
             return true;
         }
-    })
+    });
 
     if(location!==null){
         filteredProducts = filteredProducts.map((product)=>calcDistance(product,location))}
 
-    return filteredProducts.sort(function(a,b){
+    let sortedProducts =  filteredProducts.sort(function(a,b){
         return a.distance-b.distance });
+
+    return sortedProducts;
 }
 
 const calcDistance = (product, location) => {
-    console.log('calcDist')
     let lat1 = product.latitude, lat2 = location.latitude;
     let lon1 = product.longitude, lon2 = location.longitude;
     if ((lat1 === lat2) && (lon1 === lon2)) {
 		return 0;
 	}
 	else {
-		// var radlat1 = Math.PI * lat1/180;
-		// var radlat2 = Math.PI * lat2/180;
-		// var theta = lon1-lon2;
-		// var radtheta = Math.PI * theta/180;
-		// var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-		// if (dist > 1) {
-		// 	dist = 1;
-		// }
-		// dist = Math.acos(dist);
-		// dist = dist * 180/Math.PI;
-		// dist = dist * 60 * 1.1515;
-        // dist = dist * 1.609344 ;
-        // return {...product, distance: dist }
-            var R = 3958.8; // Radius of the Earth in miles
-            var rlat1 = lat1 * (Math.PI/180); // Convert degrees to radians
-            var rlat2 = lat2 * (Math.PI/180); // Convert degrees to radians
-            var difflat = rlat2-rlat1; // Radian difference (latitudes)
-            var difflon = (lon2-lon1) * (Math.PI/180); // Radian difference (longitudes)
-      
-            var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
-            return {...product, distance: d};
+        var R = 3958.8; // Radius of the Earth in miles
+        var rlat1 = lat1 * (Math.PI/180); // Convert degrees to radians
+        var rlat2 = lat2 * (Math.PI/180); // Convert degrees to radians
+        var difflat = rlat2-rlat1; // Radian difference (latitudes)
+        var difflon = (lon2-lon1) * (Math.PI/180); // Radian difference (longitudes)
+    
+        var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+        return {...product, distance: d};
 	}
 }
 
