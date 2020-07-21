@@ -16,10 +16,12 @@ const ProductDetails = (props) => {
   const [productData, setProductData] = useState(null);
   const { buy, pg, gym, sponsered } = useContext(MainContext);
   const category = props.match.params.category;
+
   useEffect(() => {
     async function fetchSeller(id) {
       return await firebase.firestore().doc(`users/${id}`).get();
-    }
+    };
+
     async function product(subSection) {
       let productInfo = subSection.filter((product) => {
         return product.id === props.match.params.product_id;
@@ -33,7 +35,8 @@ const ProductDetails = (props) => {
         });
       }
       return productInfo;
-    }
+    };
+
     if (category === "pg") {
       product(pg).then((docData) => {
         setProductData(docData);

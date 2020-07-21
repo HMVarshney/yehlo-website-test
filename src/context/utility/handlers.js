@@ -1,5 +1,4 @@
 import firebase from "../../api/fbConfig";
-import { Data } from "@react-google-maps/api";
 
 const currentDate = firebase.firestore.Timestamp.fromDate(new Date());
 console.log(new Date(currentDate), currentDate.toDate());

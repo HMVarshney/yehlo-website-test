@@ -3,7 +3,7 @@ import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxOption, ComboboxList, ComboboxOptionText } from '@reach/combobox';
 import { IconButton, Tooltip } from '@material-ui/core';
-import { Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { Modal, ModalBody } from 'reactstrap';
 
 //css
 import '../css/map.css';
@@ -69,7 +69,7 @@ function MapContainer(props){
             panTo({lat: position.coords.latitude, lng: position.coords.longitude});
             setMarkers([{lat: position.coords.latitude, lng: position.coords.longitude, time: new Date()}]);
         }, (error)=>{setPlaceStatus({message: error.message, status: false})})
-    },[]);
+    },[panTo, setSearchAttr]);
 
     if(loadError){ 
         return 'Error Loading Map';
@@ -125,8 +125,9 @@ function MapContainer(props){
 
 function Search({ panTo, setSearchAttr, setMarkers, setPlaceStatus, currentPlaceStatus }){
     const { ready, value, suggestions: {status, data}, setValue, clearSuggestions } = usePlacesAutocomplete({
-        requestOptions:{lat: () => 28.608344, lng: ()=> 77.0328173},
-        radius: 10 * 1000,
+        requestOptions:{
+            location:{lat: () => 28.608344, lng: ()=> 77.0328173},
+            radius: 10 * 1000, },
     });
 
     return(
@@ -150,7 +151,7 @@ function Search({ panTo, setSearchAttr, setMarkers, setPlaceStatus, currentPlace
                 } catch(error) {
                     console.log(error);
                 }
-        }}>
+            }}>
             <ComboboxInput className='search_combobox' value={value} onChange={(event)=>setValue(event.target.value)} disabled={!ready} placeholder='Seach Place' />
             <ComboboxPopover style={{zIndex:'2000'}}>
                 <ComboboxList>

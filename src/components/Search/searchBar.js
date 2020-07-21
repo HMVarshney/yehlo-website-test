@@ -1,19 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Autocomplete } from '@material-ui/lab';
-import {TextField, FormControlLabel, Checkbox, Button, Box, Grid, Paper, Slider, InputAdornment} from '@material-ui/core';
+import React, { useState } from 'react';
+import {TextField, FormControlLabel, Checkbox, Button, Box, Grid, Paper, Slider } from '@material-ui/core';
 import SearchBase from './searchBase';
 import Map from '../googleMap';
+import { Link } from 'react-router-dom';
 
 //icons
 import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
 import ArrowDropDownOutlinedIcon from '@material-ui/icons/ArrowDropDownOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 
 const SearchBar = (props) => {
 
-    const {searchAttr,  setSearchAttr, categoryLabels, collegeList,
+    const {searchAttr,  setSearchAttr, categoryLabels,
        styles:{buttonStyle, paperStyle, tagStyle, sliderStyle, textfield} } = props;
 
     //state
@@ -103,16 +102,18 @@ const SearchBar = (props) => {
                 </Grid>
                 
                 <Grid item md xs className='d-block d-lg-none'>
-                <a href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}`}>
+                <Link to={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}`}>
                     <div className='search_mobile_icon'>
                     <span style={{color:'white'}} className='fa fa-search' /></div>
-                </a>
+                </Link>
                 </Grid>
 
                 <Grid item lg={1} className='d-none d-lg-block'>
-                    <Button href={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}`} 
+                    <Link to={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}`}>
+                    <Button
                     startIcon={<SearchOutlinedIcon />} className={buttonStyle.root} 
                     variant='outlined' disabled={searchAttr.category===''?true:false}>Search</Button>
+                    </Link>
                 </Grid>
 
             </Grid>    

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useCallback } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Card from './listingsCard.js';
 import SearchBar from './Search/searchBar';
 import queryString from 'query-string';
@@ -14,7 +14,6 @@ import AttachMoneyTwoToneIcon from '@material-ui/icons/AttachMoneyTwoTone';
 
 //context
 import { MainContext } from '../context/context-provider/mainContext';
-import { CollegeListContext } from '../context/context-provider/collegeListContext.js';
 
 let productToShow = [];
 let location = null;
@@ -34,6 +33,12 @@ const Listings = (props) => {
             setIsotope(new Isotope('.product-grid',{
                 itemSelector: '.product-card',
                 layoutMode: 'fitRows',
+                sortAscending: {
+                    rating: false,
+                    price: false,
+                    name: true,
+                    category: true,
+                },
                 getSortData: {
                     name: '.product-name',
                     price: '.product-price',
@@ -98,7 +103,7 @@ const Listings = (props) => {
                     <TextField size='small' select label='Sort' value={sort} onChange={(e)=>setSort(e.target.value)} variant='outlined'>
                         <MenuItem>None</MenuItem>
                         <MenuItem value='Name'>Name</MenuItem>
-                        {category === 'pg' ? <MenuItem value='Rating'>Rating</MenuItem> : <MenuItem value='Category'>Category</MenuItem>}
+                        {category === 'buy' ? <MenuItem value='Category'>Category</MenuItem> : <MenuItem value='Rating'>Rating</MenuItem>}
                         <MenuItem value='Price'>Price</MenuItem>
                     </TextField>
                 </FormControl> : null }

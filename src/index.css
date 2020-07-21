@@ -12,3 +12,10 @@ font-style: normal;
 font-weight: normal;
 src: local('Airbnb Cereal App Book'), url('/assets/fonts/AirbnbCerealBook.woff') format('woff');
 }
+
+@font-face{
+  font-family: 'Bree Serif';
+  font-style: 'normal';
+  font-weight: 'normal';
+  src: local('BreeSerif-Regular'), url('/assets/fonts/BreeSerif-Regular.otf') format('.otf');
+}

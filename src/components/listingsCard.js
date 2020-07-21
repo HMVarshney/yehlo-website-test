@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Avatar, Tooltip, Typography } from "@material-ui/core";
+import { Avatar, Typography } from "@material-ui/core";
 import { Popover, PopoverBody } from 'reactstrap';
 
 //css
 import '../css/card.css';
+import { Link } from "react-router-dom";
 
 const ListingsCard = (props) => {
     let title = props.data.name;
@@ -52,13 +53,13 @@ const ListingsCard = (props) => {
         <div className='col-md-3 col-6 mb-4 product-card' style={{zIndex: 0}}>
           <div className="bnb-card">
             <div>
-              <a href={`/productdetails/${props.category}/${props.data.id}`} ><img
+              <Link to={`/productdetails/${props.category}/${props.data.id}`} ><img
                 src={props.data.images.length>0?props.data.images[0]:'https://via.placeholder.com/150'}
                 alt=""
                 width='100%'
                 height='100%'
                 className="bnb-card-image mb-2"
-              /></a>
+              /></Link>
             </div>
             <div className="pl-1 pr-2 bnb-card-desc">
               <div className='seller-info-circle'>
