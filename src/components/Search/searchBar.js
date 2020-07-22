@@ -55,8 +55,10 @@ const SearchBar = (props) => {
                         onClick={()=>setMapOpen(true)} 
                         fullWidth 
                         classes={{root: textfield.autocompleteRoot}} 
-                        label={searchAttr.place.name === '' ? <><span className='fa fa-location-arrow mr-2' /><span>Location</span> </>
-                         : searchAttr.place.name} variant='filled' />
+                        label={searchAttr.place.name === '' ? 
+                            <><span style={{color:'#6494ed'}} className='fas fa-map-marker-alt mr-2' /><span>Location</span> </>
+                        : <><span style={{color:'#6494ed'}} className='fas fa-map-marker-alt mr-2' /><span>{searchAttr.place.name}</span> </>
+                         } variant='filled' />
                 </Grid>
 
                 <Map setSearchAttr={setSearchAttr} searchAttr={searchAttr} mapOpen={mapOpen} setMapOpen={(value)=>setMapOpen(value)}/>

@@ -15,82 +15,82 @@ import AttachMoneyTwoToneIcon from '@material-ui/icons/AttachMoneyTwoTone';
 //context
 import { MainContext } from '../context/context-provider/mainContext';
 
-let productToShow = [];
-let location = null;
 
 const Listings = (props) => {
 
     const { buy, pg, gym, partner, premium, sponsered } = useContext(MainContext);
-    // const { collegeList } = useContext(CollegeListContext);
     const searchQuery = queryString.parse(props.location.search);
-    const { category } = props.match.params; 
+    const { category } = props.match.params;
 
     const [isotope, setIsotope] = useState(null);
     const [sort, setSort] = useState('');
+    const [productToShow, setProducts] = useState([]);
+    const [location, setLocation] = useState('null');
+
+    // useEffect(()=>{
+    //     imagesloaded(document.querySelector('.product-card'),()=>{
+    //         setIsotope(new Isotope('.product-grid',{
+    //             itemSelector: '.product-card',
+    //             layoutMode: 'fitRows',
+    //             sortAscending: {
+    //                 rating: false,
+    //                 price: false,
+    //                 name: true,
+    //                 category: true,
+    //             },
+    //             getSortData: {
+    //                 name: '.product-name',
+    //                 price: '.product-price',
+    //                 category: '.product-cat',
+    //                 rating: '.product-rating'
+    //             },
+    //         }))
+    //     }) 
+    // },[sort]);
+
+    // useEffect(()=>{
+    //     if(isotope){
+    //         if(sort === 'Name'){
+    //             isotope.arrange({sortBy:'name'})
+    //         } else if(sort === 'Category'){
+    //             isotope.arrange({sortBy:'category'})
+    //         } else if(sort === 'Price'){
+    //             isotope.arrange({sortBy: 'price'})
+    //         } else if(sort === 'Rating'){
+    //             isotope.arrange({sortBy:'rating'})
+    //         }
+    //     }
+    // },[isotope, sort]);
+
+    // if(searchQuery.lat!=='null'){
+    //     setLocation({latitude: searchQuery.lat, longitude: searchQuery.lng});
+    // };
 
     useEffect(()=>{
-        imagesloaded(document.querySelector('.product-card'),()=>{
-            setIsotope(new Isotope('.product-grid',{
-                itemSelector: '.product-card',
-                layoutMode: 'fitRows',
-                sortAscending: {
-                    rating: false,
-                    price: false,
-                    name: true,
-                    category: true,
-                },
-                getSortData: {
-                    name: '.product-name',
-                    price: '.product-price',
-                    category: '.product-cat',
-                    rating: '.product-rating'
-                },
-            }))
-        }) 
-    },[sort]);
+        setLocation({latitude: searchQuery.lat, longitude: searchQuery.lng});
+    },[searchQuery.lat, searchQuery.lng])
 
     useEffect(()=>{
-        if(isotope){
-            if(sort === 'Name'){
-                isotope.arrange({sortBy:'name'})
-            } else if(sort === 'Category'){
-                isotope.arrange({sortBy:'category'})
-            } else if(sort === 'Price'){
-                isotope.arrange({sortBy: 'price'})
-            } else if(sort === 'Rating'){
-                isotope.arrange({sortBy:'rating'})
-            }
-        }
-    },[isotope, sort]);
-
-    if(searchQuery.lat!=='null'){
-        location = {latitude: searchQuery.lat, longitude: searchQuery.lng}
-    }
-
-    if(category==='pg' && pg.length > 0){
-        productToShow = filterProducts(pg,searchQuery.minprice, searchQuery.maxprice,location);
-    } else if(category==='buy' && buy.length > 0) {
-        productToShow = filterProducts(buy,searchQuery.minprice, searchQuery.maxprice, location);
-    } else if(category === 'gym' && gym.length > 0){
-        productToShow = filterProducts(gym,searchQuery.minprice, searchQuery.maxprice, location);
-    } else if(category === 'partner'){
-        productToShow = filterProducts(partner,searchQuery.minprice, searchQuery.maxprice, location);
-    } else if(category === 'premium'){
-        productToShow = filterProducts(premium,searchQuery.minprice, searchQuery.maxprice, location);
-    } else if(category === 'sponsered' && sponsered.length > 0){
-        productToShow = filterProducts(sponsered,searchQuery.minprice, searchQuery.maxprice, location);
-    };
+        setIsotope(null);
+        setSort('');
+        if(category==='pg' && pg.length > 0){
+            setProducts(filterProducts(pg,searchQuery.minprice, searchQuery.maxprice,location));
+        } else if(category==='buy' && buy.length > 0) {
+            setProducts(filterProducts(buy,searchQuery.minprice, searchQuery.maxprice, location))
+        } else if(category === 'gym' && gym.length > 0){
+            setProducts(filterProducts(gym,searchQuery.minprice, searchQuery.maxprice, location));
+        } else if(category === 'partner'){
+            setProducts(filterProducts(partner,searchQuery.minprice, searchQuery.maxprice, location))
+        } else if(category === 'premium'){
+            setProducts(filterProducts(premium,searchQuery.minprice, searchQuery.maxprice, location))
+        } else if(category === 'sponsered' && sponsered.length > 0){
+            setProducts(filterProducts(sponsered,searchQuery.minprice, searchQuery.maxprice, location))
+        };
+    },[buy, gym, partner, pg, premium, sponsered, category, searchQuery.minprice, searchQuery.maxprice, location]);
 
     return(
         <div>
             <br /> <br />
-                {/* <div className='row justify-content-center breadcrumb'>
-                    <Breadcrumbs separator='>'>
-                        <NavLink to='/'><HomeTwoToneIcon /> Home</NavLink>
-                        <NavItem><ViewListTwoToneIcon /> Lisitings</NavItem>
-                        <NavItem>{`${category.toUpperCase()}`}</NavItem>
-                    </Breadcrumbs>
-                </div> */}
             <div className='container mt-5'>
                 <Typography variant='h4' style={{textAlign:'center'}}> {category.toUpperCase()} Results </Typography>
 
@@ -172,7 +172,8 @@ const calcDistance = (product, location) => {
         var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
         return {...product, distance: d};
 	}
-}
+};
+
 
 // const RenderFilter = () => {
 //     return(
