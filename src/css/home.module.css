@@ -32,7 +32,7 @@
   background-image: url('/assets/images/web_bg_logo.png');
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1025px) {
   .navBrand {
     opacity: 0;
   }
@@ -54,7 +54,7 @@
 }
 
 
-@media only screen and (min-width: 767px){
+@media only screen and (min-width: 1024px){
 
 .billBoard {
   height: 70vh;
@@ -65,9 +65,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-}
+}}
 
 .seeMore {
   margin-top: -28px;

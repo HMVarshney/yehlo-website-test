@@ -133,7 +133,6 @@ function Search({ panTo, setSearchAttr, setMarkers, setPlaceStatus, currentPlace
     return(
         <Combobox 
             onSelect={async (address)=>{
-                console.log(address)
                 setValue(address, false);
                 clearSuggestions();
                 try {

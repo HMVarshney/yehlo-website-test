@@ -48,7 +48,7 @@ const Navigationbar = () => {
                 <SearchModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
             </Navbar> */}
             
-              <Navbar style={{background:'rgba(0,0,0,0.3)'}} id='navbar' fixed='top' dark>
+              <Navbar style={{background:'rgba(0,0,0,0.3)'}} id='navbar' sticky='top' dark>
                 <div className='container'>
                     <Link to='/'><img width='50px' src='/assets/images/logo_no_name1.png' alt='logo' /></Link>
                     {searchVisible && <SearchBar modalOpen={()=>setModalOpen(!modalOpen)} />}

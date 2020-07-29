@@ -13,16 +13,16 @@ const SkeletonLoader = (props) => {
         <>
         <div className='container mt-n5 d-none d-lg-block'>
             <div className='row'>
-               {numberToShow.map(()=>(
-                    <div  className={`col-${12/number}`}>
+               {numberToShow.map((i)=>(
+                    <div key={i} className={`col-${12/number}`}>
                         <Skeleton height='30em' />
                     </div>
                ))}
             </div>
             { props.where === 'listings' ?  
             <div className='row mt-n5'>
-               {numberToShow.map(()=>(
-                    <div className={`col-${12/number}`}>
+               {numberToShow.map((i)=>(
+                    <div key={i} className={`col-${12/number}`}>
                         <Skeleton height='30em' />
                     </div>
                ))}
