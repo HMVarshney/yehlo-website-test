@@ -1,0 +1,104 @@
+.instant-search{
+    min-height: 100vh;
+}
+
+.search-bar{
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input{
+    background: linear-gradient(to bottom, #2E303E , #212624);
+    border: solid black 1px;
+    border-radius: 10px;
+    padding: 1em;
+    width: 50vw;
+    box-shadow: black 1px 1px;
+    color: white;
+    height: 130%;
+}
+
+.search-bar input::placeholder{
+    color:#d7d1e8;
+}
+.card{
+    padding: 1rem;
+    border: none;
+}
+
+.card img{
+    border-radius: 10px;
+}
+
+.card .content{
+    height: 50%;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    font-size: larger;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.card:hover .content{
+    display: block;
+}
+
+.card:hover .ad-image{
+    opacity: 0.1;
+}
+
+/* .middle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.front, .back{
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform .6s linear;
+}
+
+.front img{
+    width: 100%;
+    height: 100%;
+}
+
+.front{
+    transform: perspective(600px) rotateY(0deg);
+}
+
+.back{
+    background: #f1f1f1;
+    transform: perspective(600px) rotateY(180deg);
+}
+
+.back-content{
+    width: 100%;
+}
+
+.card:hover > .front{
+    transform: perspective(600px) rotateY(-180deg);
+}
+
+.card:hover > .back{
+    transform: perspective(600px) rotateY(0deg);
+} */
+
+
+@media only screen and (max-width:420px){
+    .search-bar input{
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-width:1024px){
+    .search-bar input{
+        width: 80vw;
+    }
+}

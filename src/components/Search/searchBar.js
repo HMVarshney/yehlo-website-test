@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {TextField, FormControlLabel, Checkbox, Button, Box, Grid, Paper, Slider } from '@material-ui/core';
+import {TextField, FormControlLabel, Checkbox, Button, Box, Grid, Paper, Slider, InputAdornment } from '@material-ui/core';
 import SearchBase from './searchBase';
 import Map from '../googleMap';
 import { Link } from 'react-router-dom';
@@ -11,11 +11,9 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 
 const SearchBar = (props) => {
-
     const {searchAttr,  setSearchAttr, categoryLabels,
        styles:{buttonStyle, paperStyle, tagStyle, sliderStyle, textfield} } = props;
 
-    //state
     const [priceDropdownOpen, togglePriceDropdown] = useState(false);
     const [categoryDropdownOpen, toggleCategoryDropdown] = useState(false);
     const [mapOpen, setMapOpen] = useState(false);
@@ -24,7 +22,7 @@ const SearchBar = (props) => {
         <>
         <div className='row justify-content-center align-items-center tags_list'>
                 {categoryLabels.map((label)=>(
-                    <div className='col-lg-2'>
+                    <div key={label} className='col-lg-2'>
                         <Button classes={{root: tagStyle.root, contained: tagStyle.contained}} size='small' onClick={()=>setSearchAttr({...searchAttr, category:label})}  
                             variant={searchAttr.category===label?'contained':'outlined'} >{label}</Button>
                     </div>
@@ -51,14 +49,19 @@ const SearchBar = (props) => {
                 <Grid item lg={6} md={6} xs={12}>
                     <TextField 
                         style={{cursor:'pointer'}}
-                        disabled 
                         onClick={()=>setMapOpen(true)} 
                         fullWidth 
-                        classes={{root: textfield.autocompleteRoot}} 
-                        label={searchAttr.place.name === '' ? 
-                            <><span style={{color:'#6494ed'}} className='fas fa-map-marker-alt mr-2' /><span>Location</span> </>
-                        : <><span style={{color:'#6494ed'}} className='fas fa-map-marker-alt mr-2' /><span>{searchAttr.place.name}</span> </>
-                         } variant='filled' />
+                        value={searchAttr.place.name === '' ? 'Location' : searchAttr.place.name}
+                        classes={{root: textfield.autocompleteRoot}}  
+                        InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <i style={{color:'#a5aedc'}} className='fa fa-location-arrow' />
+                              </InputAdornment>
+                            ),
+                          }}
+                        variant='outlined' 
+                        />
                 </Grid>
 
                 <Map setSearchAttr={setSearchAttr} searchAttr={searchAttr} mapOpen={mapOpen} setMapOpen={(value)=>setMapOpen(value)}/>
@@ -112,9 +115,9 @@ const SearchBar = (props) => {
 
                 <Grid item lg={1} className='d-none d-lg-block'>
                     <Link to={`/listings/${searchAttr.category}/?place=${searchAttr.place.name}&maxprice=${searchAttr.priceValue[1]}&minprice=${searchAttr.priceValue[0]}&lat=${searchAttr.place.location.lat}&lng=${searchAttr.place.location.lng}`}>
-                    <Button
-                    startIcon={<SearchOutlinedIcon />} className={buttonStyle.root} 
-                    variant='outlined' disabled={searchAttr.category===''?true:false}>Search</Button>
+                        <Button
+                        startIcon={<SearchOutlinedIcon />} className={buttonStyle.root} 
+                        variant='outlined' disabled={searchAttr.category===''?true:false}>Search</Button>
                     </Link>
                 </Grid>
 

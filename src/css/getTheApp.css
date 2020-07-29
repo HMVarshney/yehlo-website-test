@@ -1,8 +1,8 @@
 .getTheApp .HomeAppDownloadNew__root--2Z_rf {
   width: 1200px;
+  min-height: 73vh;
   margin: 0 auto;
   display: flex;
-  padding: 72px 0 0;
   justify-content: space-evenly;
 }
 .getTheApp .CityDesktop__appDownloadRoot--3HYwU {

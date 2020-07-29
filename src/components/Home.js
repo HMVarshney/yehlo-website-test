@@ -79,7 +79,7 @@ class Home extends Component {
           {sponsered.length ? <AutoCarousel style={{ margin: "0" }} items={sponsered} />: <SkeletonLoader number={3} />}
           <div className={styles.alignment}>
             <div className="col-xs-12 col-sm-8 col-md-6 col-lg-3 mb-5">
-              <Link to='/listings/sponsored'>
+              <Link to='/sponsored'>
               <Button outline color="secondary" className={styles.seeMore}>
                 See More
               </Button>
